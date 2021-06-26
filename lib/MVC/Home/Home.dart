@@ -1,3 +1,6 @@
+// ignore: file_names
+import 'package:ecommerce_app/Util/Constant.dart';
+import 'package:ecommerce_app/globalWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
@@ -7,6 +10,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: GlobalWidget.globalAppBar("Home", kWhiteColor, false),
       body: StaggeredGridView.countBuilder(
         crossAxisCount: 4,
         itemCount: 12,
