@@ -1,4 +1,4 @@
-import 'package:ecommerce_app/MVC/Home/Home.dart';
+import 'package:ecommerce_app/MVC/View/Home/Home.dart';
 import 'package:flutter/material.dart';
 
 void main() {
