@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
         crossAxisCount: 4,
         itemCount: 12,
         itemBuilder: (BuildContext context, int index) => Container(
-            color: Colors.green,
+            color: kPrimaryColor,
             child: Center(
               child: CircleAvatar(
                 backgroundColor: Colors.white,
