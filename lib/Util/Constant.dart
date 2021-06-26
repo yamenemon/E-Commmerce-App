@@ -8,7 +8,7 @@ const kRedColor = Color(0xffd12e22);
 const kGrayColor = Color(0xFFC1C1C1);
 const kBlackColor = Color(0xff000000);
 const kWhiteColor = Color(0xffffffff);
-const kPrimaryColor = Color(0xFFFFFFFF);
+const kPrimaryColor = Color(0xFFFF7643);
 const kAccentColor = Color(0xFFFFFFFF);
 const kBackgroundColor = Color(0xFFFFFFFF);
 

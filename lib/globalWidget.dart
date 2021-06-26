@@ -75,7 +75,7 @@ class GlobalWidget {
               ? IconButton(
                   icon: const Icon(
                     Icons.arrow_back_ios,
-                    color: Colors.red,
+                    color: kPrimaryColor,
                   ),
                   onPressed: () {
                     Get.back();
@@ -84,7 +84,7 @@ class GlobalWidget {
               : Container(),
           Text(title.tr,
               style: const TextStyle(
-                color: Color(0xff3f1f20),
+                color: kPrimaryColor, //Color(0xff3f1f20),
                 fontWeight: FontWeight.w700,
                 fontFamily: "CircularStd",
                 fontStyle: FontStyle.normal,
