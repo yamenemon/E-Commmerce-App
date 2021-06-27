@@ -19,7 +19,7 @@ class AppRoutes {
 
   static List<GetPage> AppRoutesList() {
     return [
-      GetPage(name: HOMEPAGE, page: () => const HomePage()),
+      GetPage(name: HOMEPAGE, page: () => HomePage()),
       // GetPage(name: PRODUCT_DETAIL_PAGE, page: () => ProductDetailPage()),
       // GetPage(name: EMPTY_CART_PAGE, page: () => EmptyCartPage()),
       // GetPage(

@@ -1,12 +1,14 @@
 // ignore: file_names
+import 'package:ecommerce_app/MVC/Controller/homePageController.dart';
 import 'package:ecommerce_app/Util/Constant.dart';
 import 'package:ecommerce_app/globalWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:get/get.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
-
+  HomePage({Key? key}) : super(key: key);
+  final HomePageController homePageController = Get.put(HomePageController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +25,7 @@ class HomePage extends StatelessWidget {
               ),
             )),
         staggeredTileBuilder: (int index) =>
-            StaggeredTile.count(2, index.isEven ? 2 : 1),
+            StaggeredTile.count(2, index.isEven ? 5 : 2),
         mainAxisSpacing: 4.0,
         crossAxisSpacing: 4.0,
       ),
