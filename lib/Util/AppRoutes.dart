@@ -1,8 +1,10 @@
-import 'package:ecommerce_app/MVC/View/Home/Home.dart';
+import 'package:ecommerce_app/MVC/View/HomeModule/HomePage.dart';
+import 'package:ecommerce_app/MVC/View/SplashModule/SplashPage.dart';
 import 'package:get/get.dart';
 
 class AppRoutes {
-  static var HOMEPAGE = "homepage";
+  static String HOMEPAGE = "HomePage";
+  static String SPLASHPAGE = "SpalshPage";
   // static String PRODUCT_DETAIL_PAGE = "product_details_page";
   // static String EMPTY_CART_PAGE = "empty_cart_page";
   // static String CART_PAGE = "cart_page";
@@ -19,6 +21,7 @@ class AppRoutes {
 
   static List<GetPage> AppRoutesList() {
     return [
+      GetPage(name: SPLASHPAGE, page: () => SplashPage()),
       GetPage(name: HOMEPAGE, page: () => HomePage()),
       // GetPage(name: PRODUCT_DETAIL_PAGE, page: () => ProductDetailPage()),
       // GetPage(name: EMPTY_CART_PAGE, page: () => EmptyCartPage()),
