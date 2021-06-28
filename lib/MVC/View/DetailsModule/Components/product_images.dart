@@ -34,7 +34,9 @@ class _ProductImagesState extends State<ProductImages> {
             ),
           ),
         ),
-        // SizedBox(height: getProportionateScreenWidth(20)),
+        const Divider(
+          color: Colors.white,
+        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

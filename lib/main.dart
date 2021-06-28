@@ -7,6 +7,7 @@ import 'package:ecommerce_app/Util/Language/Translation.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   initServices();
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: Size(412, 820), // Zeplin UI size
+      designSize: const Size(412, 820), // Zeplin UI size
       builder: () => GetMaterialApp(
         translations: LocalizationService(),
         fallbackLocale: LocalizationService.fallbackLocale,
@@ -37,9 +38,11 @@ class MyApp extends StatelessWidget {
         title: 'E-Commerce-App',
         locale: Get.deviceLocale,
         theme: ThemeData(
-          fontFamily: 'CircularStd',
+          textTheme: GoogleFonts.poppinsTextTheme(
+            Theme.of(context).textTheme,
+          ),
+          // fontFamily: 'CircularStd',
           primaryColor: kPrimaryColor,
-          accentColor: kAccentColor,
           scaffoldBackgroundColor: kWhiteColor,
           backgroundColor: kBackgroundColor,
         ),

@@ -3,6 +3,7 @@ import 'package:ecommerce_app/Util/Constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CartCard extends StatelessWidget {
   const CartCard({
@@ -23,7 +24,7 @@ class CartCard extends StatelessWidget {
             child: Container(
               padding: EdgeInsets.all(10.w),
               decoration: BoxDecoration(
-                color: Color(0xFFF5F6F9),
+                color: const Color(0xFFF5F6F9),
                 borderRadius: BorderRadius.circular(15.r),
               ),
               child: Image.network(cart.productDemoModel.image.toString()),
@@ -34,24 +35,28 @@ class CartCard extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // ignore: sized_box_for_whitespace
             Container(
               width: Get.width * 0.5,
               child: Text(
                 cart.productDemoModel.title.toString(),
-                style: TextStyle(color: Colors.black, fontSize: 12.sp),
+                style: GoogleFonts.poppins(
+                    fontSize: 15.sp, fontWeight: FontWeight.w600),
                 overflow: TextOverflow.ellipsis,
-                maxLines: 2,
+                maxLines: 3,
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text.rich(
               TextSpan(
                 text: "\$${cart.productDemoModel.price}",
-                style: TextStyle(
-                    fontWeight: FontWeight.w600, color: kPrimaryColor),
+                style: GoogleFonts.poppins(
+                    fontSize: 15.sp,
+                    fontWeight: FontWeight.bold,
+                    color: kPrimaryColor),
                 children: [
                   TextSpan(
-                      text: "x${cart.quantity}",
+                      text: " x ${cart.quantity}",
                       style: Theme.of(context).textTheme.bodyText2),
                 ],
               ),

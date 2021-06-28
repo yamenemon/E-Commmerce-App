@@ -21,11 +21,10 @@ class OnBoardingController extends GetxController {
   List<OnBoardingModel> onBoardingPages = [
     OnBoardingModel(
         imageAsset: 'images/splash_1.png',
-        name: 'Welcome to Tokoto, Let’s shop!'),
+        name: 'Welcome to Ehita, Let’s shop!'),
     OnBoardingModel(
         imageAsset: 'images/splash_2.png',
-        name:
-            'We help people conect with store \naround United State of America'),
+        name: 'We help people conect with store \naround the country'),
     OnBoardingModel(
         imageAsset: 'images/splash_3.png',
         name: 'We show the easy way to shop. \nJust stay at home with us'),

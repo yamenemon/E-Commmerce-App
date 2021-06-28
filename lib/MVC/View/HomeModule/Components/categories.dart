@@ -1,6 +1,9 @@
+import 'package:ecommerce_app/Util/Constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Categories extends StatelessWidget {
   @override
@@ -13,7 +16,7 @@ class Categories extends StatelessWidget {
       {"icon": "images/Discover.svg", "text": "More"},
     ];
     return Padding(
-      padding: EdgeInsets.all(20.w),
+      padding: EdgeInsets.all(15.w),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -46,21 +49,27 @@ class CategoryCard extends StatelessWidget {
     return GestureDetector(
       onTap: press,
       child: SizedBox(
-        width: 55.w,
+        width: Get.height * 0.07,
         child: Column(
           children: [
             Container(
               padding: EdgeInsets.all(15.w),
-              height: 55.h,
-              width: 55.w,
+              height: Get.height * 0.07,
+              width: Get.height * 0.07,
               decoration: BoxDecoration(
-                color: Color(0xFFFFECDF),
+                color: kPrimaryColor, //const Color(0xFFFFECDF),
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: SvgPicture.asset(icon),
+              child: SvgPicture.asset(
+                icon,
+                color: Colors.white,
+              ),
             ),
-            SizedBox(height: 5),
-            Text(text, textAlign: TextAlign.center)
+            SizedBox(height: 5.h),
+            Text(text,
+                textAlign: TextAlign.center,
+                style: GoogleFonts.poppins(
+                    fontSize: 12.sp, fontWeight: FontWeight.w500))
           ],
         ),
       ),

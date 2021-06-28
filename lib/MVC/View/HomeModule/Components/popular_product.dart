@@ -16,36 +16,25 @@ class PopularProducts extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.w),
+          padding: EdgeInsets.symmetric(horizontal: 15.w),
           child: SectionTitle(title: "Popular Products", press: () {}),
         ),
-        SizedBox(height: 20.h),
+        SizedBox(height: 5.h),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // ...List.generate(
-              //  // demoProducts.length,
-              //   (index) {
-              //     if (demoProducts[index].isPopular)
-              //       return ProductCard(product: demoProducts[index]);
-
-              //     return SizedBox
-              //         .shrink(); // here by default width and height is 0
-              //   },
-              // ),
               Container(
                 width: Get.width,
-                height: 200.h,
-                //color: kSecondaryColor.withOpacity(0.05),
+                height: Get.height * 0.2,
                 child: Obx(
                   () => _getController.isLoading.value == true
-                      ? Center(
+                      ? const Center(
                           child: CircularProgressIndicator(
                             backgroundColor: Colors.black,
-                            color: Colors.white,
+                            color: kPrimaryColor,
                           ),
                         )
                       : ListView.builder(
@@ -74,15 +63,23 @@ class PopularProducts extends StatelessWidget {
                                 );
                               },
                               child: Padding(
-                                padding: EdgeInsets.all(8.w),
+                                padding: EdgeInsets.all(10.w),
                                 child: Container(
-                                  height: 200.h,
-                                  width: Get.width * 0.5,
+                                  width: Get.width * 0.3,
                                   decoration: BoxDecoration(
-                                    color: kSecondaryColor.withOpacity(0.1),
+                                    color: Colors.white,
                                     borderRadius: BorderRadius.all(
                                       Radius.circular(16.r),
                                     ),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey.withOpacity(0.15),
+                                        spreadRadius: 2,
+                                        blurRadius: 1,
+                                        offset: const Offset(
+                                            0, 0), // changes position of shadow
+                                      ),
+                                    ],
                                   ),
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -96,13 +93,13 @@ class PopularProducts extends StatelessWidget {
                                           _getController
                                                   .getList?[index].image ??
                                               "0",
-                                          height: 80.h,
-                                          width: 80.w,
-                                          fit: BoxFit.contain,
+                                          height: 100.h,
+                                          width: 100.w,
+                                          fit: BoxFit.fitWidth,
                                         ),
                                       ),
                                       SizedBox(
-                                        height: 8.h,
+                                        height: 10.h,
                                       ),
                                       Padding(
                                         padding: EdgeInsets.symmetric(
@@ -127,8 +124,7 @@ class PopularProducts extends StatelessWidget {
                         ),
                 ),
               ),
-
-              SizedBox(width: 20.w),
+              SizedBox(width: 10.w),
             ],
           ),
         )

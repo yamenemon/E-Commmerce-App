@@ -7,14 +7,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CheckoutCard extends StatelessWidget {
   CheckoutCard({
     Key? key,
   }) : super(key: key);
 
-  CartController _cartController = Get.find<CartController>();
-  CommonController _commonController = Get.find<CommonController>();
+  final CartController _cartController = Get.find<CartController>();
+  final CommonController _commonController = Get.find<CommonController>();
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +32,9 @@ class CheckoutCard extends StatelessWidget {
         ),
         boxShadow: [
           BoxShadow(
-            offset: Offset(0, -15),
+            offset: const Offset(0, -15),
             blurRadius: 20,
-            color: Color(0xFFDADADA).withOpacity(0.15),
+            color: const Color(0xFFDADADA).withOpacity(0.15),
           )
         ],
       ),
@@ -49,17 +50,20 @@ class CheckoutCard extends StatelessWidget {
                   height: 40.h,
                   width: 40.w,
                   decoration: BoxDecoration(
-                    color: Color(0xFFF5F6F9),
+                    color: const Color(0xFFF5F6F9),
                     borderRadius: BorderRadius.circular(10.r),
                   ),
                   child: SvgPicture.asset("images/receipt.svg"),
                 ),
-                Spacer(),
-                Text("Add voucher code"),
+                const Spacer(),
+                Text(
+                  "Add voucher code",
+                  style: Theme.of(context).textTheme.bodyText2,
+                ),
                 const SizedBox(width: 10),
                 Icon(
                   Icons.arrow_forward_ios,
-                  size: 12,
+                  size: 12.sp,
                   color: kTextColor,
                 )
               ],
@@ -75,7 +79,8 @@ class CheckoutCard extends StatelessWidget {
                       TextSpan(
                         text:
                             "\$${_cartController.cartPageTotalPrice.toInt().toString().length > 6 ? "${_cartController.cartPageTotalPrice.toString().substring(0, 6)}.." : "${_commonController.isSwitched == false ? _cartController.cartPageTotalPrice.toStringAsFixed(2) : _commonController.convertNumber(_cartController.cartPageTotalPrice.toStringAsFixed(2).toString())}"}",
-                        style: TextStyle(fontSize: 16, color: Colors.black),
+                        style: GoogleFonts.poppins(
+                            fontSize: 16.sp, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -83,10 +88,11 @@ class CheckoutCard extends StatelessWidget {
                 SizedBox(
                   width: 190.w,
                   child: GlobalWidget.defaultButton(
-                      press: () {
-                        Get.toNamed(AppRoutes.SIGNIN_PAGE);
-                      },
-                      text: "Check Out"),
+                    press: () {
+                      Get.toNamed(AppRoutes.SIGNIN_PAGE);
+                    },
+                    text: "Check Out",
+                  ),
                 ),
               ],
             ),

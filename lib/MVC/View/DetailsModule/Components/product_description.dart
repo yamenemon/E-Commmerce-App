@@ -6,6 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ProductDescription extends StatelessWidget {
   ProductDescription({
@@ -17,7 +18,7 @@ class ProductDescription extends StatelessWidget {
   final ProductModel product;
   final GestureTapCallback pressOnSeeMore;
 
-  CartController _cartController = Get.find<CartController>();
+  final CartController _cartController = Get.find<CartController>();
 
   @override
   Widget build(BuildContext context) {
@@ -44,8 +45,8 @@ class ProductDescription extends StatelessWidget {
                 width: 64.w,
                 decoration: BoxDecoration(
                   color: _cartController.isFavorited
-                      ? Color(0xFFFFE6E6)
-                      : Color(0xFFF5F6F9),
+                      ? const Color(0xFFFFE6E6)
+                      : const Color(0xFFF5F6F9),
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(20.r),
                     bottomLeft: Radius.circular(20.r),
@@ -54,8 +55,8 @@ class ProductDescription extends StatelessWidget {
                 child: SvgPicture.asset(
                   "images/Heart Icon_2.svg",
                   color: _cartController.isFavorited
-                      ? Color(0xFFFF4848)
-                      : Color(0xFFDBDEE4),
+                      ? const Color(0xFFFF4848)
+                      : const Color(0xFFDBDEE4),
                   height: 16.h,
                 ),
               );
@@ -69,6 +70,8 @@ class ProductDescription extends StatelessWidget {
           ),
           child: Text(
             product.description.toString(),
+            style: GoogleFonts.poppins(
+                fontSize: 17.sp, fontWeight: FontWeight.normal),
             maxLines: 3,
           ),
         ),
@@ -83,8 +86,10 @@ class ProductDescription extends StatelessWidget {
               children: [
                 Text(
                   "See More Detail",
-                  style: TextStyle(
-                      fontWeight: FontWeight.w600, color: kPrimaryColor),
+                  style: GoogleFonts.poppins(
+                      fontSize: 12.sp,
+                      fontWeight: FontWeight.normal,
+                      color: kPrimaryColor),
                 ),
                 SizedBox(width: 5.w),
                 Icon(

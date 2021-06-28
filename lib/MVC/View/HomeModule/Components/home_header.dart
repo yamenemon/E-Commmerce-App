@@ -12,31 +12,30 @@ class HomeHeader extends StatelessWidget {
   HomeHeader({
     Key? key,
   }) : super(key: key);
-  CommonController _commonController = Get.find<CommonController>();
-  CartController _cartController = Get.find<CartController>();
+  final CommonController _commonController = Get.find<CommonController>();
+  final CartController _cartController = Get.find<CartController>();
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20.w),
+      padding: EdgeInsets.symmetric(horizontal: 15.w),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          SearchField(),
+          const SearchField(),
           InkWell(
             onTap: () {
               if (_cartController.carts.isEmpty) {
                 //Get.toNamed(AppRoutes.EMPTY_CART_PAGE);
-              } else
+              } else {
                 Get.toNamed(AppRoutes.CART_PAGE);
+              }
             },
-            child: Container(
-              child: Obx(
-                () => GlobalWidget.cartIcon(
-                  _commonController.isSwitched == false
-                      ? _cartController.carts.length.toString()
-                      : _commonController.convertNumber(
-                          _cartController.carts.length.toString()),
-                ),
+            child: Obx(
+              () => GlobalWidget.cartIcon(
+                _commonController.isSwitched == false
+                    ? _cartController.carts.length.toString()
+                    : _commonController
+                        .convertNumber(_cartController.carts.length.toString()),
               ),
             ),
           ),

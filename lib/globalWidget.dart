@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class GlobalWidget {
   static circularContainer(EdgeInsetsGeometry padding, Color backgroundColor,
@@ -244,13 +245,11 @@ class GlobalWidget {
       child: TextButton(
         style: buttonStyle(),
         onPressed: press,
-        child: Text(
-          text,
-          style: TextStyle(
-            fontSize: 18.sp,
-            color: Colors.white,
-          ),
-        ),
+        child: Text(text,
+            style: GoogleFonts.poppins(
+                fontSize: 18.sp,
+                fontWeight: FontWeight.normal,
+                color: Colors.white)),
       ),
     );
   }
