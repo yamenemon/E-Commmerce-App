@@ -44,6 +44,8 @@ dependencies:
   flutter_svg: ^0.22.0
   intl: ^0.17.0
   pin_code_fields: ^7.2.0
+  connectivity: ^3.0.6
+  flutter_sslcommerze: ^1.0.1-nullsafety.0
 
 dev_dependencies:
   flutter_test:

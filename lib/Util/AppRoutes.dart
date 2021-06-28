@@ -2,6 +2,8 @@ import 'package:ecommerce_app/MVC/View/Cart/CartPage.dart';
 import 'package:ecommerce_app/MVC/View/DetailsModule/ProductDetailPage.dart';
 import 'package:ecommerce_app/MVC/View/HomeModule/HomePage.dart';
 import 'package:ecommerce_app/MVC/View/OtpModule/OtpPage.dart';
+import 'package:ecommerce_app/MVC/View/PaymentModule/PaymentPage.dart';
+import 'package:ecommerce_app/MVC/View/SignInModule/SignInPage.dart';
 import 'package:ecommerce_app/MVC/View/SplashModule/SplashPage.dart';
 import 'package:get/get.dart';
 
@@ -11,14 +13,15 @@ class AppRoutes {
   static String PRODUCT_DETAIL_PAGE = "product_details_page";
   static String CART_PAGE = "cart_page";
   static String OTP_PAGE = "OTP_PAGE";
+  static String SIGNIN_PAGE = "SignIn_page";
+  static String PAYMENT_PAGE = "Payment";
   // static String EMPTY_CART_PAGE = "empty_cart_page";
 
   // static String ACCOUNT_PAGE = "My_Account_page";
   // static String ADDRESS_PAGE = "My_Address_page";
   // static String NEW_ADDRESS_PAGE = "New_Address_page";
   // static String CHOOSE_LOCATION_PAGE = "Choose_Location";
-  // static String SIGNIN_PAGE = "SignIn_page";
-  // static String SIGNUP_PAGE = "Sign_Up_PAGE";
+
   // static String MY_ORDER_PAGE = "MY_ORDER_PAGE";
   // static String ORDER_HISTORY_PAGE = "ORDER_HISTORY_PAGE";
 
@@ -34,12 +37,14 @@ class AppRoutes {
         page: () => CartPage(),
       ),
       GetPage(name: OTP_PAGE, page: () => OtpPage()),
+      GetPage(name: SIGNIN_PAGE, page: () => SignInPage()),
+      GetPage(name: PAYMENT_PAGE, page: () => PaymentPage()),
       // GetPage(name: EMPTY_CART_PAGE, page: () => EmptyCartPage()),
       // GetPage(name: ACCOUNT_PAGE, page: () => AccountPage()),
       // GetPage(name: ADDRESS_PAGE, page: () => MyAddressPage()),
       // GetPage(name: NEW_ADDRESS_PAGE, page: () => NewAddressPage()),
       // GetPage(name: CHOOSE_LOCATION_PAGE, page: () => ChooseLocationPage()),
-      // GetPage(name: SIGNIN_PAGE, page: () => SignInPage()),
+
       // GetPage(name: SIGNUP_PAGE, page: () => SignUpPage()),
       // GetPage(name: MY_ORDER_PAGE, page: () => MyOrderPage()),
       // GetPage(name: ORDER_HISTORY_PAGE, page: () => OrderHistoryPage()),

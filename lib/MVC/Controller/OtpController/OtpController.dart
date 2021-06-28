@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/Util/AppRoutes.dart';
 import 'package:get/get.dart';
 
 class OtpController extends GetxController {
@@ -11,6 +12,7 @@ class OtpController extends GetxController {
 
     if (currentText == v) {
       isValid = true;
+      Get.toNamed(AppRoutes.PAYMENT_PAGE);
     } else {
       isValid = false;
     }

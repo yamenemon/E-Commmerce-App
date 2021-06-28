@@ -84,7 +84,7 @@ class CheckoutCard extends StatelessWidget {
                   width: 190.w,
                   child: GlobalWidget.defaultButton(
                       press: () {
-                        Get.toNamed(AppRoutes.OTP_PAGE);
+                        Get.toNamed(AppRoutes.SIGNIN_PAGE);
                       },
                       text: "Check Out"),
                 ),
