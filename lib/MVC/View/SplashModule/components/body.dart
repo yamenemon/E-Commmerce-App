@@ -1,5 +1,6 @@
 import 'package:ecommerce_app/MVC/Controller/OnBoardingModule/OnboardingController.dart';
 import 'package:ecommerce_app/MVC/View/SplashModule/components/splashContent.dart';
+import 'package:ecommerce_app/globalWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -64,16 +65,22 @@ class _BodyState extends State<Body> {
                       ),
                     ),
                     Spacer(flex: 3),
-                    GestureDetector(
-                      onTap: _onBoardingController.forward,
-                      child: CircleAvatar(
-                        radius: 35,
+                    SizedBox(
+                      width: double.infinity,
+                      height: 56.h,
+                      child: TextButton(
+                        style: GlobalWidget.buttonStyle(),
+                        onPressed: _onBoardingController.forward,
                         child: Obx(
-                          () {
-                            return Text(_onBoardingController.isLastPage
-                                ? 'Start'
-                                : 'Next');
-                          },
+                          () => Text(
+                            _onBoardingController.isLastPage
+                                ? "Start"
+                                : "Continue",
+                            style: TextStyle(
+                              fontSize: 18.sp,
+                              color: Colors.white,
+                            ),
+                          ),
                         ),
                       ),
                     ),

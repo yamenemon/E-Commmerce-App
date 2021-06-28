@@ -1,4 +1,6 @@
 import 'package:ecommerce_app/ApiProvider/ApiClient.dart';
+import 'package:ecommerce_app/MVC/Controller/CartModule/CartController.dart';
+import 'package:ecommerce_app/MVC/Controller/CommonController.dart';
 import 'package:ecommerce_app/Util/AppRoutes.dart';
 import 'package:ecommerce_app/Util/Constant.dart';
 import 'package:ecommerce_app/Util/Language/Translation.dart';
@@ -13,7 +15,8 @@ void main() {
 
 initServices() async {
   await Get.putAsync<ApiClient>(() => ApiClient().init());
-  //Get.put<CartController>(CartController(), permanent: true);
+  Get.put<CartController>(CartController(), permanent: true);
+  Get.put<CommonController>(CommonController(), permanent: true);
   // await Get.putAsync<AppDb>(() => AppDb.init());
 }
 

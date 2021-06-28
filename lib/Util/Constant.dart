@@ -30,3 +30,6 @@ const String circularStdMedium = "CircularStd-Medium";
 
 const kAnimationDuration = Duration(milliseconds: 200);
 const kSecondaryColor = Color(0xFF979797);
+
+const kDefaultDuration = Duration(seconds: 2);
+const kTextColor = Color(0xFF757575);

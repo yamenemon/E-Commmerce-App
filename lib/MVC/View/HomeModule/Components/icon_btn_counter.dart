@@ -4,15 +4,15 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class IconBtnWithCounter extends StatelessWidget {
-  const IconBtnWithCounter({
+  IconBtnWithCounter({
     Key? key,
     required this.svgSrc,
-    this.numOfitem = 0,
+    this.quantity = 0,
     required this.press,
   }) : super(key: key);
 
   final String svgSrc;
-  final int numOfitem;
+  final int quantity;
   final GestureTapCallback press;
 
   @override
@@ -33,7 +33,7 @@ class IconBtnWithCounter extends StatelessWidget {
             ),
             child: SvgPicture.asset(svgSrc),
           ),
-          if (numOfitem != 0)
+          if (quantity != 0)
             Positioned(
               top: -3,
               right: 0,
@@ -47,7 +47,7 @@ class IconBtnWithCounter extends StatelessWidget {
                 ),
                 child: Center(
                   child: Text(
-                    "$numOfitem",
+                    "$quantity",
                     style: TextStyle(
                       fontSize: 10.sp,
                       height: 1,
