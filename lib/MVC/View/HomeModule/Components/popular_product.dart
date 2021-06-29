@@ -2,6 +2,7 @@ import 'package:ecommerce_app/MVC/Controller/GetController.dart';
 import 'package:ecommerce_app/MVC/Model/DemoModel/ProductModel.dart';
 import 'package:ecommerce_app/Repository/MyRepository.dart';
 import 'package:ecommerce_app/Util/AppRoutes.dart';
+import 'package:ecommerce_app/Util/AppUrl.dart';
 import 'package:ecommerce_app/Util/Constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -39,26 +40,63 @@ class PopularProducts extends StatelessWidget {
                         )
                       : ListView.builder(
                           scrollDirection: Axis.horizontal,
-                          itemCount: _getController.getList?.length,
+                          itemCount: _getController
+                              .getModelList.value.products!.length,
                           itemBuilder: (context, index) {
                             return InkWell(
                               onTap: () {
                                 Get.toNamed(
                                   AppRoutes.PRODUCT_DETAIL_PAGE,
                                   arguments: [
-                                    ProductModel(
-                                        id: _getController.getList![index].id,
-                                        title: _getController
-                                            .getList![index].title,
-                                        category: _getController
-                                            .getList![index].category,
-                                        description: _getController
-                                            .getList![index].description,
-                                        image: _getController
-                                            .getList![index].image,
-                                        price: _getController
-                                            .getList![index].price,
-                                        favourite: false)
+                                    // ProductModel(
+                                    //     id: _getController.getList![index].id,
+                                    //     title: _getController
+                                    //         .getList![index].title,
+                                    //     category: _getController
+                                    //         .getList![index].category,
+                                    //     description: _getController
+                                    //         .getList![index].description,
+                                    //     image: _getController
+                                    //         .getList![index].image,
+                                    //     price: _getController
+                                    //         .getList![index].price,
+                                    //     favourite: false)
+                                    Product(
+                                      productId: _getController.getModelList
+                                          .value.products![index].productId,
+                                      amount: _getController.getModelList.value
+                                          .products![index].amount,
+                                      categoryId: _getController.getModelList
+                                          .value.products![index].categoryId,
+                                      descriptionBn: _getController.getModelList
+                                          .value.products![index].descriptionBn,
+                                      descriptionEn: _getController.getModelList
+                                          .value.products![index].descriptionEn,
+                                      image2: _getController.getModelList.value
+                                          .products![index].image2,
+                                      image3: _getController.getModelList.value
+                                          .products![index].image3,
+                                      index: _getController.getModelList.value
+                                          .products![index].index,
+                                      isDiscount: _getController.getModelList
+                                          .value.products![index].isDiscount,
+                                      isPercentage: _getController.getModelList
+                                          .value.products![index].isPercentage,
+                                      nameBn: _getController.getModelList.value
+                                          .products![index].nameBn,
+                                      nameEn: _getController.getModelList.value
+                                          .products![index].nameEn,
+                                      picture:
+                                          "$BASE_URL/${_getController.getModelList.value.products![index].picture}",
+                                      price: _getController.getModelList.value
+                                          .products![index].price,
+                                      salePrice: _getController.getModelList
+                                          .value.products![index].salePrice,
+                                      unit: _getController.getModelList.value
+                                          .products![index].unit,
+                                      stock: _getController.getModelList.value
+                                          .products![index].stock,
+                                    )
                                   ],
                                 );
                               },
@@ -87,12 +125,11 @@ class PopularProducts extends StatelessWidget {
                                         CrossAxisAlignment.center,
                                     children: [
                                       Hero(
-                                        tag: _getController.getList![index].id
+                                        tag: _getController.getModelList.value
+                                            .products![index].productId
                                             .toString(),
                                         child: Image.network(
-                                          _getController
-                                                  .getList?[index].image ??
-                                              "0",
+                                          "$BASE_URL/${_getController.getModelList.value.products![index].picture}",
                                           height: 100.h,
                                           width: 100.w,
                                           fit: BoxFit.fitWidth,
@@ -105,9 +142,9 @@ class PopularProducts extends StatelessWidget {
                                         padding: EdgeInsets.symmetric(
                                             horizontal: 8.w),
                                         child: Text(
-                                          _getController
-                                                  .getList?[index].title ??
-                                              "null",
+                                          _getController.getModelList.value
+                                              .products![index].nameEn
+                                              .toString(),
                                           maxLines: 1,
                                           textAlign: TextAlign.center,
                                           style: TextStyle(

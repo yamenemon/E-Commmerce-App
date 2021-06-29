@@ -9,7 +9,7 @@ class ProductImages extends StatefulWidget {
     required this.product,
   }) : super(key: key);
 
-  final ProductModel product;
+  final Product product;
 
   @override
   _ProductImagesState createState() => _ProductImagesState();
@@ -26,9 +26,9 @@ class _ProductImagesState extends State<ProductImages> {
           child: AspectRatio(
             aspectRatio: 1,
             child: Hero(
-              tag: widget.product.id.toString(),
+              tag: widget.product.productId.toString(),
               child: Image.network(
-                widget.product.image.toString(),
+                widget.product.picture.toString(),
                 //fit: BoxFit.contain,
               ),
             ),
@@ -66,7 +66,7 @@ class _ProductImagesState extends State<ProductImages> {
           border: Border.all(
               color: kPrimaryColor.withOpacity(selectedImage == index ? 1 : 0)),
         ),
-        child: Image.network(widget.product.image.toString()),
+        child: Image.network(widget.product.picture.toString()),
       ),
     );
   }

@@ -27,7 +27,7 @@ class CartCard extends StatelessWidget {
                 color: const Color(0xFFF5F6F9),
                 borderRadius: BorderRadius.circular(15.r),
               ),
-              child: Image.network(cart.productDemoModel.image.toString()),
+              child: Image.network(cart.productDemoModel.picture.toString()),
             ),
           ),
         ),
@@ -39,7 +39,7 @@ class CartCard extends StatelessWidget {
             Container(
               width: Get.width * 0.5,
               child: Text(
-                cart.productDemoModel.title.toString(),
+                cart.productDemoModel.nameEn.toString(),
                 style: GoogleFonts.poppins(
                     fontSize: 15.sp, fontWeight: FontWeight.w600),
                 overflow: TextOverflow.ellipsis,

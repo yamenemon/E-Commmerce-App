@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ProductDetailPage extends StatelessWidget {
-  ProductModel _model = Get.arguments[0]!;
+  Product _model = Get.arguments[0]!;
   final CartController _cartController = Get.find<CartController>();
   final CommonController _commonController = Get.find<CommonController>();
 

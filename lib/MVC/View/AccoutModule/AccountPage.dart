@@ -39,7 +39,7 @@ class _AccountPageState extends State<AccountPage> {
         Colors.transparent,
         true,
       ),
-      bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.profile),
+      // bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.profile),
       body: Container(
         color: Color(0xfff2f2f2),
         child: Column(
