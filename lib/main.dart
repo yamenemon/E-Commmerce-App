@@ -1,6 +1,7 @@
 import 'package:ecommerce_app/ApiProvider/ApiClient.dart';
 import 'package:ecommerce_app/MVC/Controller/CartModule/CartController.dart';
 import 'package:ecommerce_app/MVC/Controller/CommonController.dart';
+import 'package:ecommerce_app/MVC/Controller/ConnectivityController.dart';
 import 'package:ecommerce_app/Util/AppRoutes.dart';
 import 'package:ecommerce_app/Util/Constant.dart';
 import 'package:ecommerce_app/Util/Language/Translation.dart';
@@ -16,6 +17,7 @@ void main() {
 
 initServices() async {
   await Get.putAsync<ApiClient>(() => ApiClient().init());
+  Get.put<ConnectivityController>(ConnectivityController(), permanent: true);
   Get.put<CartController>(CartController(), permanent: true);
   Get.put<CommonController>(CommonController(), permanent: true);
   // await Get.putAsync<AppDb>(() => AppDb.init());
@@ -28,25 +30,24 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(412, 820), // Zeplin UI size
-      builder: () => GetMaterialApp(
-        translations: LocalizationService(),
-        fallbackLocale: LocalizationService.fallbackLocale,
-        debugShowCheckedModeBanner: false,
-        initialRoute: AppRoutes.SPLASHPAGE,
-        getPages: AppRoutes.AppRoutesList(),
-        title: 'E-Commerce-App',
-        locale: Get.deviceLocale,
-        theme: ThemeData(
-          textTheme: GoogleFonts.poppinsTextTheme(
-            Theme.of(context).textTheme,
-          ),
-          // fontFamily: 'CircularStd',
-          primaryColor: kPrimaryColor,
-          scaffoldBackgroundColor: kWhiteColor,
-          backgroundColor: kBackgroundColor,
-        ),
-      ),
-    );
+        designSize: const Size(412, 820), // Zeplin UI size
+        builder: () => GetMaterialApp(
+              translations: LocalizationService(),
+              fallbackLocale: LocalizationService.fallbackLocale,
+              debugShowCheckedModeBanner: false,
+              initialRoute: AppRoutes.SPLASHPAGE,
+              getPages: AppRoutes.AppRoutesList(),
+              title: 'E-Commerce-App',
+              locale: Get.deviceLocale,
+              theme: ThemeData(
+                textTheme: GoogleFonts.poppinsTextTheme(
+                  Theme.of(context).textTheme,
+                ),
+                // fontFamily: 'CircularStd',
+                primaryColor: kPrimaryColor,
+                scaffoldBackgroundColor: kWhiteColor,
+                backgroundColor: kBackgroundColor,
+              ),
+            ));
   }
 }

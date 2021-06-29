@@ -14,7 +14,7 @@ class CartController extends GetxController with StateMixin {
   var currentProductQty = 0.obs;
   RxDouble productDetailTotalPrice = 0.0.obs;
   RxDouble cartPageTotalPrice = 0.0.obs;
-  bool isFavorited = true;
+  bool isFavorited = false;
   //For cart badge
   RxInt totalProductQtyBadge = 0.obs;
 
@@ -124,10 +124,12 @@ class CartController extends GetxController with StateMixin {
   }
 
   //temporary favourite
-  void toggleFavorite() {
+  void toggleFavorite(int? id) {
     if (isFavorited) {
       isFavorited = false;
+      favouriteList.remove(id);
     } else {
+      favouriteList.add(id);
       isFavorited = true;
     }
     update();
