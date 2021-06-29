@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 const kAppbarColor = Color(0xFFF2F3F7);
 const kButtonColor = Color(0xFF329D9C);
@@ -33,3 +34,4 @@ const kSecondaryColor = Color(0xFF979797);
 
 const kDefaultDuration = Duration(seconds: 2);
 const kTextColor = Color(0xFF757575);
+var globalBtnHeight = 60.h;

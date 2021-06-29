@@ -6,6 +6,8 @@ class SignInController extends GetxController {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   TextEditingController loginPhoneNumber = TextEditingController();
   TextEditingController loginName = TextEditingController();
+  TextEditingController loginAddress = TextEditingController();
+
   bool obscureText = true;
 
   @override
@@ -20,6 +22,9 @@ class SignInController extends GetxController {
     loginName.addListener(() {
       update();
     });
+    loginAddress.addListener(() {
+      update();
+    });
   }
 
   @override
@@ -28,6 +33,7 @@ class SignInController extends GetxController {
     super.dispose();
     loginPhoneNumber.dispose();
     loginName.dispose();
+    loginAddress.dispose();
   }
 
   void loginMethod() {
