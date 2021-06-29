@@ -25,6 +25,7 @@ class _SignInPageState extends State<SignInPage> {
       backgroundColor: kSignInScaffoldColor,
       body: SingleChildScrollView(
         // physics: const NeverScrollableScrollPhysics(),
+        scrollDirection: Axis.horizontal,
         child: Column(
           children: [
             Stack(
