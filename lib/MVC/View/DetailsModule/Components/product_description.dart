@@ -37,14 +37,14 @@ class ProductDescription extends StatelessWidget {
           alignment: Alignment.centerRight,
           child: InkWell(
             onTap: () {
-              _cartController.toggleFavorite();
+              _cartController.toggleFavorite(product.id);
             },
             child: GetBuilder<CartController>(builder: (contrller) {
               return Container(
                 padding: EdgeInsets.all(15.w),
                 width: 64.w,
                 decoration: BoxDecoration(
-                  color: _cartController.isFavorited
+                  color: _cartController.favouriteList.contains(product.id)
                       ? const Color(0xFFFFE6E6)
                       : const Color(0xFFF5F6F9),
                   borderRadius: BorderRadius.only(
@@ -54,7 +54,7 @@ class ProductDescription extends StatelessWidget {
                 ),
                 child: SvgPicture.asset(
                   "images/Heart Icon_2.svg",
-                  color: _cartController.isFavorited
+                  color: _cartController.favouriteList.contains(product.id)
                       ? const Color(0xFFFF4848)
                       : const Color(0xFFDBDEE4),
                   height: 16.h,
