@@ -11,7 +11,7 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
-  CartController _cartController = Get.find<CartController>();
+  final CartController _cartController = Get.find<CartController>();
 
   @override
   Widget build(BuildContext context) {
@@ -33,12 +33,12 @@ class _BodyState extends State<Body> {
             background: Container(
               padding: EdgeInsets.symmetric(horizontal: 20.w),
               decoration: BoxDecoration(
-                color: Color(0xFFFFE6E6),
+                color: const Color(0xFFFFE6E6),
                 borderRadius: BorderRadius.circular(15.r),
               ),
               child: Row(
                 children: [
-                  Spacer(),
+                  const Spacer(),
                   SvgPicture.asset("images/Trash.svg"),
                 ],
               ),

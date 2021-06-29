@@ -1,5 +1,6 @@
 import 'package:ecommerce_app/MVC/Controller/OnBoardingModule/OnboardingController.dart';
 import 'package:ecommerce_app/MVC/View/SplashModule/components/splashContent.dart';
+import 'package:ecommerce_app/Util/Constant.dart';
 import 'package:ecommerce_app/globalWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -39,7 +40,7 @@ class _BodyState extends State<Body> {
                 padding: EdgeInsets.symmetric(horizontal: 20.w),
                 child: Column(
                   children: <Widget>[
-                    Spacer(),
+                    const Spacer(),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -48,25 +49,25 @@ class _BodyState extends State<Body> {
                         (index) => Obx(
                           () {
                             return Container(
-                              padding: EdgeInsets.all(10),
-                              margin: EdgeInsets.all(10),
-                              height: 10,
-                              width: 10,
+                              padding: const EdgeInsets.all(10),
+                              margin: const EdgeInsets.all(10),
+                              height: 10.h,
+                              width: 10.w,
                               decoration: BoxDecoration(
                                   color:
                                       _onBoardingController.onPageIndex.value ==
                                               index
-                                          ? Colors.black
-                                          : Colors.red,
+                                          ? Colors.grey
+                                          : kPrimaryColor,
                                   borderRadius: BorderRadius.circular(10)),
                             );
                           },
                         ),
                       ),
                     ),
-                    Spacer(flex: 3),
+                    const Spacer(flex: 8),
                     SizedBox(
-                      width: double.infinity,
+                      width: Get.width - 100,
                       height: 56.h,
                       child: TextButton(
                         style: GlobalWidget.buttonStyle(),
@@ -84,7 +85,9 @@ class _BodyState extends State<Body> {
                         ),
                       ),
                     ),
-                    Spacer(),
+                    const Spacer(
+                      flex: 1,
+                    ),
                   ],
                 ),
               ),

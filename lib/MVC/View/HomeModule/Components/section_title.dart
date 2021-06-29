@@ -1,5 +1,7 @@
+import 'package:ecommerce_app/Util/Constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SectionTitle extends StatelessWidget {
   const SectionTitle({
@@ -16,18 +18,17 @@ class SectionTitle extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          title,
-          style: TextStyle(
-            fontSize: 18.sp,
-            color: Colors.black,
-          ),
-        ),
+        Text(title,
+            style: GoogleFonts.poppins(
+                fontSize: 18.sp, fontWeight: FontWeight.normal)),
         GestureDetector(
           onTap: press,
           child: Text(
             "See More",
-            style: TextStyle(color: Color(0xFFBBBBBB)),
+            style: GoogleFonts.poppins(
+                fontSize: 12.sp,
+                fontWeight: FontWeight.w300,
+                color: kPrimaryColor),
           ),
         ),
       ],

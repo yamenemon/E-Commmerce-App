@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'section_title.dart';
 
 class SpecialOffers extends StatelessWidget {
@@ -12,13 +13,13 @@ class SpecialOffers extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.w),
+          padding: EdgeInsets.symmetric(horizontal: 15.w),
           child: SectionTitle(
             title: "Special for you",
             press: () {},
           ),
         ),
-        SizedBox(height: 20.h),
+        SizedBox(height: 15.h),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
@@ -35,7 +36,7 @@ class SpecialOffers extends StatelessWidget {
                 numOfBrands: 24,
                 press: () {},
               ),
-              SizedBox(width: 20.w),
+              SizedBox(width: 15.w),
             ],
           ),
         ),
@@ -60,19 +61,19 @@ class SpecialOfferCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: 20.w),
+      padding: EdgeInsets.only(left: 15.w),
       child: GestureDetector(
         onTap: press,
         child: SizedBox(
-          width: 242.w,
-          height: 100.h,
+          width: Get.width * 0.6,
+          height: Get.height * 0.15,
           child: ClipRRect(
             borderRadius: BorderRadius.circular(20),
             child: Stack(
               children: [
                 Image.asset(
                   image,
-                  fit: BoxFit.cover,
+                  fit: BoxFit.fill,
                 ),
                 Container(
                   decoration: BoxDecoration(
@@ -80,8 +81,8 @@ class SpecialOfferCard extends StatelessWidget {
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
                       colors: [
-                        Color(0xFF343434).withOpacity(0.4),
-                        Color(0xFF343434).withOpacity(0.15),
+                        const Color(0xFF343434).withOpacity(0.4),
+                        const Color(0xFF343434).withOpacity(0.15),
                       ],
                     ),
                   ),
@@ -93,7 +94,7 @@ class SpecialOfferCard extends StatelessWidget {
                   ),
                   child: Text.rich(
                     TextSpan(
-                      style: TextStyle(color: Colors.white),
+                      style: const TextStyle(color: Colors.white),
                       children: [
                         TextSpan(
                           text: "$category\n",

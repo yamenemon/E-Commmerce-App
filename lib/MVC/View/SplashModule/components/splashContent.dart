@@ -16,7 +16,7 @@ class SplashContent extends StatelessWidget {
       children: <Widget>[
         Spacer(),
         Text(
-          "TOKOTO",
+          "EHITA",
           style: TextStyle(
             fontSize: 36.sp,
             color: kPrimaryColor,
