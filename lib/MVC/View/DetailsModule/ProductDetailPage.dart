@@ -19,7 +19,7 @@ class ProductDetailPage extends StatelessWidget {
       (state) => Scaffold(
         backgroundColor: const Color(0xFFF5F6F9),
         appBar: GlobalWidget.globalAppBar(
-          "",
+          "Product Details",
           Colors.transparent,
           true,
           actionWidgets: [

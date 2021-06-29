@@ -17,8 +17,8 @@ class Body extends StatelessWidget {
   final CartController _cartController = Get.find<CartController>();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: ListView(
+    return Container(
+      child: ListView(
         children: [
           ProductImages(product: product),
           TopRoundedContainer(

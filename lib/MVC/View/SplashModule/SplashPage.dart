@@ -13,20 +13,18 @@ class SplashPage extends StatefulWidget {
 class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Container(
-            child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              height: Get.height * 0.9,
-              width: 412.w,
-              child: Body(),
-            ),
-          ],
-        )),
-      ),
+    return Scaffold(
+      body: Container(
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            height: Get.height * 0.9,
+            width: 412.w,
+            child: Body(),
+          ),
+        ],
+      )),
     );
   }
 }
