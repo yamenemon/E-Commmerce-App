@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/MVC/Controller/CartModule/CartController.dart';
+import 'package:ecommerce_app/MVC/Model/CartModule/cartModel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,13 +23,13 @@ class _BodyState extends State<Body> {
         itemBuilder: (context, index) => Padding(
           padding: EdgeInsets.symmetric(vertical: 10.h),
           child: Dismissible(
-            key: Key(
-                _cartController.carts[index].productDemoModel.id.toString()),
+            key: Key(_cartController.carts[index].productDemoModel.productId
+                .toString()),
             direction: DismissDirection.endToStart,
             onDismissed: (direction) {
-              setState(() {
-                _cartController.carts.removeAt(index);
-              });
+              _cartController.carts.removeAt(index);
+              _cartController.updateCartListValues();
+              _cartController.update();
             },
             background: Container(
               padding: EdgeInsets.symmetric(horizontal: 20.w),

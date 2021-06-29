@@ -11,7 +11,7 @@ import 'product_description.dart';
 import 'product_images.dart';
 
 class Body extends StatelessWidget {
-  final ProductModel product;
+  final Product product;
 
   Body({Key? key, required this.product}) : super(key: key);
   final CartController _cartController = Get.find<CartController>();
@@ -132,8 +132,8 @@ class Body extends StatelessWidget {
                               press: () {
                                 final isExist = _cartController.carts
                                     .indexWhere((element) =>
-                                        element.productDemoModel.id ==
-                                        product.id);
+                                        element.productDemoModel.productId ==
+                                        product.productId);
                                 if (isExist != -1) {
                                   Get.snackbar(
                                       LocalizationLanguage.CART_TEXT.tr,

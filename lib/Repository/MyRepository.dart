@@ -10,14 +10,27 @@ class MyRepository {
 
   // MyRepository({required this.apiClient}) : assert(apiClient != null);
 
-  Future<List<ProductModel>?> getRepo() async {
+  //List type data fetch
+  // Future<List<ProductModel>?> getRepo() async {
+  //   var res = await apiClient.request(AppUrl.productUrl, Method.GET, null);
+  //   try {
+  //     if (res.data != null) {
+  //       return productModelFromJson(json.encode(res.data).toString());
+  //     }
+  //   } catch (e) {
+  //     print("getRepo ::: ${e.toString()}");
+  //   }
+  // }
+  Future<ProductModel?> productRepo() async {
     var res = await apiClient.request(AppUrl.productUrl, Method.GET, null);
     try {
       if (res.data != null) {
-        return productModelFromJson(json.encode(res.data).toString());
+        String responseString = res.toString();
+        print(responseString);
+        return productModelFromJson(responseString);
       }
     } catch (e) {
-      print("getRepo ::: ${e.toString()}");
+      print("productRepo ::: ${e.toString()}");
     }
   }
 }

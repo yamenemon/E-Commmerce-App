@@ -1,7 +1,5 @@
-String BASE_URL = "https://app.ringersoft.com/api";
+String BASE_URL = "http://ecommerce.tritechfirm.com/app-api";
 
 class AppUrl {
-  static String demoUrl =
-      "https://app.ringersoft.com/api/ringersoftfoodapp/test-category/2?fbclid=IwAR3OfylOShIlzWs7pQEt5kLSyBfQhLrjhlWcbA4P6GIr-GUj0WDQaDgjTd0";
-  static String productUrl = "https://fakestoreapi.com/products";
+  static String productUrl = "$BASE_URL/data.php";
 }

@@ -15,7 +15,7 @@ class ProductDescription extends StatelessWidget {
     required this.pressOnSeeMore,
   }) : super(key: key);
 
-  final ProductModel product;
+  final Product product;
   final GestureTapCallback pressOnSeeMore;
 
   final CartController _cartController = Get.find<CartController>();
@@ -28,7 +28,7 @@ class ProductDescription extends StatelessWidget {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 20.w),
           child: Text(
-            product.title.toString(),
+            product.nameEn.toString(),
             maxLines: 2,
             style: Theme.of(context).textTheme.headline6,
           ),
@@ -37,16 +37,17 @@ class ProductDescription extends StatelessWidget {
           alignment: Alignment.centerRight,
           child: InkWell(
             onTap: () {
-              _cartController.toggleFavorite(product.id);
+              _cartController.toggleFavorite(product.productId);
             },
             child: GetBuilder<CartController>(builder: (contrller) {
               return Container(
                 padding: EdgeInsets.all(15.w),
                 width: 64.w,
                 decoration: BoxDecoration(
-                  color: _cartController.favouriteList.contains(product.id)
-                      ? const Color(0xFFFFE6E6)
-                      : const Color(0xFFF5F6F9),
+                  color:
+                      _cartController.favouriteList.contains(product.productId)
+                          ? const Color(0xFFFFE6E6)
+                          : const Color(0xFFF5F6F9),
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(20.r),
                     bottomLeft: Radius.circular(20.r),
@@ -54,9 +55,10 @@ class ProductDescription extends StatelessWidget {
                 ),
                 child: SvgPicture.asset(
                   "images/Heart Icon_2.svg",
-                  color: _cartController.favouriteList.contains(product.id)
-                      ? const Color(0xFFFF4848)
-                      : const Color(0xFFDBDEE4),
+                  color:
+                      _cartController.favouriteList.contains(product.productId)
+                          ? const Color(0xFFFF4848)
+                          : const Color(0xFFDBDEE4),
                   height: 16.h,
                 ),
               );
@@ -69,7 +71,7 @@ class ProductDescription extends StatelessWidget {
             right: 64.w,
           ),
           child: Text(
-            product.description.toString(),
+            product.descriptionEn.toString(),
             style: GoogleFonts.poppins(
                 fontSize: 17.sp, fontWeight: FontWeight.normal),
             maxLines: 3,

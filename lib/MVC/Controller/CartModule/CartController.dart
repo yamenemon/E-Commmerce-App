@@ -28,9 +28,9 @@ class CartController extends GetxController with StateMixin {
     updateCartListValues();
   }
 
-  changeCart(ProductModel product, CART_STATUS status) {
-    final cartIndex = carts
-        .indexWhere((element) => element.productDemoModel.id == product.id);
+  changeCart(Product product, CART_STATUS status) {
+    final cartIndex = carts.indexWhere(
+        (element) => element.productDemoModel.productId == product.productId);
 
     switch (status) {
       case CART_STATUS.INCREMENT:
@@ -69,9 +69,9 @@ class CartController extends GetxController with StateMixin {
     // if (carts.isEmpty) Get.offNamed(AppRoutes.EMPTY_CART_PAGE);
   }
 
-  addToCart(ProductModel product, int qty) {
-    final cartIndex = carts
-        .indexWhere((element) => element.productDemoModel.id == product.id);
+  addToCart(Product product, int qty) {
+    final cartIndex = carts.indexWhere(
+        (element) => element.productDemoModel.productId == product.productId);
 
     if (cartIndex != -1) {
       carts[cartIndex].quantity += qty;
@@ -82,9 +82,9 @@ class CartController extends GetxController with StateMixin {
     updateCartListValues();
   }
 
-  getCurrentProductQty(ProductModel product) {
-    final cartIndex = carts
-        .indexWhere((element) => element.productDemoModel.id == product.id);
+  getCurrentProductQty(Product product) {
+    final cartIndex = carts.indexWhere(
+        (element) => element.productDemoModel.productId == product.productId);
 
     if (cartIndex != -1) {
       return carts[cartIndex].quantity;
@@ -93,21 +93,23 @@ class CartController extends GetxController with StateMixin {
     return 0;
   }
 
-  double getCurrentProductTotalPrice(ProductModel product) {
-    final cartIndex = carts
-        .indexWhere((element) => element.productDemoModel.id == product.id);
+  double getCurrentProductTotalPrice(Product product) {
+    final cartIndex = carts.indexWhere(
+        (element) => element.productDemoModel.productId == product.productId);
 
     if (cartIndex != -1) {
       if (product.price != null)
-        return carts[cartIndex].quantity * product.price!;
+        return carts[cartIndex].quantity *
+            double.parse(product.price!.toString());
     }
 
     return 0.0;
   }
 
-  updateProductDetailsTotalPrice(ProductModel product) {
+  updateProductDetailsTotalPrice(Product product) {
     if (product.price != null)
-      productDetailTotalPrice.value = product.price! * currentProductQty.value;
+      productDetailTotalPrice.value =
+          double.parse(product.price!.toString()) * currentProductQty.value;
   }
 
   void updateCartListValues() {

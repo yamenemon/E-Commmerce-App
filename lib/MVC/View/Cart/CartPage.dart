@@ -27,12 +27,14 @@ class CartPage extends StatelessWidget {
                   fontSize: 12.sp,
                   fontWeight: FontWeight.normal,
                   color: Colors.white)),
-          Text(
-            "${_cartController.carts.length.toString()} products added",
-            style: GoogleFonts.poppins(
-                fontSize: 17.sp,
-                fontWeight: FontWeight.normal,
-                color: Colors.white),
+          Obx(
+            () => Text(
+              "${_cartController.carts.length.toString()} products added",
+              style: GoogleFonts.poppins(
+                  fontSize: 17.sp,
+                  fontWeight: FontWeight.normal,
+                  color: Colors.white),
+            ),
           ),
         ],
       ),
