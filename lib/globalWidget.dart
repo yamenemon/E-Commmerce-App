@@ -3,6 +3,8 @@ import 'package:ecommerce_app/Util/Constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class GlobalWidget {
   static circularContainer(EdgeInsetsGeometry padding, Color backgroundColor,
@@ -72,23 +74,31 @@ class GlobalWidget {
       title: Row(
         children: [
           isBackBtn == true
-              ? IconButton(
-                  icon: const Icon(
-                    Icons.arrow_back_ios,
-                    color: kPrimaryColor,
+              ? CircleAvatar(
+                  // radius: 24,
+                  backgroundColor: kWhiteColor,
+                  child: Center(
+                    child: IconButton(
+                      color: Colors.grey,
+                      icon: Icon(
+                        Icons.arrow_back_ios,
+                        color: kGrayColor,
+                        size: 24.sp,
+                      ),
+                      onPressed: () {
+                        Get.back();
+                      },
+                    ),
                   ),
-                  onPressed: () {
-                    Get.back();
-                  },
                 )
               : Container(),
           Text(title.tr,
-              style: const TextStyle(
+              style: TextStyle(
                 color: kPrimaryColor, //Color(0xff3f1f20),
                 fontWeight: FontWeight.w700,
                 fontFamily: "CircularStd",
                 fontStyle: FontStyle.normal,
-                fontSize: 24,
+                fontSize: 24.sp,
               ),
               textAlign: TextAlign.left),
         ],
@@ -112,6 +122,17 @@ class GlobalWidget {
     );
   }
 
+  static buttonStyle() {
+    return TextButton.styleFrom(
+      backgroundColor: kPrimaryColor,
+      minimumSize: Size(120.w, 50.h),
+      padding: EdgeInsets.symmetric(horizontal: 20.w),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(16.r)),
+      ),
+    );
+  }
+
   static cartIcon(
     String quantity,
   ) {
@@ -119,31 +140,61 @@ class GlobalWidget {
       clipBehavior: Clip.none,
       children: [
         SvgPicture.asset(
-          "images/cart.svg",
+          "images/Cart Icon.svg",
         ),
         (quantity == "0" || quantity == '০')
             ? const Text("")
             : Positioned(
-                top: -4,
-                right: -4,
+                top: -8.h,
+                right: -4.w,
                 child: Container(
-                  width: 22,
-                  height: 22,
+                  width: 18.w,
+                  height: 18.h,
                   child: Center(
                     child: Text(
                       quantity,
-                      style: const TextStyle(color: kWhiteColor, fontSize: 12),
+                      style: TextStyle(color: kWhiteColor, fontSize: 12.sp),
                     ),
                   ),
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(
-                      Radius.circular(25),
+                      Radius.circular(25.r),
                     ),
                     color: Color(0xffd12e22),
                   ),
                 ),
               ),
       ],
+    );
+  }
+
+  static signInglobalAppBar({String? title, Color? bgColor, Widget? trailing}) {
+    return AppBar(
+      elevation: 0.sp,
+      backgroundColor: bgColor,
+      title: Text(title!,
+          style: TextStyle(
+              color: const Color(0xff3f1f20),
+              fontWeight: FontWeight.w700,
+              fontFamily: "CircularStd",
+              fontStyle: FontStyle.normal,
+              fontSize: 24.sp),
+          textAlign: TextAlign.left),
+      centerTitle: false,
+      actions: [trailing!],
+      leading: Builder(
+        builder: (BuildContext context) {
+          return IconButton(
+            icon: const Icon(
+              Icons.arrow_back_ios,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              Get.back();
+            },
+          );
+        },
+      ),
     );
   }
 
@@ -184,5 +235,22 @@ class GlobalWidget {
               borderSide: BorderSide.none),
         ),
         validator: validator);
+  }
+
+  static defaultButton(
+      {required void Function()? press, required String text}) {
+    return SizedBox(
+      width: double.infinity,
+      height: 56.h,
+      child: TextButton(
+        style: buttonStyle(),
+        onPressed: press,
+        child: Text(text,
+            style: GoogleFonts.poppins(
+                fontSize: 18.sp,
+                fontWeight: FontWeight.normal,
+                color: Colors.white)),
+      ),
+    );
   }
 }

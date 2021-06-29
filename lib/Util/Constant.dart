@@ -8,7 +8,7 @@ const kRedColor = Color(0xffd12e22);
 const kGrayColor = Color(0xFFC1C1C1);
 const kBlackColor = Color(0xff000000);
 const kWhiteColor = Color(0xffffffff);
-const kPrimaryColor = Color(0xFFFF7643);
+const kPrimaryColor = Colors.teal; //Color(0xFFFF7643);
 const kAccentColor = Color(0xFFFFFFFF);
 const kBackgroundColor = Color(0xFFFFFFFF);
 
@@ -27,3 +27,9 @@ const String circularStdNormarl = "CircularStd";
 const String circularStdBold = "CircularStd-Bold";
 const String circularStdBook = "CircularStd-Book";
 const String circularStdMedium = "CircularStd-Medium";
+
+const kAnimationDuration = Duration(milliseconds: 200);
+const kSecondaryColor = Color(0xFF979797);
+
+const kDefaultDuration = Duration(seconds: 2);
+const kTextColor = Color(0xFF757575);
