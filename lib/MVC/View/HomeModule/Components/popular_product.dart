@@ -48,19 +48,6 @@ class PopularProducts extends StatelessWidget {
                                 Get.toNamed(
                                   AppRoutes.PRODUCT_DETAIL_PAGE,
                                   arguments: [
-                                    // ProductModel(
-                                    //     id: _getController.getList![index].id,
-                                    //     title: _getController
-                                    //         .getList![index].title,
-                                    //     category: _getController
-                                    //         .getList![index].category,
-                                    //     description: _getController
-                                    //         .getList![index].description,
-                                    //     image: _getController
-                                    //         .getList![index].image,
-                                    //     price: _getController
-                                    //         .getList![index].price,
-                                    //     favourite: false)
                                     Product(
                                       productId: _getController.getModelList
                                           .value.products![index].productId,
