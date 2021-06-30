@@ -40,8 +40,9 @@ class PopularProducts extends StatelessWidget {
                         )
                       : ListView.builder(
                           scrollDirection: Axis.horizontal,
-                          itemCount: _getController
-                              .getModelList.value.products!.length,
+                          itemCount: 10,
+                          //  _getController
+                          //     .getModelList.value.products!.length,
                           itemBuilder: (context, index) {
                             return InkWell(
                               onTap: () {
@@ -49,40 +50,40 @@ class PopularProducts extends StatelessWidget {
                                   AppRoutes.PRODUCT_DETAIL_PAGE,
                                   arguments: [
                                     Product(
-                                      productId: _getController.getModelList
-                                          .value.products![index].productId,
-                                      amount: _getController.getModelList.value
-                                          .products![index].amount,
-                                      categoryId: _getController.getModelList
-                                          .value.products![index].categoryId,
-                                      descriptionBn: _getController.getModelList
-                                          .value.products![index].descriptionBn,
-                                      descriptionEn: _getController.getModelList
-                                          .value.products![index].descriptionEn,
-                                      image2: _getController.getModelList.value
-                                          .products![index].image2,
-                                      image3: _getController.getModelList.value
-                                          .products![index].image3,
-                                      index: _getController.getModelList.value
-                                          .products![index].index,
-                                      isDiscount: _getController.getModelList
-                                          .value.products![index].isDiscount,
-                                      isPercentage: _getController.getModelList
-                                          .value.products![index].isPercentage,
-                                      nameBn: _getController.getModelList.value
-                                          .products![index].nameBn,
-                                      nameEn: _getController.getModelList.value
-                                          .products![index].nameEn,
+                                      productId: _getController
+                                          .listToShow[index].productId,
+                                      amount: _getController
+                                          .listToShow[index].amount,
+                                      categoryId: _getController
+                                          .listToShow[index].categoryId,
+                                      descriptionBn: _getController
+                                          .listToShow[index].descriptionBn,
+                                      descriptionEn: _getController
+                                          .listToShow[index].descriptionEn,
+                                      image2: _getController
+                                          .listToShow[index].image2,
+                                      image3: _getController
+                                          .listToShow[index].image3,
+                                      index: _getController
+                                          .listToShow[index].index,
+                                      isDiscount: _getController
+                                          .listToShow[index].isDiscount,
+                                      isPercentage: _getController
+                                          .listToShow[index].isPercentage,
+                                      nameBn: _getController
+                                          .listToShow[index].nameBn,
+                                      nameEn: _getController
+                                          .listToShow[index].nameEn,
                                       picture:
-                                          "$BASE_URL/${_getController.getModelList.value.products![index].picture}",
-                                      price: _getController.getModelList.value
-                                          .products![index].price,
-                                      salePrice: _getController.getModelList
-                                          .value.products![index].salePrice,
-                                      unit: _getController.getModelList.value
-                                          .products![index].unit,
-                                      stock: _getController.getModelList.value
-                                          .products![index].stock,
+                                          "$BASE_URL/${_getController.listToShow[index].picture}",
+                                      price: _getController
+                                          .listToShow[index].price,
+                                      salePrice: _getController
+                                          .listToShow[index].salePrice,
+                                      unit:
+                                          _getController.listToShow[index].unit,
+                                      stock: _getController
+                                          .listToShow[index].stock,
                                     )
                                   ],
                                 );
@@ -112,11 +113,14 @@ class PopularProducts extends StatelessWidget {
                                         CrossAxisAlignment.center,
                                     children: [
                                       Hero(
-                                        tag: _getController.getModelList.value
-                                            .products![index].productId
+                                        tag: _getController
+                                            .listToShow[index].productId
                                             .toString(),
+                                        //  _getController.getModelList.value
+                                        //     .products![index].productId
+                                        //     .toString(),
                                         child: Image.network(
-                                          "$BASE_URL/${_getController.getModelList.value.products![index].picture}",
+                                          "$BASE_URL/${_getController.listToShow[index].picture}",
                                           height: 100.h,
                                           width: 100.w,
                                           fit: BoxFit.fitWidth,
@@ -129,8 +133,8 @@ class PopularProducts extends StatelessWidget {
                                         padding: EdgeInsets.symmetric(
                                             horizontal: 8.w),
                                         child: Text(
-                                          _getController.getModelList.value
-                                              .products![index].nameEn
+                                          _getController
+                                              .listToShow[index].nameEn
                                               .toString(),
                                           maxLines: 1,
                                           textAlign: TextAlign.center,

@@ -15,9 +15,9 @@ class Body extends StatelessWidget {
           children: [
             SizedBox(height: 20.h),
             HomeHeader(),
-            const DiscountBanner(),
+            DiscountBanner(),
             Categories(),
-            const SpecialOffers(),
+            SpecialOffers(),
             SizedBox(height: 15.h),
             PopularProducts(),
             SizedBox(height: 20.h),

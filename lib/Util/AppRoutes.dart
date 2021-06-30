@@ -1,5 +1,6 @@
 import 'package:ecommerce_app/MVC/View/AccoutModule/AccountPage.dart';
 import 'package:ecommerce_app/MVC/View/Cart/CartPage.dart';
+import 'package:ecommerce_app/MVC/View/CategoryDetailsModule/CategoryDetailsPage.dart';
 import 'package:ecommerce_app/MVC/View/DetailsModule/ProductDetailPage.dart';
 import 'package:ecommerce_app/MVC/View/HomeModule/HomePage.dart';
 import 'package:ecommerce_app/MVC/View/OtpModule/OtpPage.dart';
@@ -17,7 +18,7 @@ class AppRoutes {
   static String SIGNIN_PAGE = "SignIn_page";
   static String PAYMENT_PAGE = "Payment";
   static String ACCOUNT_PAGE = "My_Account_page";
-  // static String EMPTY_CART_PAGE = "empty_cart_page";
+  static String CATEGORY_DETAILS_PAGE = "category_details_page";
 
   // static String ADDRESS_PAGE = "My_Address_page";
   // static String NEW_ADDRESS_PAGE = "New_Address_page";
@@ -38,7 +39,7 @@ class AppRoutes {
       GetPage(name: SIGNIN_PAGE, page: () => SignInPage()),
       GetPage(name: PAYMENT_PAGE, page: () => PaymentPage()),
       GetPage(name: ACCOUNT_PAGE, page: () => AccountPage()),
-      // GetPage(name: EMPTY_CART_PAGE, page: () => EmptyCartPage()),
+      GetPage(name: CATEGORY_DETAILS_PAGE, page: () => CategoryDetailsPage()),
 
       // GetPage(name: ADDRESS_PAGE, page: () => MyAddressPage()),
       // GetPage(name: NEW_ADDRESS_PAGE, page: () => NewAddressPage()),
