@@ -8,7 +8,11 @@ class GetController extends GetxController {
   GetController({required this.repository});
   var isLoading = true.obs;
   var getModelList = ProductModel().obs;
-  var categoryProduct = <Product>[].obs;
+
+  //After Filter Category Details Are stored here
+  List<Product>? catDetailsProduct;
+
+  //For Randomized in HomePage Popular
   var listToShow = [];
   final _random = new Random();
   List<Product>? data = [];
@@ -34,6 +38,7 @@ class GetController extends GetxController {
     }
   }
 
+  //Popular Products are Randomaized here
   void updateDataInList() {
     if (data != null)
       listToShow =
@@ -41,19 +46,14 @@ class GetController extends GetxController {
     print(listToShow.length);
   }
 
+  //After randomized product are stored here for HomePage Popular Product
   void showAllData() {
     if (data != null) listToShow = data!;
   }
 
-  void productStore(var pid) {
-    // var productIndex =
-    //     categorProduct.indexWhere((element) => element.productId == pid);
-
-    // if (productIndex != -1) {
-    //   print("category id is not in produnct list");
-    // } else {
-    //   categorProduct.add(Product(productId: productIndex));
-    //   print("Categories length" + categorProduct.length.toString());
-    // }
+  //Category Details Product are filter here from ProductList
+  void productStore(List<Product> product, var prid) {
+    catDetailsProduct = product.where((c) => c.categoryId == prid).toList();
+    print(catDetailsProduct);
   }
 }

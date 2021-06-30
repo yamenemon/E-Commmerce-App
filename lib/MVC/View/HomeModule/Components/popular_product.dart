@@ -18,7 +18,11 @@ class PopularProducts extends StatelessWidget {
       children: [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 15.w),
-          child: SectionTitle(title: "Popular Products", press: () {}),
+          child: SectionTitle(
+              title: "Popular Products",
+              press: () {
+                Get.toNamed(AppRoutes.POPULAR_SEE_MORE_PAGE);
+              }),
         ),
         SizedBox(height: 5.h),
         SingleChildScrollView(

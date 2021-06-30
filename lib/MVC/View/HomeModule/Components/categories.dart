@@ -34,7 +34,10 @@ class Categories extends StatelessWidget {
                 () => _getController.isLoading.value == true
                     ? Align(
                         alignment: Alignment.topCenter,
-                        child: LinearProgressIndicator())
+                        child: LinearProgressIndicator(
+                          color: kWhiteColor,
+                          backgroundColor: kWhiteColor,
+                        ))
                     : ListView.builder(
                         scrollDirection: Axis.horizontal,
                         itemCount: _getController
@@ -50,9 +53,9 @@ class Categories extends StatelessWidget {
                               press: () {
                                 var _pId = _getController
                                     .getModelList.value.categories![index].id;
-                                // _getController.productStore(_pId);
-                                Get.toNamed(AppRoutes.CATEGORY_DETAILS_PAGE,
-                                    arguments: _pId);
+                                _getController.productStore(
+                                    _getController.data!, _pId);
+                                Get.toNamed(AppRoutes.CATEGORY_DETAILS_PAGE);
                               },
                             ),
                           );

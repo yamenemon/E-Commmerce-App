@@ -21,7 +21,7 @@ class CustomBottomNavBar extends StatelessWidget {
       padding: EdgeInsets.only(bottom: 12.h, left: 18.w, right: 18.w),
       child: Container(
         // margin: EdgeInsets.only(bottom: 25.h),
-        padding: EdgeInsets.symmetric(vertical: 4.h, horizontal: 16.w),
+        padding: EdgeInsets.symmetric(vertical: 6.h, horizontal: 16.w),
         decoration: BoxDecoration(
           color: Colors.white,
           boxShadow: [
@@ -49,31 +49,107 @@ class CustomBottomNavBar extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               IconButton(
-                icon: SvgPicture.asset(
-                  "images/Shop Icon.svg",
-                  color: MenuState.home == selectedMenu
-                      ? kPrimaryColor
-                      : inActiveIconColor,
+                padding: EdgeInsets.only(top: 8.w),
+                icon: Column(
+                  children: [
+                    SvgPicture.asset(
+                      "images/Shop Icon.svg",
+                      color: MenuState.home == selectedMenu
+                          ? kPrimaryColor
+                          : inActiveIconColor,
+                    ),
+                    SizedBox(
+                      height: 4.h,
+                    ),
+                    Container(
+                      child: Text(
+                        "Home",
+                        style: TextStyle(
+                            color: MenuState.home == selectedMenu
+                                ? kPrimaryColor
+                                : inActiveIconColor,
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w600),
+                      ),
+                    )
+                  ],
                 ),
                 onPressed: () => Get.toNamed(AppRoutes.HOMEPAGE),
               ),
               IconButton(
-                icon: SvgPicture.asset("images/Heart Icon.svg"),
-                onPressed: () {},
-              ),
-              IconButton(
-                icon: SvgPicture.asset(
-                  "images/Bill Icon.svg",
-                  color: kSecondaryColor,
+                padding: EdgeInsets.only(top: 8.w),
+                icon: Column(
+                  children: [
+                    SvgPicture.asset("images/Heart Icon.svg"),
+                    SizedBox(
+                      height: 4.h,
+                    ),
+                    Container(
+                      child: Text(
+                        "Favourite",
+                        style: TextStyle(
+                            color: MenuState.favourite == selectedMenu
+                                ? kPrimaryColor
+                                : inActiveIconColor,
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w600),
+                      ),
+                    )
+                  ],
                 ),
                 onPressed: () {},
               ),
               IconButton(
-                icon: SvgPicture.asset(
-                  "images/User Icon.svg",
-                  color: MenuState.profile == selectedMenu
-                      ? kPrimaryColor
-                      : inActiveIconColor,
+                padding: EdgeInsets.only(top: 8.w),
+                icon: Column(
+                  children: [
+                    SvgPicture.asset(
+                      "images/Bill Icon.svg",
+                      color: kSecondaryColor,
+                    ),
+                    SizedBox(
+                      height: 4.h,
+                    ),
+                    Container(
+                      child: Text(
+                        "History",
+                        style: TextStyle(
+                            color: MenuState.message == selectedMenu
+                                ? kPrimaryColor
+                                : inActiveIconColor,
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w600),
+                      ),
+                    )
+                  ],
+                ),
+                onPressed: () {},
+              ),
+              IconButton(
+                padding: EdgeInsets.only(top: 8.w),
+                icon: Column(
+                  children: [
+                    SvgPicture.asset(
+                      "images/User Icon.svg",
+                      color: MenuState.profile == selectedMenu
+                          ? kPrimaryColor
+                          : inActiveIconColor,
+                    ),
+                    SizedBox(
+                      height: 4.h,
+                    ),
+                    Container(
+                      child: Text(
+                        "Account",
+                        style: TextStyle(
+                            color: MenuState.message == selectedMenu
+                                ? kPrimaryColor
+                                : inActiveIconColor,
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w600),
+                      ),
+                    )
+                  ],
                 ),
                 onPressed: () => Get.toNamed(AppRoutes.ACCOUNT_PAGE),
               ),

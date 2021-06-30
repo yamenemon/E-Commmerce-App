@@ -2,6 +2,7 @@ import 'package:ecommerce_app/MVC/View/AccoutModule/AccountPage.dart';
 import 'package:ecommerce_app/MVC/View/Cart/CartPage.dart';
 import 'package:ecommerce_app/MVC/View/CategoryDetailsModule/CategoryDetailsPage.dart';
 import 'package:ecommerce_app/MVC/View/DetailsModule/ProductDetailPage.dart';
+import 'package:ecommerce_app/MVC/View/HomeModule/Components/SeeMore/popular_products_see_more.dart';
 import 'package:ecommerce_app/MVC/View/HomeModule/HomePage.dart';
 import 'package:ecommerce_app/MVC/View/OtpModule/OtpPage.dart';
 import 'package:ecommerce_app/MVC/View/PaymentModule/PaymentPage.dart';
@@ -19,6 +20,7 @@ class AppRoutes {
   static String PAYMENT_PAGE = "Payment";
   static String ACCOUNT_PAGE = "My_Account_page";
   static String CATEGORY_DETAILS_PAGE = "category_details_page";
+  static String POPULAR_SEE_MORE_PAGE = "popular_see_more_page";
 
   // static String ADDRESS_PAGE = "My_Address_page";
   // static String NEW_ADDRESS_PAGE = "New_Address_page";
@@ -40,8 +42,8 @@ class AppRoutes {
       GetPage(name: PAYMENT_PAGE, page: () => PaymentPage()),
       GetPage(name: ACCOUNT_PAGE, page: () => AccountPage()),
       GetPage(name: CATEGORY_DETAILS_PAGE, page: () => CategoryDetailsPage()),
-
-      // GetPage(name: ADDRESS_PAGE, page: () => MyAddressPage()),
+      GetPage(
+          name: POPULAR_SEE_MORE_PAGE, page: () => PopularProductsSeeMore()),
       // GetPage(name: NEW_ADDRESS_PAGE, page: () => NewAddressPage()),
       // GetPage(name: CHOOSE_LOCATION_PAGE, page: () => ChooseLocationPage()),
 
