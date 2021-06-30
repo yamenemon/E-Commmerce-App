@@ -17,8 +17,8 @@ class Body extends StatelessWidget {
   final CartController _cartController = Get.find<CartController>();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: ListView(
+    return Container(
+      child: ListView(
         children: [
           ProductImages(product: product),
           TopRoundedContainer(
@@ -121,13 +121,13 @@ class Body extends StatelessWidget {
                         ],
                       ),
                       TopRoundedContainer(
-                        color: kWhiteColor,
+                        color: Colors.transparent,
                         child: Padding(
                           padding: EdgeInsets.only(
                               left: Get.width * 0.15.w,
                               right: Get.width * 0.15.w,
-                              top: 2.h,
-                              bottom: 8.h),
+                              top: 25.h,
+                              bottom: 0.h),
                           child: GlobalWidget.defaultButton(
                               press: () {
                                 final isExist = _cartController.carts

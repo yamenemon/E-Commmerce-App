@@ -71,6 +71,8 @@ class GlobalWidget {
       automaticallyImplyLeading: false,
       elevation: 0,
       backgroundColor: bgColor,
+      leadingWidth: 0,
+      titleSpacing: 5,
       title: Row(
         children: [
           isBackBtn == true
@@ -92,15 +94,18 @@ class GlobalWidget {
                   ),
                 )
               : Container(),
-          Text(title.tr,
-              style: TextStyle(
-                color: kPrimaryColor, //Color(0xff3f1f20),
-                fontWeight: FontWeight.w700,
-                fontFamily: "CircularStd",
-                fontStyle: FontStyle.normal,
-                fontSize: 24.sp,
-              ),
-              textAlign: TextAlign.left),
+          Padding(
+            padding: EdgeInsets.only(left: 20.w),
+            child: Text(title.tr,
+                style: TextStyle(
+                  color: kPrimaryColor, //Color(0xff3f1f20),
+                  fontWeight: FontWeight.w700,
+                  fontFamily: "CircularStd",
+                  fontStyle: FontStyle.normal,
+                  fontSize: 24.sp,
+                ),
+                textAlign: TextAlign.left),
+          ),
         ],
       ),
       actions: actionWidgets,

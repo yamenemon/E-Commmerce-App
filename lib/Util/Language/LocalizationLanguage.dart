@@ -1,9 +1,12 @@
+// ignore: file_names
 class LocalizationLanguage {
-  static final SIGN_UP_TEXT = 'sign_up';
+  static const SIGN_UP_TEXT = 'sign_up';
   static final SIGN_IN_TEXT = 'sign_in';
-  static final SIGN_IN__BAN_TEXT = 'sign_in_ban';
+  static const SIGN_IN__BAN_TEXT = 'sign_in_ban';
   static final PHONE_NUM_TEXT = 'phone_number';
+  static final ADDRESS_TEXT = 'address_text';
   static final PHONE_NUM_TEXT_REQ = "phone_number_req";
+  static final ADDRESS_TEXT_REQ = "address_req";
   static final PASSWORD_TEXT = "password";
   static final PASSWORD_REQ_TEXT = "password_req";
   static final DONT_AC_TEXT = "dont_ac";
@@ -86,7 +89,8 @@ class LocalizationLanguage {
     'sign_in': 'সাইন ইন',
     'sign_in_ban': 'ক্রয় চালিয়ে যেতে দয়া করে সাইন ইন করুন',
     'phone_number': 'ফোন নম্বর',
-    'phone_number_req': 'ফোন নম্বর প্রয়োজনীয়',
+    'address_text': 'Address',
+    'address_req': 'Address is required',
     'password': 'পাসওয়ার্ড',
     'password_req': 'পাসওয়ার্ড প্রয়োজনীয়',
     'dont_ac': 'একটি অ্যাকাউন্ট নেই? ',
@@ -183,7 +187,9 @@ class LocalizationLanguage {
     'sign_in': 'Sign in',
     'sign_in_ban': 'Please Sign in to continue purchase',
     'phone_number': 'Phone Number',
+    'address_text': 'Address',
     'phone_number_req': 'Phone Number is Required',
+    'address_req': 'Address is required',
     'password': 'Password',
     'password_req': 'Password is Required',
     'dont_ac': 'Don’t have an account? ',
