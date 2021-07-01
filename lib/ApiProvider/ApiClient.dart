@@ -1,12 +1,10 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:ecommerce_app/ApiProvider/App_Exception.dart';
-import 'package:ecommerce_app/MVC/Controller/CommonController.dart';
 import 'package:ecommerce_app/Util/AppUrl.dart';
 import 'package:dio/dio.dart';
+import 'package:ecommerce_app/Util/Enums.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_disposable.dart';
-
-enum Method { POST, GET, PUT, DELETE, PATCH }
 
 class ApiClient extends GetxService {
   late Dio _dio;
@@ -51,7 +49,7 @@ class ApiClient extends GetxService {
 
     try {
       if (method == Method.POST) {
-        response = await _dio.post(url, data: params);
+        response = await _dio.post(url, data: FormData.fromMap(params!));
       } else if (method == Method.DELETE) {
         response = await _dio.delete(url);
       } else if (method == Method.PATCH) {

@@ -16,7 +16,7 @@ class AppRoutes {
   static String SPLASHPAGE = "SpalshPage";
   static String PRODUCT_DETAIL_PAGE = "product_details_page";
   static String CART_PAGE = "cart_page";
-  static String OTP_PAGE = "OTP_PAGE";
+  static String OTP_PAGE = "otp_PAGE";
   static String SIGNIN_PAGE = "SignIn_page";
   static String PAYMENT_PAGE = "Payment";
   static String ACCOUNT_PAGE = "My_Account_page";

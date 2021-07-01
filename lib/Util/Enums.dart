@@ -5,3 +5,5 @@ enum PAGES {
   EDIT_PROFILE,
   MY_ADDRESS,
 }
+
+enum Method { POST, GET, PUT, DELETE, PATCH }

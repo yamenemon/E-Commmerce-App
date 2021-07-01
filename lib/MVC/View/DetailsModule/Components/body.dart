@@ -121,7 +121,8 @@ class Body extends StatelessWidget {
                         ],
                       ),
                       TopRoundedContainer(
-                        color: Colors.transparent,
+                        color: kWhiteColor,
+                        // Colors.transparent,
                         child: Padding(
                           padding: EdgeInsets.only(
                               left: Get.width * 0.15.w,
