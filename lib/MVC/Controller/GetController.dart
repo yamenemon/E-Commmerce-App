@@ -13,7 +13,7 @@ class GetController extends GetxController {
   List<Product>? catDetailsProduct;
 
   //For Randomized in HomePage Popular
-  var listToShow = [];
+  List<Product> listToShow = [];
   final _random = new Random();
   List<Product>? data = [];
 
@@ -42,14 +42,20 @@ class GetController extends GetxController {
   void updateDataInList() {
     if (data != null)
       listToShow =
-          new List.generate(10, (_) => data![_random.nextInt(data!.length)]);
+          new List.generate(10, (_) => data![_random.nextInt(data!.length)])
+              .toSet()
+              .toList();
     print(listToShow.length);
+    // for (int i = 0; i < listToShow.length; i++) {
+    //   print("listToshow Product Id" + listToShow[i].productId.toString());
+    // }
   }
 
-  //After randomized product are stored here for HomePage Popular Product
-  void showAllData() {
-    if (data != null) listToShow = data!;
-  }
+  // //After randomized product are stored here for HomePage Popular Product
+  // void showAllData() {
+  //   if (data != null) listToShow = data!.toSet().toList();
+  //   print("listToshow Product Id" + listToShow.toList().toString());
+  // }
 
   //Category Details Product are filter here from ProductList
   void productStore(List<Product> product, var prid) {

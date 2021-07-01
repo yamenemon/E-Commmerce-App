@@ -2,6 +2,7 @@ import 'package:ecommerce_app/ApiProvider/ApiClient.dart';
 import 'package:ecommerce_app/MVC/Controller/CartModule/CartController.dart';
 import 'package:ecommerce_app/MVC/Controller/CommonController.dart';
 import 'package:ecommerce_app/MVC/Controller/ConnectivityController.dart';
+import 'package:ecommerce_app/Repository/MyRepository.dart';
 import 'package:ecommerce_app/Util/AppRoutes.dart';
 import 'package:ecommerce_app/Util/Constant.dart';
 import 'package:ecommerce_app/Util/Language/Translation.dart';
@@ -9,6 +10,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import 'MVC/Controller/GetController.dart';
 
 void main() {
   initServices();
@@ -20,6 +23,8 @@ initServices() async {
   Get.put<ConnectivityController>(ConnectivityController(), permanent: true);
   Get.put<CartController>(CartController(), permanent: true);
   Get.put<CommonController>(CommonController(), permanent: true);
+  Get.put<GetController>(GetController(repository: MyRepository()),
+      permanent: true);
   // await Get.putAsync<AppDb>(() => AppDb.init());
 }
 

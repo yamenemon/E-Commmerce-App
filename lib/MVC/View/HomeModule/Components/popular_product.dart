@@ -12,8 +12,7 @@ import 'section_title.dart';
 class PopularProducts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    GetController _getController =
-        Get.put(GetController(repository: MyRepository()));
+    GetController _getController = Get.find<GetController>();
     return Column(
       children: [
         Padding(
