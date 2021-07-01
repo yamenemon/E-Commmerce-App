@@ -39,42 +39,48 @@ class ProductDescription extends StatelessWidget {
             onTap: () {
               _cartController.toggleFavorite(product.productId);
             },
-            child: GetBuilder<CartController>(builder: (contrller) {
-              return Container(
-                padding: EdgeInsets.all(15.w),
-                width: 64.w,
-                decoration: BoxDecoration(
-                  color:
-                      _cartController.favouriteList.contains(product.productId)
-                          ? const Color(0xFFFFE6E6)
-                          : const Color(0xFFF5F6F9),
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(20.r),
-                    bottomLeft: Radius.circular(20.r),
+            child: GetBuilder<CartController>(
+              builder: (contrller) {
+                return Container(
+                  padding: EdgeInsets.all(15.w),
+                  width: 64.w,
+                  decoration: BoxDecoration(
+                    color: _cartController.favouriteList
+                            .contains(product.productId)
+                        ? const Color(0xFFFFE6E6)
+                        : const Color(0xFFF5F6F9),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20.r),
+                      bottomLeft: Radius.circular(20.r),
+                    ),
                   ),
-                ),
-                child: SvgPicture.asset(
-                  "images/Heart Icon_2.svg",
-                  color:
-                      _cartController.favouriteList.contains(product.productId)
-                          ? const Color(0xFFFF4848)
-                          : const Color(0xFFDBDEE4),
-                  height: 16.h,
-                ),
-              );
-            }),
+                  child: SvgPicture.asset(
+                    "images/Heart Icon_2.svg",
+                    color: _cartController.favouriteList
+                            .contains(product.productId)
+                        ? const Color(0xFFFF4848)
+                        : const Color(0xFFDBDEE4),
+                    height: 16.h,
+                  ),
+                );
+              },
+            ),
           ),
         ),
         Padding(
           padding: EdgeInsets.only(
             left: 20.w,
-            right: 64.w,
+            right: 20.w,
           ),
-          child: Text(
-            product.descriptionEn.toString(),
-            style: GoogleFonts.poppins(
-                fontSize: 17.sp, fontWeight: FontWeight.normal),
-            maxLines: 3,
+          child: Container(
+            child: Text(
+              product.descriptionEn.toString(),
+              style: GoogleFonts.poppins(
+                  fontSize: 12.sp,
+                  fontWeight: FontWeight.normal,
+                  color: Colors.black),
+              maxLines: 2,
+            ),
           ),
         ),
         Padding(

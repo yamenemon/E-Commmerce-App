@@ -1,13 +1,17 @@
+import 'package:ecommerce_app/MVC/Controller/GetController.dart';
+import 'package:ecommerce_app/Repository/MyRepository.dart';
+import 'package:ecommerce_app/Util/AppUrl.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'section_title.dart';
 
 class SpecialOffers extends StatelessWidget {
-  const SpecialOffers({
+  SpecialOffers({
     Key? key,
   }) : super(key: key);
-
+  GetController _getController =
+      Get.put(GetController(repository: MyRepository()));
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -20,26 +24,35 @@ class SpecialOffers extends StatelessWidget {
           ),
         ),
         SizedBox(height: 15.h),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
-              SpecialOfferCard(
-                image: "images/Image Banner 2.png",
-                category: "Smartphone",
-                numOfBrands: 18,
-                press: () {},
-              ),
-              SpecialOfferCard(
-                image: "images/Image Banner 3.png",
-                category: "Fashion",
-                numOfBrands: 24,
-                press: () {},
-              ),
-              SizedBox(width: 15.w),
-            ],
+        Obx(
+          () => Container(
+            width: Get.width,
+            height: 120.h,
+            child: _getController.isLoading.value == true
+                ? Text("")
+                : ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: 2,
+                    // _getController.getModelList.value.offerList!.length,
+                    itemBuilder: (contex, index) => SpecialOfferCard(
+                      image:
+                          "$BASE_URL/${_getController.getModelList.value.offerList![0].image!}",
+                      category: _getController
+                          .getModelList.value.offerList![0].title!,
+                      numOfBrands: 18,
+                      press: () {},
+                    ),
+                  ),
           ),
         ),
+
+        // SpecialOfferCard(
+        //   image: "images/Image Banner 3.png",
+        //   category: "Fashion",
+        //   numOfBrands: 24,
+        //   press: () {},
+        // ),
+        SizedBox(width: 15.w),
       ],
     );
   }
@@ -61,20 +74,20 @@ class SpecialOfferCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: 15.w),
+      padding: EdgeInsets.only(left: 15.w, right: 15.w),
       child: GestureDetector(
         onTap: press,
         child: SizedBox(
-          width: Get.width * 0.6,
-          height: Get.height * 0.15,
+          width: Get.width * 0.6.w,
+          height: Get.height * 0.15.h,
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(20.r),
             child: Stack(
               children: [
-                Image.asset(
-                  image,
-                  fit: BoxFit.fill,
-                ),
+                // Image.network(
+                //   image,
+                //   fit: BoxFit.fill,
+                // ),
                 Container(
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
