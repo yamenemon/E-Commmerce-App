@@ -16,12 +16,11 @@ class CustomBottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Color inActiveIconColor = Color(0xFFB6B6B6);
     return Padding(
       padding: EdgeInsets.only(bottom: 12.h, left: 18.w, right: 18.w),
       child: Container(
         // margin: EdgeInsets.only(bottom: 25.h),
-        padding: EdgeInsets.symmetric(vertical: 6.h, horizontal: 16.w),
+        padding: EdgeInsets.symmetric(vertical: 5.h, horizontal: 15.w),
         decoration: BoxDecoration(
           color: Colors.white,
           boxShadow: [
@@ -31,132 +30,102 @@ class CustomBottomNavBar extends StatelessWidget {
               blurRadius: 0.5.r,
               offset: const Offset(0, 0), // changes position of shadow
             ),
-            // BoxShadow(
-            //   offset: Offset(0, -15),
-            //   blurRadius: 20.r,
-            //   color: Color(0xFFDADADA).withOpacity(1),
-            // ),
           ],
           borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(40.r),
-              topRight: Radius.circular(40.r),
-              bottomLeft: Radius.circular(40.r),
-              bottomRight: Radius.circular(40.r)),
+              topLeft: Radius.circular(35.r),
+              topRight: Radius.circular(35.r),
+              bottomLeft: Radius.circular(35.r),
+              bottomRight: Radius.circular(35.r)),
         ),
         child: SafeArea(
           top: false,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              IconButton(
-                padding: EdgeInsets.only(top: 8.w),
-                icon: Column(
-                  children: [
-                    SvgPicture.asset(
-                      "images/Shop Icon.svg",
-                      color: MenuState.home == selectedMenu
-                          ? kPrimaryColor
-                          : inActiveIconColor,
-                    ),
-                    SizedBox(
-                      height: 4.h,
-                    ),
-                    Container(
-                      child: Text(
-                        "Home",
-                        style: TextStyle(
-                            color: MenuState.home == selectedMenu
-                                ? kPrimaryColor
-                                : inActiveIconColor,
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w600),
-                      ),
-                    )
-                  ],
-                ),
-                onPressed: () => Get.toNamed(AppRoutes.HOMEPAGE),
-              ),
-              IconButton(
-                padding: EdgeInsets.only(top: 8.w),
-                icon: Column(
-                  children: [
-                    SvgPicture.asset("images/Heart Icon.svg"),
-                    SizedBox(
-                      height: 4.h,
-                    ),
-                    Container(
-                      child: Text(
-                        "Favourite",
-                        style: TextStyle(
-                            color: MenuState.favourite == selectedMenu
-                                ? kPrimaryColor
-                                : inActiveIconColor,
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w600),
-                      ),
-                    )
-                  ],
-                ),
-                onPressed: () {},
-              ),
-              IconButton(
-                padding: EdgeInsets.only(top: 8.w),
-                icon: Column(
-                  children: [
-                    SvgPicture.asset(
-                      "images/Bill Icon.svg",
-                      color: kSecondaryColor,
-                    ),
-                    SizedBox(
-                      height: 4.h,
-                    ),
-                    Container(
-                      child: Text(
-                        "History",
-                        style: TextStyle(
-                            color: MenuState.message == selectedMenu
-                                ? kPrimaryColor
-                                : inActiveIconColor,
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w600),
-                      ),
-                    )
-                  ],
-                ),
-                onPressed: () {},
-              ),
-              IconButton(
-                padding: EdgeInsets.only(top: 8.w),
-                icon: Column(
-                  children: [
-                    SvgPicture.asset(
-                      "images/User Icon.svg",
-                      color: MenuState.profile == selectedMenu
-                          ? kPrimaryColor
-                          : inActiveIconColor,
-                    ),
-                    SizedBox(
-                      height: 4.h,
-                    ),
-                    Container(
-                      child: Text(
-                        "Account",
-                        style: TextStyle(
-                            color: MenuState.message == selectedMenu
-                                ? kPrimaryColor
-                                : inActiveIconColor,
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w600),
-                      ),
-                    )
-                  ],
-                ),
-                onPressed: () => Get.toNamed(AppRoutes.ACCOUNT_PAGE),
-              ),
+              buildIconButton(MenuState.home),
+              buildIconButton(MenuState.favourite),
+              buildIconButton(MenuState.message),
+              buildIconButton(MenuState.profile),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  IconButton buildIconButton(MenuState tabState) {
+    const Color inActiveIconColor = Color(0xFFB6B6B6);
+    Color textColor = inActiveIconColor;
+    var tabName = "";
+    var imageName = "";
+    switch (tabState) {
+      case MenuState.home:
+        tabName = "Home";
+        imageName = "images/Shop Icon.svg";
+        textColor =
+            selectedMenu == tabState ? kPrimaryColor : inActiveIconColor;
+        break;
+      case MenuState.favourite:
+        imageName = "images/Heart Icon.svg";
+        textColor =
+            selectedMenu == tabState ? kPrimaryColor : inActiveIconColor;
+        tabName = "Favourite";
+        break;
+      case MenuState.message:
+        imageName = "images/Bill Icon.svg";
+        textColor =
+            selectedMenu == tabState ? kPrimaryColor : inActiveIconColor;
+        tabName = "History";
+        break;
+      case MenuState.profile:
+        imageName = "images/User Icon.svg";
+        textColor =
+            selectedMenu == tabState ? kPrimaryColor : inActiveIconColor;
+        tabName = "Profile";
+        break;
+      default:
+    }
+
+    return IconButton(
+      padding: EdgeInsets.only(top: 5.w),
+      icon: Column(
+        children: [
+          SvgPicture.asset(
+            imageName,
+            color: textColor,
+          ),
+          SizedBox(
+            height: 4.h,
+          ),
+          // ignore: avoid_unnecessary_containers
+          Container(
+            child: Text(
+              tabName,
+              style: TextStyle(
+                  color: textColor,
+                  fontSize: 12.sp,
+                  fontWeight: FontWeight.w600),
+            ),
+          )
+        ],
+      ),
+      onPressed: () {
+        switch (tabState) {
+          case MenuState.home:
+            Get.toNamed(AppRoutes.HOMEPAGE);
+            break;
+          case MenuState.favourite:
+            Get.toNamed(AppRoutes.FAVOURITE_PAGE);
+            break;
+          case MenuState.message:
+            // Get.toNamed(AppRoutes.HOMEPAGE);
+            break;
+          case MenuState.profile:
+            Get.toNamed(AppRoutes.ACCOUNT_PAGE);
+            break;
+          default:
+        }
+      },
     );
   }
 }

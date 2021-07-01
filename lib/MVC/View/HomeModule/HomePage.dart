@@ -10,15 +10,17 @@ import 'package:get/get.dart';
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
 
-  ConnectivityController _connectivityController =
+  final ConnectivityController _connectivityController =
       Get.find<ConnectivityController>();
 
   @override
   Widget build(BuildContext context) {
     return Obx(
       () => Scaffold(
+        // ignore: unrelated_type_equality_checks
         body: _connectivityController.isOnline == true ? Body() : NoInternet(),
-        bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.home),
+        bottomNavigationBar:
+            const CustomBottomNavBar(selectedMenu: MenuState.home),
       ),
     );
   }
