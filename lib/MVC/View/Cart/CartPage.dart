@@ -11,13 +11,13 @@ class CartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: GlobalWidget.globalAppBar(
-          "${_cartController.carts.length.toString()} products added",
-          Colors.transparent,
-          true),
-      body: Body(),
-      bottomNavigationBar: CheckoutCard(),
-    );
+    return _cartController.obx((state) => Scaffold(
+          appBar: GlobalWidget.globalAppBar(
+              "${_cartController.carts.length.toString()} products added",
+              Colors.transparent,
+              true),
+          body: Body(),
+          bottomNavigationBar: CheckoutCard(),
+        ));
   }
 }

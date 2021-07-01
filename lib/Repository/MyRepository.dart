@@ -1,6 +1,5 @@
-import 'dart:convert';
-
 import 'package:ecommerce_app/ApiProvider/ApiClient.dart';
+import 'package:ecommerce_app/MVC/Controller/CommonController.dart';
 import 'package:ecommerce_app/MVC/Model/DemoModel/ProductModel.dart';
 import 'package:ecommerce_app/Util/AppUrl.dart';
 import 'package:get/get.dart';
@@ -22,7 +21,9 @@ class MyRepository {
   //   }
   // }
   Future<ProductModel?> productRepo() async {
-    var res = await apiClient.request(AppUrl.productUrl, Method.GET, null);
+    var res = await apiClient
+        .request(AppUrl.productUrl, Method.GET, null)
+        .catchError(CommonController.handleError);
     try {
       if (res.data != null) {
         String responseString = res.toString();

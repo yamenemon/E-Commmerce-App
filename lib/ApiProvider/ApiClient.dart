@@ -1,3 +1,7 @@
+import 'dart:async';
+import 'dart:io';
+import 'package:ecommerce_app/ApiProvider/App_Exception.dart';
+import 'package:ecommerce_app/MVC/Controller/CommonController.dart';
 import 'package:ecommerce_app/Util/AppUrl.dart';
 import 'package:dio/dio.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_disposable.dart';
@@ -13,23 +17,32 @@ class ApiClient extends GetxService {
       };
 
   Future<ApiClient> init() async {
-    _dio = Dio(BaseOptions(baseUrl: BASE_URL, headers: header()));
+    _dio = Dio(BaseOptions(
+      baseUrl: BASE_URL,
+      headers: header(),
+    ));
     initInterceptors();
     return this;
   }
 
   void initInterceptors() {
-    _dio.interceptors.add(InterceptorsWrapper(onRequest: (options, handler) {
-      print('REQUEST[${options.method}] => PATH: ${options.path} '
-          '=> Request Values: ${options.queryParameters}, => HEADERS: ${options.headers}');
-      return handler.next(options);
-    }, onResponse: (response, handler) {
-      print('RESPONSE[${response.statusCode}] => DATA: ${response.data}');
-      return handler.next(response);
-    }, onError: (err, handler) {
-      print('ERROR[${err.response?.statusCode}]');
-      return handler.next(err);
-    }));
+    _dio.interceptors.add(
+      InterceptorsWrapper(
+        onRequest: (options, handler) {
+          print('REQUEST[${options.method}] => PATH: ${options.path} '
+              '=> Request Values: ${options.queryParameters}, => HEADERS: ${options.headers}');
+          return handler.next(options);
+        },
+        onResponse: (response, handler) {
+          print('RESPONSE[${response.statusCode}] => DATA: ${response.data}');
+          return handler.next(response);
+        },
+        onError: (err, handler) {
+          print('ERROR[${err.response?.statusCode}]');
+          return handler.next(err);
+        },
+      ),
+    );
   }
 
   Future request(
@@ -52,11 +65,18 @@ class ApiClient extends GetxService {
 
       if (response.statusCode == 200) {
         return response;
-      } else if (response.statusCode == 401) {
-        return {'error': "Unauthorized"};
+      } else if (response.statusCode == 400) {
+        throw BadRequestException("${response.data}", url.toString());
+      } else if (response.statusCode == 403) {
+        throw UnauthorizedException("${response.data}", url.toString());
       } else {
-        return {"error": "Something Went Wrong"};
+        throw FetchDataException("${response.data}", url.toString());
       }
+    } on SocketException {
+      throw FetchDataException("No internet Connection", url.toString());
+    } on TimeoutException {
+      throw ApiNotRespondingException(
+          "Api not responding in time", url.toString());
     } catch (e) {
       return {'error in Api_client ${e.toString()}'};
     }
