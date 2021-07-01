@@ -10,8 +10,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Categories extends StatelessWidget {
-  GetController _getController =
-      Get.put(GetController(repository: MyRepository()));
+  GetController _getController = Get.find<GetController>();
   @override
   Widget build(BuildContext context) {
     // List<Map<String, dynamic>> categories = [

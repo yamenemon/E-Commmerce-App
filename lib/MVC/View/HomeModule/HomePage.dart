@@ -1,4 +1,3 @@
-// ignore: file_names
 import 'package:ecommerce_app/MVC/Controller/ConnectivityController.dart';
 import 'package:ecommerce_app/MVC/View/HomeModule/Components/body.dart';
 import 'package:ecommerce_app/MVC/View/HomeModule/Components/custom_bottom_nav_bar.dart';
@@ -17,7 +16,6 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(
       () => Scaffold(
-        // ignore: unrelated_type_equality_checks
         body: _connectivityController.isOnline == true ? Body() : NoInternet(),
         bottomNavigationBar:
             const CustomBottomNavBar(selectedMenu: MenuState.home),

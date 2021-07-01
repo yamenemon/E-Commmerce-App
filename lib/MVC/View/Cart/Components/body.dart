@@ -1,5 +1,4 @@
 import 'package:ecommerce_app/MVC/Controller/CartModule/CartController.dart';
-import 'package:ecommerce_app/MVC/Model/CartModule/cartModel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

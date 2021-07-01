@@ -1,5 +1,4 @@
 import 'package:ecommerce_app/MVC/Controller/GetController.dart';
-import 'package:ecommerce_app/Repository/MyRepository.dart';
 import 'package:ecommerce_app/Util/AppUrl.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,8 +9,8 @@ class SpecialOffers extends StatelessWidget {
   SpecialOffers({
     Key? key,
   }) : super(key: key);
-  GetController _getController =
-      Get.put(GetController(repository: MyRepository()));
+  GetController _getController = Get.find<GetController>();
+
   @override
   Widget build(BuildContext context) {
     return Column(
