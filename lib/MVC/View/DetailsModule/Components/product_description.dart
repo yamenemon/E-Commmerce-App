@@ -21,94 +21,127 @@ class ProductDescription extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.w),
-          child: Text(
-            product.nameEn.toString(),
-            maxLines: 2,
-            style: Theme.of(context).textTheme.headline6,
-          ),
-        ),
-        Align(
-          alignment: Alignment.centerRight,
-          child: InkWell(
-            onTap: () {
-              _cartController.toggleFavorite(product.productId);
-            },
-            child: GetBuilder<CartController>(
-              builder: (contrller) {
-                return Container(
-                  padding: EdgeInsets.all(15.w),
-                  width: 64.w,
-                  decoration: BoxDecoration(
-                    color: _cartController.favouriteList
-                            .contains(product.productId)
-                        ? const Color(0xFFFFE6E6)
-                        : const Color(0xFFF5F6F9),
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20.r),
-                      bottomLeft: Radius.circular(20.r),
+    return Container(
+      height: Get.height * 0.18,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          Flexible(
+            flex: 6,
+            child: Container(
+              height: Get.height * 0.18,
+              color: Colors.transparent,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Flexible(
+                    flex: 2,
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20.w),
+                      child: Text(
+                        product.nameEn.toString(),
+                        style: GoogleFonts.poppins(
+                            fontSize: 17.sp,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black),
+                        maxLines: 2,
+                      ),
                     ),
                   ),
-                  child: SvgPicture.asset(
-                    "images/Heart Icon_2.svg",
-                    color: _cartController.favouriteList
-                            .contains(product.productId)
-                        ? const Color(0xFFFF4848)
-                        : const Color(0xFFDBDEE4),
-                    height: 16.h,
+                  Expanded(
+                    flex: 5,
+                    child: Padding(
+                      padding: EdgeInsets.only(
+                        left: 20.w,
+                        right: 20.w,
+                      ),
+                      child: Container(
+                        child: Text(
+                          product.descriptionBn.toString(),
+                          style: GoogleFonts.poppins(
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.normal,
+                              color: Colors.black),
+                          maxLines: 3,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ),
                   ),
-                );
-              },
+                  Flexible(
+                    flex: 3,
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 20.w,
+                        vertical: 10.h,
+                      ),
+                      child: GestureDetector(
+                        onTap: () {},
+                        child: Row(
+                          children: [
+                            Text(
+                              "See More Detail",
+                              style: GoogleFonts.poppins(
+                                  fontSize: 12.sp,
+                                  fontWeight: FontWeight.normal,
+                                  color: kPrimaryColor),
+                            ),
+                            SizedBox(width: 5.w),
+                            Icon(
+                              Icons.arrow_forward_ios,
+                              size: 12.sp,
+                              color: kPrimaryColor,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
-        ),
-        Padding(
-          padding: EdgeInsets.only(
-            left: 20.w,
-            right: 20.w,
-          ),
-          child: Container(
-            child: Text(
-              product.descriptionEn.toString(),
-              style: GoogleFonts.poppins(
-                  fontSize: 12.sp,
-                  fontWeight: FontWeight.normal,
-                  color: Colors.black),
-              maxLines: 2,
-            ),
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: 20.w,
-            vertical: 10.h,
-          ),
-          child: GestureDetector(
-            onTap: () {},
-            child: Row(
-              children: [
-                Text(
-                  "See More Detail",
-                  style: GoogleFonts.poppins(
-                      fontSize: 12.sp,
-                      fontWeight: FontWeight.normal,
-                      color: kPrimaryColor),
+          Flexible(
+            flex: 1,
+            child: Align(
+              alignment: Alignment.centerRight,
+              child: InkWell(
+                onTap: () {
+                  _cartController.toggleFavorite(product.productId);
+                },
+                child: GetBuilder<CartController>(
+                  builder: (contrller) {
+                    return Container(
+                      padding: EdgeInsets.all(15.w),
+                      width: 64.w,
+                      decoration: BoxDecoration(
+                        color: _cartController.favouriteList
+                                .contains(product.productId)
+                            ? const Color(0xFFFFE6E6)
+                            : const Color(0xFFF5F6F9),
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(20.r),
+                          bottomLeft: Radius.circular(20.r),
+                        ),
+                      ),
+                      child: SvgPicture.asset(
+                        "images/Heart Icon_2.svg",
+                        color: _cartController.favouriteList
+                                .contains(product.productId)
+                            ? const Color(0xFFFF4848)
+                            : const Color(0xFFDBDEE4),
+                        height: 16.h,
+                      ),
+                    );
+                  },
                 ),
-                SizedBox(width: 5.w),
-                Icon(
-                  Icons.arrow_forward_ios,
-                  size: 12.sp,
-                  color: kPrimaryColor,
-                ),
-              ],
+              ),
             ),
           ),
-        )
-      ],
+        ],
+      ),
     );
   }
 }

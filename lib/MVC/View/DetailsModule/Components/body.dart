@@ -128,7 +128,7 @@ class Body extends StatelessWidget {
                               left: Get.width * 0.15.w,
                               right: Get.width * 0.15.w,
                               top: 25.h,
-                              bottom: 0.h),
+                              bottom: 10.h),
                           child: GlobalWidget.defaultButton(
                               press: () {
                                 final isExist = _cartController.carts
