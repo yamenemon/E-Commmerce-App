@@ -1,5 +1,4 @@
 import 'package:ecommerce_app/MVC/Controller/SignInController/SignInController.dart';
-import 'package:ecommerce_app/Util/AppRoutes.dart';
 import 'package:ecommerce_app/Util/Constant.dart';
 import 'package:ecommerce_app/Util/Language/LocalizationLanguage.dart';
 import 'package:ecommerce_app/globalWidget.dart';
@@ -21,7 +20,6 @@ class _SignInPageState extends State<SignInPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // resizeToAvoidBottomInset: false,
       backgroundColor: kWhiteColor,
       body: Column(
         children: [
@@ -34,8 +32,6 @@ class _SignInPageState extends State<SignInPage> {
                   width: 412.w,
                   child: Image.asset(
                     "images/signin_bc.png",
-                    // width: Get.width,
-                    // height: Get.height * 0.23,
                   ),
                 ),
                 Positioned(
@@ -79,8 +75,6 @@ class _SignInPageState extends State<SignInPage> {
           Expanded(
             child: SingleChildScrollView(
               child: Container(
-                // height: Get.height,
-                // width: Get.width,
                 color: kWhiteColor,
                 child: Column(
                   children: [

@@ -43,7 +43,7 @@ class PopularProducts extends StatelessWidget {
                         )
                       : ListView.builder(
                           scrollDirection: Axis.horizontal,
-                          itemCount: 10,
+                          itemCount: _getController.listToShow.length,
                           //  _getController
                           //     .getModelList.value.products!.length,
                           itemBuilder: (context, index) {
