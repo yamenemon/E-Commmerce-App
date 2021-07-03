@@ -4,9 +4,11 @@ import 'package:ecommerce_app/Repository/MyRepository.dart';
 import 'package:ecommerce_app/Util/AppRoutes.dart';
 import 'package:ecommerce_app/Util/AppUrl.dart';
 import 'package:ecommerce_app/Util/Constant.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'section_title.dart';
 
 class PopularProducts extends StatelessWidget {
@@ -32,7 +34,7 @@ class PopularProducts extends StatelessWidget {
             children: [
               Container(
                 width: Get.width,
-                height: Get.height * 0.2,
+                height: Get.height * 0.25,
                 child: Obx(
                   () => _getController.isLoading.value == true
                       ? const Center(
@@ -92,7 +94,7 @@ class PopularProducts extends StatelessWidget {
                                 );
                               },
                               child: Padding(
-                                padding: EdgeInsets.all(10.w),
+                                padding: EdgeInsets.all(8.w),
                                 child: Container(
                                   width: Get.width * 0.3,
                                   decoration: BoxDecoration(
@@ -105,48 +107,52 @@ class PopularProducts extends StatelessWidget {
                                         color: Colors.grey.withOpacity(0.15),
                                         spreadRadius: 2,
                                         blurRadius: 1,
-                                        offset: const Offset(
-                                            0, 0), // changes position of shadow
+                                        offset: const Offset(-1,
+                                            1), // changes position of shadow
                                       ),
                                     ],
                                   ),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Hero(
-                                        tag: _getController
-                                            .listToShow[index].productId
-                                            .toString(),
-                                        //  _getController.getModelList.value
-                                        //     .products![index].productId
-                                        //     .toString(),
-                                        child: Image.network(
-                                          "$BASE_URL/${_getController.listToShow[index].picture}",
-                                          height: 100.h,
-                                          width: 100.w,
-                                          fit: BoxFit.fitWidth,
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        height: 10.h,
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: 8.w),
-                                        child: Text(
-                                          _getController
-                                              .listToShow[index].nameEn
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Hero(
+                                          tag: _getController
+                                              .listToShow[index].productId
                                               .toString(),
-                                          maxLines: 1,
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 12.sp),
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                            child: Image.network(
+                                              "$BASE_URL/${_getController.listToShow[index].picture}",
+                                              height: 110.h,
+                                              width: 110.h,
+                                              fit: BoxFit.fitWidth,
+                                            ),
+                                          ),
                                         ),
-                                      )
-                                    ],
+                                        SizedBox(
+                                          height: 15.h,
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 8.w),
+                                          child: Text(
+                                              _getController
+                                                  .listToShow[index].nameEn
+                                                  .toString(),
+                                              maxLines: 1,
+                                              textAlign: TextAlign.center,
+                                              style: GoogleFonts.poppins(
+                                                  fontSize: 14.sp,
+                                                  fontWeight: FontWeight.w500)),
+                                        )
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
@@ -155,7 +161,7 @@ class PopularProducts extends StatelessWidget {
                         ),
                 ),
               ),
-              SizedBox(width: 10.w),
+              SizedBox(width: 10.h),
             ],
           ),
         )

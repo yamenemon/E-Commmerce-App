@@ -4,9 +4,11 @@ import 'package:ecommerce_app/Repository/MyRepository.dart';
 import 'package:ecommerce_app/Util/AppRoutes.dart';
 import 'package:ecommerce_app/Util/AppUrl.dart';
 import 'package:ecommerce_app/Util/Constant.dart';
+import 'package:ecommerce_app/globalWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class PopularProductsSeeMore extends StatelessWidget {
   const PopularProductsSeeMore({Key? key}) : super(key: key);
@@ -17,9 +19,8 @@ class PopularProductsSeeMore extends StatelessWidget {
         Get.put(GetController(repository: MyRepository()));
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          title: Text("Products"),
-        ),
+        appBar:
+            GlobalWidget.globalAppBar("All Products", Colors.transparent, true),
         body: Column(
           children: [
             SingleChildScrollView(
@@ -123,47 +124,68 @@ class PopularProductsSeeMore extends StatelessWidget {
                                           ),
                                         ],
                                       ),
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          Hero(
-                                            tag: _getController
-                                                .getModelList
-                                                .value
-                                                .products![index]
-                                                .productId
-                                                .toString(),
-                                            //  _getController.getModelList.value
-                                            //     .products!![index].productId
-                                            //     .toString(),
+                                      child: ListTile(
+                                        leading: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
                                             child: Image.network(
-                                              "$BASE_URL/${_getController.getModelList.value.products![index].picture}",
-                                              height: 100.h,
-                                              width: 100.w,
+                                              "$BASE_URL/${_getController.getModelList.value.products?[index].picture}",
+                                              height: 80.h,
+                                              width: 80.h,
                                               fit: BoxFit.fitWidth,
-                                            ),
+                                              alignment: Alignment.centerLeft,
+                                            )),
+                                        title: Text(
+                                          _getController.getModelList.value
+                                              .products![index].nameEn
+                                              .toString(),
+                                          maxLines: 1,
+                                          textAlign: TextAlign.left,
+                                          style: GoogleFonts.poppins(
+                                              fontSize: 17.sp,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        subtitle: Padding(
+                                          padding: EdgeInsets.only(
+                                              left: 0.0,
+                                              right: 5.0.w,
+                                              top: 5.0.h,
+                                              bottom: 5.0.h),
+                                          child: Text(
+                                            _getController
+                                                        .getModelList
+                                                        .value
+                                                        .products?[index]
+                                                        .descriptionBn
+                                                        .toString()
+                                                        .isEmpty ==
+                                                    true
+                                                ? "No description found"
+                                                : _getController
+                                                    .getModelList
+                                                    .value
+                                                    .products![index]
+                                                    .descriptionBn
+                                                    .toString(),
+                                            maxLines: 3,
+                                            textAlign: TextAlign.left,
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 12.sp),
                                           ),
-                                          SizedBox(
-                                            height: 10.h,
-                                          ),
-                                          Padding(
-                                            padding: EdgeInsets.symmetric(
-                                                horizontal: 8.w),
-                                            child: Text(
-                                              _getController.getModelList.value
-                                                  .products![index].nameEn
-                                                  .toString(),
-                                              maxLines: 1,
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                  color: Colors.black,
-                                                  fontSize: 12.sp),
-                                            ),
-                                          )
-                                        ],
+                                        ),
+                                        trailing: GestureDetector(
+                                            onTap: () {
+                                              showDialog(
+                                                context: context,
+                                                builder: (BuildContext
+                                                        context) =>
+                                                    GlobalWidget.buildPopupDialog(
+                                                        context,
+                                                        "${_getController.getModelList.value.products?[index].descriptionBn.toString()}"),
+                                              );
+                                            },
+                                            child: Icon(Icons.more_vert)),
                                       ),
                                     ),
                                   ),

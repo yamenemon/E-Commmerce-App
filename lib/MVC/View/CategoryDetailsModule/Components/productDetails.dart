@@ -6,7 +6,9 @@ import 'package:ecommerce_app/Repository/MyRepository.dart';
 import 'package:ecommerce_app/Util/AppRoutes.dart';
 import 'package:ecommerce_app/Util/AppUrl.dart';
 import 'package:ecommerce_app/Util/Constant.dart';
+import 'package:ecommerce_app/globalWidget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -107,10 +109,8 @@ class ProductsDetails extends StatelessWidget {
                               .toString(),
                           maxLines: 1,
                           textAlign: TextAlign.left,
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 18.sp,
-                              fontWeight: FontWeight.bold),
+                          style: GoogleFonts.poppins(
+                              fontSize: 17.sp, fontWeight: FontWeight.bold),
                         ),
                         subtitle: Padding(
                           padding: EdgeInsets.only(
@@ -139,7 +139,7 @@ class ProductsDetails extends StatelessWidget {
                               showDialog(
                                 context: context,
                                 builder: (BuildContext context) =>
-                                    _buildPopupDialog(context,
+                                    GlobalWidget.buildPopupDialog(context,
                                         "${_getController.catDetailsProduct![index].descriptionBn.toString()}"),
                               );
                             },
@@ -150,54 +150,6 @@ class ProductsDetails extends StatelessWidget {
                 );
               },
             ),
-    );
-  }
-
-  Widget _buildPopupDialog(BuildContext context, String description) {
-    return new AlertDialog(
-      title: Text(
-        'Category Description',
-        style: GoogleFonts.poppins(
-            fontSize: 17.sp,
-            fontWeight: FontWeight.bold,
-            fontStyle: FontStyle.normal),
-      ),
-      content: new Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text(
-            description.isEmpty == true ? "No description found" : description,
-            maxLines: 30,
-            textAlign: TextAlign.left,
-            style: TextStyle(color: Colors.black, fontSize: 12.sp),
-          ),
-        ],
-      ),
-      actions: <Widget>[
-        Align(
-          alignment: Alignment.center,
-          child: new ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: Text(
-                'Close',
-                style: GoogleFonts.poppins(
-                    fontSize: 17.sp,
-                    fontWeight: FontWeight.bold,
-                    fontStyle: FontStyle.normal),
-              ),
-              style: ElevatedButton.styleFrom(
-                  elevation: 5,
-                  primary: kPrimaryColor,
-                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 5),
-                  textStyle: GoogleFonts.poppins(
-                      fontSize: 12.sp,
-                      fontWeight: FontWeight.bold,
-                      fontStyle: FontStyle.normal))),
-        ),
-      ],
     );
   }
 }

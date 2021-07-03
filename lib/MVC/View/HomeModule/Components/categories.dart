@@ -24,7 +24,7 @@ class Categories extends StatelessWidget {
           children: [
             Container(
               width: Get.width,
-              height: Get.height * 0.16,
+              height: Get.height * 0.20,
               child: Obx(
                 () => _getController.isLoading.value == true
                     ? Align(
@@ -63,6 +63,7 @@ class Categories extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class CategoryCard extends StatelessWidget {
   CategoryCard({
     Key? key,
@@ -92,12 +93,11 @@ class CategoryCard extends StatelessWidget {
     return GestureDetector(
       onTap: press,
       child: Container(
-        height: Get.height * 0.08,
         width: Get.width * 0.2,
         child: Column(
           children: [
             Container(
-              padding: EdgeInsets.all(12.w),
+              padding: EdgeInsets.all(10.w),
               margin: EdgeInsets.all(1),
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -109,17 +109,20 @@ class CategoryCard extends StatelessWidget {
                     color: Colors.grey.withOpacity(0.15),
                     spreadRadius: 2,
                     blurRadius: 1,
-                    offset: const Offset(0, 0), // changes position of shadow
+                    offset: const Offset(-1, 1), // changes position of shadow
                   ),
                 ],
               ),
               child: Stack(
                 children: <Widget>[
                   Center(
-                    child: FadeInImage.memoryNetwork(
-                      placeholder: kTransparentImage,
-                      image: icon,
-                      fit: BoxFit.fitWidth,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(16.r),
+                      child: FadeInImage.memoryNetwork(
+                        placeholder: kTransparentImage,
+                        image: icon,
+                        fit: BoxFit.fitWidth,
+                      ),
                     ),
                   ),
                 ],
@@ -129,10 +132,10 @@ class CategoryCard extends StatelessWidget {
             Container(
               child: Text(text,
                   textAlign: TextAlign.center,
-                  maxLines: 1,
+                  maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: GoogleFonts.poppins(
-                      fontSize: 10.sp, fontWeight: FontWeight.w500)),
+                      fontSize: 12.sp, fontWeight: FontWeight.w500)),
             )
           ],
         ),

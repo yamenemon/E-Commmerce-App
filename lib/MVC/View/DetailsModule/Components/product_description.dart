@@ -1,6 +1,7 @@
 import 'package:ecommerce_app/MVC/Controller/CartModule/CartController.dart';
 import 'package:ecommerce_app/MVC/Model/DemoModel/ProductModel.dart';
 import 'package:ecommerce_app/Util/Constant.dart';
+import 'package:ecommerce_app/globalWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -78,7 +79,13 @@ class ProductDescription extends StatelessWidget {
                         vertical: 10.h,
                       ),
                       child: GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          showDialog(
+                              context: context,
+                              builder: (BuildContext context) =>
+                                  GlobalWidget.buildPopupDialog(context,
+                                      product.descriptionBn.toString()));
+                        },
                         child: Row(
                           children: [
                             Text(

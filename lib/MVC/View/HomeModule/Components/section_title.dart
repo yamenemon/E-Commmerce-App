@@ -20,7 +20,7 @@ class SectionTitle extends StatelessWidget {
       children: [
         Text(title,
             style: GoogleFonts.poppins(
-                fontSize: 18.sp, fontWeight: FontWeight.normal)),
+                fontSize: 18.sp, fontWeight: FontWeight.bold)),
         GestureDetector(
           onTap: press,
           child: Text(
