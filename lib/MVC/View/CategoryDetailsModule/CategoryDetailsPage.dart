@@ -1,5 +1,6 @@
 import 'package:ecommerce_app/MVC/Model/DemoModel/ProductModel.dart';
 import 'package:ecommerce_app/MVC/View/CategoryDetailsModule/Components/Body.dart';
+import 'package:ecommerce_app/globalWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -15,10 +16,9 @@ class _CategoryDetailsPageState extends State<CategoryDetailsPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          title: Text("Category Details"),
-        ),
-        body: Body(),
+        appBar: GlobalWidget.globalAppBar(
+            "Category Details", Colors.transparent, true),
+        body: Center(child: Body()),
       ),
     );
   }

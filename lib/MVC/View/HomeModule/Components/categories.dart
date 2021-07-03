@@ -3,6 +3,7 @@ import 'package:ecommerce_app/Repository/MyRepository.dart';
 import 'package:ecommerce_app/Util/AppRoutes.dart';
 import 'package:ecommerce_app/Util/AppUrl.dart';
 import 'package:ecommerce_app/Util/Constant.dart';
+import 'package:ecommerce_app/Util/TransparenImage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,15 +12,10 @@ import 'package:google_fonts/google_fonts.dart';
 
 class Categories extends StatelessWidget {
   GetController _getController = Get.find<GetController>();
+  var tempUri = "";
+
   @override
   Widget build(BuildContext context) {
-    // List<Map<String, dynamic>> categories = [
-    //   {"icon": "images/Flash Icon.svg", "text": "Flash Deal"},
-    //   {"icon": "images/Bill Icon.svg", "text": "Bill"},
-    //   {"icon": "images/Game Icon.svg", "text": "Game"},
-    //   {"icon": "images/Gift Icon.svg", "text": "Daily Gift"},
-    //   {"icon": "images/Discover.svg", "text": "More"},
-    // ];
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
@@ -27,8 +23,8 @@ class Categories extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              width: 420.w,
-              height: 100.h,
+              width: Get.width,
+              height: Get.height * 0.16,
               child: Obx(
                 () => _getController.isLoading.value == true
                     ? Align(
@@ -46,7 +42,7 @@ class Categories extends StatelessWidget {
                             padding: EdgeInsets.symmetric(horizontal: 10.w),
                             child: CategoryCard(
                               icon:
-                                  "$BASE_URL/${_getController.getModelList.value.categories![index].appImage != null ? _getController.getModelList.value.categories![index].appImage! : " "}",
+                                  "$BASE_URL/${_getController.getModelList.value.categories![index].appImage != null ? _getController.getModelList.value.categories![index].appImage : " "}",
                               text: _getController.getModelList.value
                                   .categories![index].nameEn!,
                               press: () {
@@ -62,55 +58,72 @@ class Categories extends StatelessWidget {
                       ),
               ),
             )
-          ]
-
-          //  List.generate(
-          //   categories.length,
-          //   (index) =>
-          // ),
-          ),
+          ]),
     );
   }
 }
 
 class CategoryCard extends StatelessWidget {
-  const CategoryCard({
+  CategoryCard({
     Key? key,
     required this.icon,
     required this.text,
     required this.press,
   }) : super(key: key);
 
-  final String icon, text;
+  String icon, text;
   final GestureTapCallback press;
 
   @override
   Widget build(BuildContext context) {
+    bool _validURL = Uri.parse(icon).isAbsolute;
+    if (icon.contains(".jpg") ||
+        // icon.contains(".gif") ||
+        icon.contains(".png") ||
+        icon.contains(".jpeg")) {
+      print(icon);
+    } else {
+      icon =
+          "http://ecommerce.tritechfirm.com/app-api/images/categories/1618600452.jpg";
+    }
+    print(icon);
+    print(_validURL);
+
     return GestureDetector(
       onTap: press,
       child: Container(
-        height: Get.height * 0.07,
-        width: Get.height * 0.07,
+        height: Get.height * 0.08,
+        width: Get.width * 0.2,
         child: Column(
           children: [
             Container(
               padding: EdgeInsets.all(12.w),
-              // height: Get.height * 0.07,
-              // width: Get.height * 0.07,
+              margin: EdgeInsets.all(1),
               decoration: BoxDecoration(
-                color: kPrimaryColor, //const Color(0xFFFFECDF),
-                borderRadius: BorderRadius.circular(10.r),
+                color: Colors.white,
+                borderRadius: BorderRadius.all(
+                  Radius.circular(16.r),
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.15),
+                    spreadRadius: 2,
+                    blurRadius: 1,
+                    offset: const Offset(0, 0), // changes position of shadow
+                  ),
+                ],
               ),
-              // child: Text(icon)
-              //     Image.network(
-              //   icon,
-              //   //  fit: BoxFit.contain,
-              //   filterQuality: FilterQuality.medium,
-              // )
-              // SvgPicture.asset(
-              //   icon,
-              //   color: Colors.white,
-              // ),
+              child: Stack(
+                children: <Widget>[
+                  Center(
+                    child: FadeInImage.memoryNetwork(
+                      placeholder: kTransparentImage,
+                      image: icon,
+                      fit: BoxFit.fitWidth,
+                    ),
+                  ),
+                ],
+              ),
             ),
             SizedBox(height: 5.h),
             Container(

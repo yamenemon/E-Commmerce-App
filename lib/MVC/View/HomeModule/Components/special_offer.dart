@@ -58,7 +58,7 @@ class SpecialOffers extends StatelessWidget {
 }
 
 class SpecialOfferCard extends StatelessWidget {
-  const SpecialOfferCard({
+  SpecialOfferCard({
     Key? key,
     required this.category,
     required this.image,
@@ -66,12 +66,18 @@ class SpecialOfferCard extends StatelessWidget {
     required this.press,
   }) : super(key: key);
 
-  final String category, image;
+  String category, image;
   final int numOfBrands;
   final GestureTapCallback press;
 
   @override
   Widget build(BuildContext context) {
+    print(image);
+
+    if (!image.contains(".jpg") || !image.contains(".jpeg")) {
+      image =
+          "http://ecommerce.tritechfirm.com/app-api/images/categories/1618875207.jpg";
+    }
     return Padding(
       padding: EdgeInsets.only(left: 15.w, right: 15.w),
       child: GestureDetector(
@@ -83,10 +89,10 @@ class SpecialOfferCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(20.r),
             child: Stack(
               children: [
-                // Image.network(
-                //   image,
-                //   fit: BoxFit.fill,
-                // ),
+                Image.network(
+                  image,
+                  fit: BoxFit.fill,
+                ),
                 Container(
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
