@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/MVC/Controller/OtpController/OtpController.dart';
+import 'package:ecommerce_app/Util/AppRoutes.dart';
 import 'package:ecommerce_app/Util/Constant.dart';
 import 'package:ecommerce_app/Util/Language/LocalizationLanguage.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +17,16 @@ class OtpPage extends StatefulWidget {
 
 class _OtpPageState extends State<OtpPage> {
   OtpController _otpController = Get.put(OtpController());
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _otpController.otp = Get.arguments![0];
+    _otpController.name = Get.arguments![1];
+    _otpController.phoneNumber = Get.arguments![2];
+    _otpController.address = Get.arguments![3];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -121,7 +132,7 @@ class _OtpPageState extends State<OtpPage> {
               // errorAnimationController: errorController,
               // controller: textEditingController,
               onCompleted: (v) {
-                if (v == _otpController.currentText) {
+                if (v == _otpController.otp) {
                   print("valid pin");
                 } else {
                   print("invalid pin");
@@ -132,12 +143,6 @@ class _OtpPageState extends State<OtpPage> {
               onChanged: (value) {
                 _otpController.onChangedOtp(value);
               },
-              // beforeTextPaste: (text) {
-              //   print("Allowing to paste $text");
-              //   //if you return true then it will show the paste confirmation dialog. Otherwise if false, then nothing will happen.
-              //   //but you can show anything you want here, like your pop up saying wrong paste format or etc
-              //   return true;
-              // // },
             ),
           ),
 
@@ -166,7 +171,7 @@ class _OtpPageState extends State<OtpPage> {
             child: InkWell(
               onTap: () {
                 _otpController.isValid == true
-                    ? print("valid")
+                    ? Get.offAndToNamed(AppRoutes.PAYMENT_PAGE)
                     : print("invalid");
               },
               child: Obx(

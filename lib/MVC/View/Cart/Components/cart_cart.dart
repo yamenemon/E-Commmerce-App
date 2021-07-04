@@ -1,6 +1,7 @@
 import 'package:ecommerce_app/MVC/Controller/CartModule/CartController.dart';
 import 'package:ecommerce_app/MVC/Controller/CommonController.dart';
 import 'package:ecommerce_app/MVC/Model/CartModule/cartModel.dart';
+import 'package:ecommerce_app/Util/AppUrl.dart';
 import 'package:ecommerce_app/Util/Constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -30,7 +31,8 @@ class CartCard extends StatelessWidget {
                 color: const Color(0xFFF5F6F9),
                 borderRadius: BorderRadius.circular(15.r),
               ),
-              child: Image.network(cart.productDemoModel.picture.toString()),
+              child: Image.network(
+                  "$BASE_URL/${cart.productDemoModel.picture.toString()}"),
             ),
           ),
         ),

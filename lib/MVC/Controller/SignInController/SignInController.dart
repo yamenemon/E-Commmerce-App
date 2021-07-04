@@ -1,5 +1,4 @@
 import 'dart:math';
-import 'package:ecommerce_app/MVC/Controller/OtpController/OtpController.dart';
 import 'package:ecommerce_app/Repository/MyRepository.dart';
 import 'package:ecommerce_app/Util/AppRoutes.dart';
 import 'package:flutter/material.dart';
@@ -46,16 +45,22 @@ class SignInController extends GetxController {
       await repository.sentOtp(loginPhoneNumber.text, otp).then(
         (login) {
           if (login == true) {
-            OtpController().currentText = otp;
-            Get.toNamed(
-              AppRoutes.OTP_PAGE,
-            );
+            Get.offAndToNamed(AppRoutes.OTP_PAGE,
+                arguments: [otp, loginName, loginPhoneNumber, loginAddress]);
             loginPhoneNumber.clear();
             loginName.clear();
             loginAddress.clear();
           } else {
             //for testing purpose
-            Get.toNamed(AppRoutes.OTP_PAGE);
+            Get.toNamed(AppRoutes.OTP_PAGE, arguments: [
+              otp,
+              loginName.text,
+              loginPhoneNumber.text,
+              loginAddress.text
+            ]);
+            loginPhoneNumber.clear();
+            loginName.clear();
+            loginAddress.clear();
           }
         },
       );

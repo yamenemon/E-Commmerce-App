@@ -10,7 +10,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import 'MVC/Controller/GetController.dart';
 
 void main() {
@@ -35,24 +34,25 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-        designSize: const Size(412, 820), // Zeplin UI size
-        builder: () => GetMaterialApp(
-              translations: LocalizationService(),
-              fallbackLocale: LocalizationService.fallbackLocale,
-              debugShowCheckedModeBanner: false,
-              initialRoute: AppRoutes.SPLASHPAGE,
-              getPages: AppRoutes.AppRoutesList(),
-              title: 'E-Commerce-App',
-              locale: Get.deviceLocale,
-              theme: ThemeData(
-                textTheme: GoogleFonts.poppinsTextTheme(
-                  Theme.of(context).textTheme,
-                ),
-                // fontFamily: 'CircularStd',
-                primaryColor: kPrimaryColor,
-                scaffoldBackgroundColor: kWhiteColor,
-                backgroundColor: kBackgroundColor,
-              ),
-            ));
+      designSize: const Size(412, 820), // Zeplin UI size
+      builder: () => GetMaterialApp(
+        translations: LocalizationService(),
+        fallbackLocale: LocalizationService.fallbackLocale,
+        debugShowCheckedModeBanner: false,
+        initialRoute: AppRoutes.HOMEPAGE,
+        getPages: AppRoutes.AppRoutesList(),
+        title: 'E-Commerce-App',
+        locale: Get.deviceLocale,
+        theme: ThemeData(
+          textTheme: GoogleFonts.poppinsTextTheme(
+            Theme.of(context).textTheme,
+          ),
+          // fontFamily: 'CircularStd',
+          primaryColor: kPrimaryColor,
+          scaffoldBackgroundColor: kWhiteColor,
+          backgroundColor: kBackgroundColor,
+        ),
+      ),
+    );
   }
 }
