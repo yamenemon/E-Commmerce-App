@@ -11,6 +11,7 @@ enum CART_STATUS {
 class CartController extends GetxController with StateMixin {
   final carts = <Cart>[].obs;
   var favouriteList = [].obs;
+  var summaryList = [].obs;
   var currentProductQty = 0.obs;
   RxDouble productDetailTotalPrice = 0.0.obs;
   RxDouble cartPageTotalPrice = 0.0.obs;
@@ -126,12 +127,12 @@ class CartController extends GetxController with StateMixin {
   }
 
   //temporary favourite
-  void toggleFavorite(int? id) {
+  void toggleFavorite(Product product) {
     if (isFavorited) {
       isFavorited = false;
-      favouriteList.remove(id);
+      favouriteList.remove(product);
     } else {
-      favouriteList.add(id);
+      favouriteList.add(product);
       isFavorited = true;
     }
     update();

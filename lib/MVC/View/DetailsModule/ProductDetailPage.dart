@@ -23,16 +23,16 @@ class ProductDetailPage extends StatelessWidget {
           Colors.transparent,
           true,
           actionWidgets: [
-            Padding(
-              padding: EdgeInsets.only(right: 16.w, top: 20.h),
-              child: InkWell(
-                onTap: () {
-                  if (_cartController.carts.isEmpty) {
-                    // Get.toNamed(AppRoutes.EMPTY_CART_PAGE);
-                  } else {
-                    Get.toNamed(AppRoutes.CART_PAGE);
-                  }
-                },
+            InkWell(
+              onTap: () {
+                if (_cartController.carts.isEmpty) {
+                  // Get.toNamed(AppRoutes.EMPTY_CART_PAGE);
+                } else {
+                  Get.toNamed(AppRoutes.CART_PAGE);
+                }
+              },
+              child: Padding(
+                padding: EdgeInsets.only(right: 16.w, top: 20.h),
                 child: Container(
                   margin: EdgeInsets.only(right: 24.w),
                   child: Obx(

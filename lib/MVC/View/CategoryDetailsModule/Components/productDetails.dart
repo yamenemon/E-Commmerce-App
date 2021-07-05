@@ -1,11 +1,7 @@
-import 'dart:io';
-
 import 'package:ecommerce_app/MVC/Controller/GetController.dart';
 import 'package:ecommerce_app/MVC/Model/DemoModel/ProductModel.dart';
-import 'package:ecommerce_app/Repository/MyRepository.dart';
 import 'package:ecommerce_app/Util/AppRoutes.dart';
 import 'package:ecommerce_app/Util/AppUrl.dart';
-import 'package:ecommerce_app/Util/Constant.dart';
 import 'package:ecommerce_app/globalWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -18,8 +14,7 @@ import 'package:google_fonts/google_fonts.dart';
 class ProductsDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    GetController _getController =
-        Get.put(GetController(repository: MyRepository()));
+    GetController _getController = Get.find<GetController>();
     return Container(
       width: Get.width * 0.95,
       height: Get.height * 0.88,
@@ -40,40 +35,7 @@ class ProductsDetails extends StatelessWidget {
                   onTap: () {
                     Get.toNamed(
                       AppRoutes.PRODUCT_DETAIL_PAGE,
-                      arguments: [
-                        Product(
-                          productId: _getController
-                              .catDetailsProduct![index].productId,
-                          amount:
-                              _getController.catDetailsProduct![index].amount,
-                          categoryId: _getController
-                              .catDetailsProduct![index].categoryId,
-                          descriptionBn: _getController
-                              .catDetailsProduct![index].descriptionBn,
-                          descriptionEn: _getController
-                              .catDetailsProduct![index].descriptionEn,
-                          image2:
-                              _getController.catDetailsProduct![index].image2,
-                          image3:
-                              _getController.catDetailsProduct![index].image3,
-                          index: _getController.catDetailsProduct![index].index,
-                          isDiscount: _getController
-                              .catDetailsProduct![index].isDiscount,
-                          isPercentage: _getController
-                              .catDetailsProduct![index].isPercentage,
-                          nameBn:
-                              _getController.catDetailsProduct![index].nameBn,
-                          nameEn:
-                              _getController.catDetailsProduct![index].nameEn,
-                          picture:
-                              "$BASE_URL/${_getController.catDetailsProduct![index].picture}",
-                          price: _getController.catDetailsProduct![index].price,
-                          salePrice: _getController
-                              .catDetailsProduct![index].salePrice,
-                          unit: _getController.catDetailsProduct![index].unit,
-                          stock: _getController.catDetailsProduct![index].stock,
-                        )
-                      ],
+                      arguments: [_getController.catDetailsProduct![index]],
                     );
                   },
                   child: Padding(

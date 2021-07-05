@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/MVC/Model/DemoModel/ProductModel.dart';
+import 'package:ecommerce_app/Util/AppUrl.dart';
 import 'package:ecommerce_app/Util/Constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -28,7 +29,7 @@ class _ProductImagesState extends State<ProductImages> {
             child: Hero(
               tag: widget.product.productId.toString(),
               child: Image.network(
-                widget.product.picture.toString(),
+                "$BASE_URL/${widget.product.picture.toString()}",
                 //fit: BoxFit.contain,
               ),
             ),
@@ -66,7 +67,7 @@ class _ProductImagesState extends State<ProductImages> {
           border: Border.all(
               color: kPrimaryColor.withOpacity(selectedImage == index ? 1 : 0)),
         ),
-        child: Image.network(widget.product.picture.toString()),
+        child: Image.network("$BASE_URL/${widget.product.picture.toString()}"),
       ),
     );
   }
