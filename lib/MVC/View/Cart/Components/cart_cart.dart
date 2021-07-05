@@ -21,28 +21,24 @@ class CartCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        SizedBox(
-          width: 88.w,
-          child: AspectRatio(
-            aspectRatio: 0.88.sp,
-            child: Container(
-              padding: EdgeInsets.all(10.w),
-              decoration: BoxDecoration(
-                color: const Color(0xFFF5F6F9),
-                borderRadius: BorderRadius.circular(15.r),
-              ),
-              child: Image.network(
-                  "$BASE_URL/${cart.productDemoModel.picture.toString()}"),
-            ),
+        Container(
+          height: Get.height * 0.12,
+          width: Get.height * 0.12,
+          padding: EdgeInsets.all(10.w),
+          decoration: BoxDecoration(
+            color: const Color(0xFFF5F6F9),
+            borderRadius: BorderRadius.circular(15.r),
           ),
+          child: Image.network(
+              "$BASE_URL/${cart.productDemoModel.picture.toString()}"),
         ),
-        SizedBox(width: 20.w),
+        SizedBox(width: 10.w),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // ignore: sized_box_for_whitespace
             Container(
-              width: Get.width * 0.5,
+              width: Get.width * 0.5.w,
               child: Text(
                 cart.productDemoModel.nameEn.toString(),
                 style: GoogleFonts.poppins(
@@ -51,9 +47,9 @@ class CartCard extends StatelessWidget {
                 maxLines: 3,
               ),
             ),
-            const SizedBox(height: 10),
+            SizedBox(height: 10.h),
             Container(
-              width: Get.width * 0.7.w,
+              width: Get.width * 0.65.w,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -76,8 +72,8 @@ class CartCard extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    width: 130.w,
-                    height: 36.h,
+                    width: Get.width * 0.3,
+                    height: 40.h,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
@@ -89,13 +85,10 @@ class CartCard extends StatelessWidget {
                           child: Center(
                             child: Text(
                               "-",
-                              style: TextStyle(
-                                fontFamily: 'CircularStd',
-                                color: Color(0xff000000),
-                                fontSize: 32.sp,
-                                fontWeight: FontWeight.w500,
-                                fontStyle: FontStyle.normal,
-                              ),
+                              style: GoogleFonts.poppins(
+                                  fontSize: 32.sp,
+                                  fontStyle: FontStyle.normal,
+                                  fontWeight: FontWeight.w500),
                             ),
                           ),
                         ),
@@ -118,13 +111,10 @@ class CartCard extends StatelessWidget {
                           child: Center(
                             child: Text(
                               "+",
-                              style: TextStyle(
-                                fontFamily: 'CircularStd',
-                                color: Color(0xff000000),
-                                fontSize: 32.sp,
-                                fontWeight: FontWeight.w500,
-                                fontStyle: FontStyle.normal,
-                              ),
+                              style: GoogleFonts.poppins(
+                                  fontSize: 32.sp,
+                                  fontStyle: FontStyle.normal,
+                                  fontWeight: FontWeight.w500),
                             ),
                           ),
                         ),
