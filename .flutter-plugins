@@ -1,10 +1,10 @@
 # This is a generated file; do not edit or check into version control.
-connectivity=C:\\src\\flutter\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\connectivity-3.0.6\\
-connectivity_for_web=C:\\src\\flutter\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\connectivity_for_web-0.4.0\\
-connectivity_macos=C:\\src\\flutter\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\connectivity_macos-0.2.0\\
-device_info=C:\\src\\flutter\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\device_info-2.0.2\\
-flutter_sslcommerze=C:\\src\\flutter\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\flutter_sslcommerze-1.0.1-nullsafety.0\\
-path_provider=C:\\src\\flutter\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider-2.0.2\\
-path_provider_linux=C:\\src\\flutter\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider_linux-2.0.0\\
-path_provider_macos=C:\\src\\flutter\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider_macos-2.0.0\\
-path_provider_windows=C:\\src\\flutter\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider_windows-2.0.1\\
+connectivity=/Users/yamenemon/.pub-cache/hosted/pub.dartlang.org/connectivity-3.0.6/
+connectivity_for_web=/Users/yamenemon/.pub-cache/hosted/pub.dartlang.org/connectivity_for_web-0.4.0/
+connectivity_macos=/Users/yamenemon/.pub-cache/hosted/pub.dartlang.org/connectivity_macos-0.2.0/
+device_info=/Users/yamenemon/.pub-cache/hosted/pub.dartlang.org/device_info-2.0.2/
+flutter_sslcommerze=/Users/yamenemon/.pub-cache/hosted/pub.dartlang.org/flutter_sslcommerze-1.0.1-nullsafety.0/
+path_provider=/Users/yamenemon/.pub-cache/hosted/pub.dartlang.org/path_provider-2.0.2/
+path_provider_linux=/Users/yamenemon/.pub-cache/hosted/pub.dartlang.org/path_provider_linux-2.0.0/
+path_provider_macos=/Users/yamenemon/.pub-cache/hosted/pub.dartlang.org/path_provider_macos-2.0.0/
+path_provider_windows=/Users/yamenemon/.pub-cache/hosted/pub.dartlang.org/path_provider_windows-2.0.1/

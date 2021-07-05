@@ -31,8 +31,8 @@ class PopularProducts extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
-                width: Get.width,
-                height: Get.height * 0.25,
+                width: Get.width - 20.w,
+                height: Get.height * 0.28,
                 child: Obx(
                   () => _getController.isLoading.value == true
                       ? const Center(
@@ -109,7 +109,70 @@ class PopularProducts extends StatelessWidget {
                                               style: GoogleFonts.poppins(
                                                   fontSize: 14.sp,
                                                   fontWeight: FontWeight.w500)),
-                                        )
+                                        ),
+                                        Container(
+                                            child: _getController
+                                                        .listToShow[index]
+                                                        .isDiscount! >
+                                                    0
+                                                ? Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            8.0),
+                                                    child: RichText(
+                                                      text: TextSpan(
+                                                        text: '',
+                                                        children: <TextSpan>[
+                                                          TextSpan(
+                                                            text:
+                                                                "\$${_getController.listToShow[index].price!}",
+                                                            style: TextStyle(
+                                                              color:
+                                                                  kPrimaryColor,
+                                                              decoration:
+                                                                  TextDecoration
+                                                                      .none,
+                                                            ),
+                                                          )
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  )
+                                                : Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            8.0),
+                                                    child: RichText(
+                                                      text: TextSpan(
+                                                        text: '',
+                                                        children: <TextSpan>[
+                                                          TextSpan(
+                                                            text:
+                                                                "\$${_getController.listToShow[index].price!}",
+                                                            style: TextStyle(
+                                                              color:
+                                                                  Colors.grey,
+                                                              decoration:
+                                                                  TextDecoration
+                                                                      .lineThrough,
+                                                            ),
+                                                          ),
+                                                          TextSpan(text: " "),
+                                                          TextSpan(
+                                                            text:
+                                                                "\$${_getController.listToShow[index].price! - ((_getController.listToShow[index].isDiscount! * _getController.listToShow[index].price!) / 100)}",
+                                                            style: TextStyle(
+                                                              color:
+                                                                  kPrimaryColor,
+                                                              decoration:
+                                                                  TextDecoration
+                                                                      .none,
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  )),
                                       ],
                                     ),
                                   ),
