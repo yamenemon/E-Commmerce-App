@@ -56,7 +56,7 @@ class CommonController extends GetxController {
     LocalizationService().changeLocale(isSwitched);
   }
 
-  static void handleError(error) {
+  void handleError(error) {
     if (error is BadRequestException) {
       var message = error.message;
       showDialog(description: message);
@@ -69,7 +69,7 @@ class CommonController extends GetxController {
     }
   }
 
-  static void showDialog({
+  void showDialog({
     String title = "Error",
     String description = "Something went wrong",
   }) {

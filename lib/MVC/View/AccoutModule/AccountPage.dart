@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/MVC/Controller/CommonController.dart';
+import 'package:ecommerce_app/MVC/Controller/OtpController/OtpController.dart';
 import 'package:ecommerce_app/MVC/View/HomeModule/Components/custom_bottom_nav_bar.dart';
 import 'package:ecommerce_app/Util/AppRoutes.dart';
 import 'package:ecommerce_app/Util/Constant.dart';
@@ -46,14 +47,17 @@ class _AccountPageState extends State<AccountPage> {
           children: [
             //User Profile Info Container
             ProfileWidget(),
+            SizedBox(
+              height: Get.height * 0.1,
+            ),
 
             //Order Info Container
-            Padding(
-              padding: EdgeInsets.all(20.w),
-              child: Container(
-                  decoration: GlobalWidget.defaultContainerDecoration(),
-                  child: getTextWidgets(contentArr, contentImageArr)),
-            ),
+            // Padding(
+            //   padding: EdgeInsets.all(20.w),
+            //   child: Container(
+            //       decoration: GlobalWidget.defaultContainerDecoration(),
+            //       child: getTextWidgets(contentArr, contentImageArr)),
+            // ),
 
             //Logout button container
             Padding(
@@ -164,10 +168,10 @@ class _AccountPageState extends State<AccountPage> {
 }
 
 class ProfileWidget extends StatelessWidget {
-  const ProfileWidget({
+  ProfileWidget({
     Key? key,
   }) : super(key: key);
-
+  OtpController _otpController = Get.put(OtpController());
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -204,7 +208,7 @@ class ProfileWidget extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(3.0),
                 child: Text(
-                  "Sultana Anjum",
+                  _otpController.name.isEmpty ? "Guest" : _otpController.name,
                   style: TextStyle(
                     fontFamily: circularStdBold,
                     color: Color(0xff3f1f20),
@@ -217,7 +221,9 @@ class ProfileWidget extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(3.0),
                 child: Text(
-                  "01677515692",
+                  _otpController.phoneNumber.isEmpty
+                      ? "I dont know your number"
+                      : _otpController.phoneNumber,
                   style: TextStyle(
                     fontFamily: circularStdBold,
                     color: Color(0xff808080),
@@ -230,7 +236,10 @@ class ProfileWidget extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(3.0),
                 child: Text(
-                  "Niketon,Gulshan 01",
+                  _otpController.address.isEmpty
+                      ? "I dont know your Address"
+                      : _otpController.address,
+                  maxLines: 2,
                   style: TextStyle(
                     fontFamily: circularStdBold,
                     color: Color(0xff808080),

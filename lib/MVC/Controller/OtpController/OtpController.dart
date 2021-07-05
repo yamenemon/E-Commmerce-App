@@ -44,6 +44,12 @@ class OtpController extends GetxController {
       }
     } else {
       isValid = false;
+      Get.defaultDialog(
+          title: "Error",
+          middleText: "Your Otp is not Matched",
+          onConfirm: () {
+            Get.back();
+          });
     }
     update();
   }

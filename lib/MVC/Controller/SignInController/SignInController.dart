@@ -6,13 +6,12 @@ import 'package:get/get.dart';
 
 class SignInController extends GetxController {
   MyRepository repository = MyRepository();
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
   TextEditingController loginPhoneNumber = TextEditingController();
   TextEditingController loginName = TextEditingController();
   TextEditingController loginAddress = TextEditingController();
   Random random = new Random();
   String otp = "";
-  bool? dialogShow;
 
   @override
   void onInit() {
@@ -38,11 +37,11 @@ class SignInController extends GetxController {
     loginAddress.dispose();
   }
 
-  void loginMethod() async {
-    if (formKey.currentState!.validate()) {
+  void loginMethod(GlobalKey<FormState> formkey) async {
+    if (formkey.currentState!.validate()) {
       otp = (random.nextInt(900000) + 100000).toString();
-
-      await repository.sentOtp(loginPhoneNumber.text, otp).then(
+      Map<String, dynamic> body = {"mobile": loginPhoneNumber.text, "otp": otp};
+      await repository.sentOtp(body).then(
         (login) {
           if (login == true) {
             Get.offAndToNamed(AppRoutes.OTP_PAGE,

@@ -15,10 +15,11 @@ class CartController extends GetxController with StateMixin {
   var currentProductQty = 0.obs;
   RxDouble productDetailTotalPrice = 0.0.obs;
   RxDouble cartPageTotalPrice = 0.0.obs;
+  RxDouble cartPageTotalDiscount = 0.0.obs;
   bool isFavorited = false;
   //For cart badge
   RxInt totalProductQtyBadge = 0.obs;
-
+  var discount = 0.0;
   @override
   onInit() {
     super.onInit();
@@ -107,6 +108,18 @@ class CartController extends GetxController with StateMixin {
     return 0.0;
   }
 
+  double getCurrentProductDiscountPrice(Product product) {
+    if (product.isDiscount != null) {
+      discount = (double.parse(product.price.toString()) -
+          (double.parse(product.isDiscount.toString()) *
+                  double.parse(product.price.toString())) /
+              100);
+      return discount;
+    }
+
+    return 0.0;
+  }
+
   updateProductDetailsTotalPrice(Product product) {
     if (product.price != null)
       productDetailTotalPrice.value =
@@ -118,9 +131,16 @@ class CartController extends GetxController with StateMixin {
     totalProductQtyBadge.value = 0;
 
     carts.forEach((element) {
-      if (element.productDemoModel.price != null)
+      if (element.productDemoModel.price != null &&
+          element.productDemoModel.isDiscount == 0) {
         cartPageTotalPrice.value +=
             (element.productDemoModel.price! * element.quantity);
+      } else if (element.productDemoModel.price != null &&
+          element.productDemoModel.isDiscount! > 0) {
+        cartPageTotalPrice.value +=
+            getCurrentProductDiscountPrice(element.productDemoModel) *
+                double.parse(element.quantity.toString());
+      }
 
       totalProductQtyBadge.value += element.quantity;
     });

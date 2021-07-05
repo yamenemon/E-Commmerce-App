@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/MVC/Controller/ConnectivityController.dart';
 import 'package:ecommerce_app/MVC/Controller/SignInController/SignInController.dart';
 import 'package:ecommerce_app/Util/Constant.dart';
 import 'package:ecommerce_app/Util/Language/LocalizationLanguage.dart';
@@ -15,7 +16,10 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
+  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final SignInController _signInController = Get.put(SignInController());
+  final ConnectivityController _connectivityController =
+      Get.find<ConnectivityController>();
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +83,7 @@ class _SignInPageState extends State<SignInPage> {
                 child: Column(
                   children: [
                     Form(
-                      key: _signInController.formKey,
+                      key: _formKey,
                       child: Column(
                         children: [
                           Padding(
@@ -143,7 +147,12 @@ class _SignInPageState extends State<SignInPage> {
                               builder: (_singInController) {
                                 return InkWell(
                                   onTap: () {
-                                    _signInController.loginMethod();
+                                    _connectivityController.isOnline == false
+                                        ? Get.snackbar("Internet",
+                                            "Your Internet is not stable",
+                                            backgroundColor: Colors.red[400])
+                                        : _signInController
+                                            .loginMethod(_formKey);
                                   },
                                   child: Container(
                                     width: Get.width - 40.w,

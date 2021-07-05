@@ -1,6 +1,6 @@
 import 'package:ecommerce_app/MVC/Controller/CartModule/CartController.dart';
-import 'package:ecommerce_app/MVC/Controller/GetController.dart';
 import 'package:ecommerce_app/MVC/Model/DemoModel/ProductModel.dart';
+import 'package:ecommerce_app/Util/AppRoutes.dart';
 import 'package:ecommerce_app/Util/AppUrl.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -9,7 +9,6 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-
 import 'package:google_fonts/google_fonts.dart';
 
 class FavouriteTile extends StatelessWidget {
@@ -21,10 +20,10 @@ class FavouriteTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        // Get.toNamed(
-        //   AppRoutes.PRODUCT_DETAIL_PAGE,
-        //   arguments: [_getController.catDetailsProduct![index]],
-        // );
+        Get.toNamed(
+          AppRoutes.PRODUCT_DETAIL_PAGE,
+          arguments: [product],
+        );
       },
       child: Padding(
         padding: EdgeInsets.only(top: 12.h, left: 12.w, right: 12.w),
@@ -39,7 +38,7 @@ class FavouriteTile extends StatelessWidget {
                 color: Colors.grey.withOpacity(0.15),
                 spreadRadius: 2,
                 blurRadius: 1,
-                offset: const Offset(0, 0), // changes position of shadow
+                offset: const Offset(0, 0),
               ),
             ],
           ),

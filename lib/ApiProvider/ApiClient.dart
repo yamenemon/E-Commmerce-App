@@ -6,6 +6,8 @@ import 'package:dio/dio.dart';
 import 'package:ecommerce_app/Util/Enums.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_disposable.dart';
 
+
+
 class ApiClient extends GetxService {
   late Dio _dio;
 
@@ -43,13 +45,14 @@ class ApiClient extends GetxService {
     );
   }
 
-  Future request(
-      String url, Method method, Map<String, dynamic>? params) async {
+  Future request(String url, Method method, Map<String, dynamic>? params,
+      bool formData) async {
     Response response;
 
     try {
       if (method == Method.POST) {
-        response = await _dio.post(url, data: FormData.fromMap(params!));
+        response = await _dio.post(url,
+            data: formData == true ? FormData.fromMap(params!) : params);
       } else if (method == Method.DELETE) {
         response = await _dio.delete(url);
       } else if (method == Method.PATCH) {

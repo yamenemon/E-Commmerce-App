@@ -45,7 +45,7 @@ class CustomBottomNavBar extends StatelessWidget {
               buildIconButton(MenuState.home),
               buildIconButton(MenuState.favourite),
               buildIconButton(MenuState.message),
-              buildIconButton(MenuState.profile),
+              // buildIconButton(MenuState.profile),
             ],
           ),
         ),
@@ -77,12 +77,12 @@ class CustomBottomNavBar extends StatelessWidget {
             selectedMenu == tabState ? kPrimaryColor : inActiveIconColor;
         tabName = "History";
         break;
-      case MenuState.profile:
-        imageName = "images/User Icon.svg";
-        textColor =
-            selectedMenu == tabState ? kPrimaryColor : inActiveIconColor;
-        tabName = "Profile";
-        break;
+      // case MenuState.profile:
+      //   imageName = "images/User Icon.svg";
+      //   textColor =
+      //       selectedMenu == tabState ? kPrimaryColor : inActiveIconColor;
+      //   tabName = "Profile";
+      //   break;
       default:
     }
 
@@ -120,9 +120,9 @@ class CustomBottomNavBar extends StatelessWidget {
           case MenuState.message:
             // Get.toNamed(AppRoutes.HOMEPAGE);
             break;
-          case MenuState.profile:
-            Get.toNamed(AppRoutes.ACCOUNT_PAGE);
-            break;
+          // case MenuState.profile:
+          //   Get.toNamed(AppRoutes.ACCOUNT_PAGE);
+          //   break;
           default:
         }
       },

@@ -43,31 +43,34 @@ class CheckoutCard extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                Container(
-                  padding: EdgeInsets.all(10.w),
-                  height: 40.h,
-                  width: 40.w,
-                  decoration: BoxDecoration(
-                    color: const Color(0xFFF5F6F9),
-                    borderRadius: BorderRadius.circular(10.r),
-                  ),
-                  child: SvgPicture.asset("images/receipt.svg"),
-                ),
-                const Spacer(),
-                Text(
-                  "Add voucher code",
-                  style: Theme.of(context).textTheme.bodyText2,
-                ),
-                const SizedBox(width: 10),
-                Icon(
-                  Icons.arrow_forward_ios,
-                  size: 12.sp,
-                  color: kTextColor,
-                )
-              ],
-            ),
+            // Row(
+            //   children: [
+            //     Container(
+            //       padding: EdgeInsets.all(10.w),
+            //       height: 40.h,
+            //       width: 40.w,
+            //       decoration: BoxDecoration(
+            //         color: const Color(0xFFF5F6F9),
+            //         borderRadius: BorderRadius.circular(10.r),
+            //       ),
+            //       child: SvgPicture.asset("images/receipt.svg"),
+            //     ),
+            //     const Spacer(),
+            //     InkWell(
+            //       onTap: () {},
+            //       child: Text(
+            //         "Add voucher code",
+            //         style: Theme.of(context).textTheme.bodyText2,
+            //       ),
+            //     ),
+            //     const SizedBox(width: 10),
+            //     Icon(
+            //       Icons.arrow_forward_ios,
+            //       size: 12.sp,
+            //       color: kTextColor,
+            //     )
+            //   ],
+            // ),
             SizedBox(height: 20.h),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

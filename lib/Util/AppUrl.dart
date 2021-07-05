@@ -5,4 +5,5 @@ class AppUrl {
   static String sent_otpUrl = "$BASE_URL/send_otp.php?";
   static String save_userUrl = "$BASE_URL/save_user.php";
   static String save_data_verifyUrl = "$BASE_URL/otp_pass.php";
+  static String save_orderUrl = "$BASE_URL/save_order.php";
 }

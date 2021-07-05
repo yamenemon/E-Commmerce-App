@@ -51,7 +51,7 @@ class CartCard extends StatelessWidget {
                 maxLines: 3,
               ),
             ),
-            const SizedBox(height: 10),
+            SizedBox(height: 10.h),
             Container(
               width: Get.width * 0.7.w,
               child: Row(
@@ -60,7 +60,9 @@ class CartCard extends StatelessWidget {
                   Obx(
                     () => Text.rich(
                       TextSpan(
-                        text: "\$${cart.productDemoModel.price}",
+                        text:
+                            " \$${_commonController.isSwitched == false ? _cartController.getCurrentProductDiscountPrice(cart.productDemoModel) : _commonController.convertNumber(_cartController.getCurrentProductDiscountPrice(cart.productDemoModel).toString())}",
+                        //"\$${cart.productDemoModel.price}",
                         style: GoogleFonts.poppins(
                             fontSize: 15.sp,
                             fontWeight: FontWeight.bold,
