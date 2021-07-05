@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:device_info/device_info.dart';
 import 'package:ecommerce_app/ApiProvider/App_Exception.dart';
 import 'package:ecommerce_app/Util/Language/Translation.dart';
 import 'package:flutter/cupertino.dart';
@@ -77,5 +80,17 @@ class CommonController extends GetxController {
         onConfirm: () {
           Get.back();
         });
+  }
+
+  Future<String> getDeviceId() async {
+    var deviceInfo = DeviceInfoPlugin();
+    if (Platform.isIOS) {
+      // import 'dart:io'
+      var iosDeviceInfo = await deviceInfo.iosInfo;
+      return iosDeviceInfo.identifierForVendor; // unique ID on iOS
+    } else {
+      var androidDeviceInfo = await deviceInfo.androidInfo;
+      return androidDeviceInfo.androidId; // unique ID on Android
+    }
   }
 }

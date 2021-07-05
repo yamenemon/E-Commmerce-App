@@ -268,17 +268,21 @@ class GlobalWidget {
             fontWeight: FontWeight.bold,
             fontStyle: FontStyle.normal),
       ),
-      content: new Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text(
-            description.isEmpty == true ? "No description found" : description,
-            maxLines: 30,
-            textAlign: TextAlign.left,
-            style: TextStyle(color: Colors.black, fontSize: 12.sp),
-          ),
-        ],
+      content: SingleChildScrollView(
+        child: new Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text(
+              description.isEmpty == true
+                  ? "No description found"
+                  : description,
+              maxLines: 30,
+              textAlign: TextAlign.left,
+              style: TextStyle(color: Colors.black, fontSize: 12.sp),
+            ),
+          ],
+        ),
       ),
       actions: <Widget>[
         Align(

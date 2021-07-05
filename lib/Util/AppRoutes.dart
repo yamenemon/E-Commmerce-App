@@ -24,15 +24,6 @@ class AppRoutes {
   static String POPULAR_SEE_MORE_PAGE = "popular_see_more_page";
   static String FAVOURITE_PAGE = "favourite_page";
 
-  // static String ADDRESS_PAGE = "My_Address_page";
-  // static String NEW_ADDRESS_PAGE = "New_Address_page";
-  // static String CHOOSE_LOCATION_PAGE = "Choose_Location";
-
-  // static String MY_ORDER_PAGE = "MY_ORDER_PAGE";
-  // static String ORDER_HISTORY_PAGE = "ORDER_HISTORY_PAGE";
-
-  // static String EDIT_PROFILE_PAGE = "EDIT_PROFILE_PAGE";
-
   static List<GetPage> AppRoutesList() {
     return [
       GetPage(name: SPLASHPAGE, page: () => SplashPage()),
@@ -47,14 +38,6 @@ class AppRoutes {
       GetPage(
           name: POPULAR_SEE_MORE_PAGE, page: () => PopularProductsSeeMore()),
       GetPage(name: FAVOURITE_PAGE, page: () => FavouritePage())
-      // GetPage(name: NEW_ADDRESS_PAGE, page: () => NewAddressPage()),
-      // GetPage(name: CHOOSE_LOCATION_PAGE, page: () => ChooseLocationPage()),
-
-      // GetPage(name: SIGNUP_PAGE, page: () => SignUpPage()),
-      // GetPage(name: MY_ORDER_PAGE, page: () => MyOrderPage()),
-      // GetPage(name: ORDER_HISTORY_PAGE, page: () => OrderHistoryPage()),
-
-      // GetPage(name: EDIT_PROFILE_PAGE, page: () => EditProfilePage()),
     ];
   }
 }

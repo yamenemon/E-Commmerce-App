@@ -103,8 +103,8 @@ class CustomBottomNavBar extends StatelessWidget {
               tabName,
               style: TextStyle(
                   color: textColor,
-                  fontSize: 12.sp,
-                  fontWeight: FontWeight.w600),
+                  fontSize: 10.sp,
+                  fontWeight: FontWeight.w400),
             ),
           )
         ],

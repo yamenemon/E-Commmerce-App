@@ -1,6 +1,4 @@
 import 'package:ecommerce_app/MVC/Controller/GetController.dart';
-import 'package:ecommerce_app/MVC/Model/DemoModel/ProductModel.dart';
-import 'package:ecommerce_app/Repository/MyRepository.dart';
 import 'package:ecommerce_app/Util/AppRoutes.dart';
 import 'package:ecommerce_app/Util/AppUrl.dart';
 import 'package:ecommerce_app/Util/Constant.dart';
@@ -33,8 +31,8 @@ class PopularProducts extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
-                width: Get.width,
-                height: Get.height * 0.25,
+                width: Get.width - 20.w,
+                height: Get.height * 0.28,
                 child: Obx(
                   () => _getController.isLoading.value == true
                       ? const Center(
@@ -46,51 +44,12 @@ class PopularProducts extends StatelessWidget {
                       : ListView.builder(
                           scrollDirection: Axis.horizontal,
                           itemCount: _getController.listToShow.length,
-                          //  _getController
-                          //     .getModelList.value.products!.length,
                           itemBuilder: (context, index) {
                             return InkWell(
                               onTap: () {
                                 Get.toNamed(
                                   AppRoutes.PRODUCT_DETAIL_PAGE,
-                                  arguments: [
-                                    Product(
-                                      productId: _getController
-                                          .listToShow[index].productId,
-                                      amount: _getController
-                                          .listToShow[index].amount,
-                                      categoryId: _getController
-                                          .listToShow[index].categoryId,
-                                      descriptionBn: _getController
-                                          .listToShow[index].descriptionBn,
-                                      descriptionEn: _getController
-                                          .listToShow[index].descriptionEn,
-                                      image2: _getController
-                                          .listToShow[index].image2,
-                                      image3: _getController
-                                          .listToShow[index].image3,
-                                      index: _getController
-                                          .listToShow[index].index,
-                                      isDiscount: _getController
-                                          .listToShow[index].isDiscount,
-                                      isPercentage: _getController
-                                          .listToShow[index].isPercentage,
-                                      nameBn: _getController
-                                          .listToShow[index].nameBn,
-                                      nameEn: _getController
-                                          .listToShow[index].nameEn,
-                                      picture:
-                                          "$BASE_URL/${_getController.listToShow[index].picture}",
-                                      price: _getController
-                                          .listToShow[index].price,
-                                      salePrice: _getController
-                                          .listToShow[index].salePrice,
-                                      unit:
-                                          _getController.listToShow[index].unit,
-                                      stock: _getController
-                                          .listToShow[index].stock,
-                                    )
-                                  ],
+                                  arguments: [_getController.listToShow[index]],
                                 );
                               },
                               child: Padding(
@@ -150,7 +109,70 @@ class PopularProducts extends StatelessWidget {
                                               style: GoogleFonts.poppins(
                                                   fontSize: 14.sp,
                                                   fontWeight: FontWeight.w500)),
-                                        )
+                                        ),
+                                        Container(
+                                            child: _getController
+                                                        .listToShow[index]
+                                                        .isDiscount! >
+                                                    0
+                                                ? Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            8.0),
+                                                    child: RichText(
+                                                      text: TextSpan(
+                                                        text: '',
+                                                        children: <TextSpan>[
+                                                          TextSpan(
+                                                            text:
+                                                                "\$${_getController.listToShow[index].price!}",
+                                                            style: TextStyle(
+                                                              color:
+                                                                  kPrimaryColor,
+                                                              decoration:
+                                                                  TextDecoration
+                                                                      .none,
+                                                            ),
+                                                          )
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  )
+                                                : Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            8.0),
+                                                    child: RichText(
+                                                      text: TextSpan(
+                                                        text: '',
+                                                        children: <TextSpan>[
+                                                          TextSpan(
+                                                            text:
+                                                                "\$${_getController.listToShow[index].price!}",
+                                                            style: TextStyle(
+                                                              color:
+                                                                  Colors.grey,
+                                                              decoration:
+                                                                  TextDecoration
+                                                                      .lineThrough,
+                                                            ),
+                                                          ),
+                                                          TextSpan(text: " "),
+                                                          TextSpan(
+                                                            text:
+                                                                "\$${_getController.listToShow[index].price! - ((_getController.listToShow[index].isDiscount! * _getController.listToShow[index].price!) / 100)}",
+                                                            style: TextStyle(
+                                                              color:
+                                                                  kPrimaryColor,
+                                                              decoration:
+                                                                  TextDecoration
+                                                                      .none,
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  )),
                                       ],
                                     ),
                                   ),
