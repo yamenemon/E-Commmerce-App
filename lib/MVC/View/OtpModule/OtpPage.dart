@@ -94,7 +94,8 @@ class _OtpPageState extends State<OtpPage> {
           Container(
             margin: EdgeInsets.only(left: 20.w),
             child: Text(
-              LocalizationLanguage.SENT_TEXT.tr +" ${_otpController.phoneNumber}",
+              LocalizationLanguage.SENT_TEXT.tr +
+                  " ${_otpController.phoneNumber}",
               style: TextStyle(
                 fontFamily: 'CircularStd',
                 color: Color(0xff000000),

@@ -20,17 +20,22 @@ class _PaymentPageState extends State<PaymentPage> {
   CartController _cartController = Get.find<CartController>();
   CommonController _commonController = Get.find<CommonController>();
   PaymentController _paymentController = Get.put(PaymentController());
-  dynamic profile;
-  var userid;
   TextEditingController address = TextEditingController();
+  String userAddress = "";
+  String name = "";
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    profile = Get.arguments[0];
-    userid = Get.arguments[1];
-    address.text = profile["house"];
+    loadShared();
+  }
+
+  //Load Shared Preferences
+  loadShared() async {
+    userAddress = _commonController.getUserAddress();
+    name = _commonController.getUserName();
+    address.text = userAddress;
   }
 
   @override
@@ -85,27 +90,27 @@ class _PaymentPageState extends State<PaymentPage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("SubTotal   "),
+                    Text("Total   "),
                     Text(
                         " = ${_cartController.cartPageTotalPrice.toInt().toString().length > 6 ? "${_cartController.cartPageTotalPrice.toString().substring(0, 6)}.." : "${_commonController.isSwitched == false ? _cartController.cartPageTotalPrice.toStringAsFixed(2) : _commonController.convertNumber(_cartController.cartPageTotalPrice.toStringAsFixed(2).toString())}"}")
                   ],
                 ),
               ),
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 8.sp),
-              child: Container(
-                width: Get.width * 0.8,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text("Delivery Charge  "),
-                    Text(
-                        " = ${_cartController.cartPageTotalPrice.toInt().toString().length > 6 ? "${_cartController.cartPageTotalPrice.toString().substring(0, 6)}.." : "${_commonController.isSwitched == false ? _cartController.cartPageTotalPrice.toStringAsFixed(2) : _commonController.convertNumber(_cartController.cartPageTotalPrice.toStringAsFixed(2).toString())}"}")
-                  ],
-                ),
-              ),
-            ),
+            // Padding(
+            //   padding: EdgeInsets.symmetric(horizontal: 8.sp),
+            //   child: Container(
+            //     width: Get.width * 0.8,
+            //     child: Row(
+            //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //       children: [
+            //         Text("Delivery Charge  "),
+            //         Text(
+            //             " = ${_cartController.cartPageTotalPrice.toInt().toString().length > 6 ? "${_cartController.cartPageTotalPrice.toString().substring(0, 6)}.." : "${_commonController.isSwitched == false ? _cartController.cartPageTotalPrice.toStringAsFixed(2) : _commonController.convertNumber(_cartController.cartPageTotalPrice.toStringAsFixed(2).toString())}"}")
+            //       ],
+            //     ),
+            //   ),
+            // ),
             SizedBox(
               height: Get.height * 0.1,
             ),
@@ -133,25 +138,12 @@ class _PaymentPageState extends State<PaymentPage> {
                       style: GlobalWidget.buttonStyle(),
                       child: Text("Pay now"),
                       onPressed: () async {
-                        if (address.text == profile["house"]) {
-                          await _paymentController.saveOrderMethod(
-                            userid.toString(),
-                            profile["name"],
-                            profile["mobile"],
-                            address.text,
-                          );
-                          print("sslcommerze");
-                          //sslCommerzGeneralCall();
+                        if (address.text == userAddress) {
+                          await _paymentController.sslCommerzGeneralCall();
+                          // await _paymentController.sslCommerzGeneralCall();
                         } else {
                           print("change address also call");
-                          await _paymentController.callSaveUser(
-                              userid.toString(),
-                              profile["name"],
-                              profile["mobile"],
-                              address.text);
-
-                          //sslCommerzGeneralCall();
-
+                          await _paymentController.callSaveUser(address.text);
                         }
                       },
                     ),

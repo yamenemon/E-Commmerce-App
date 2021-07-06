@@ -43,24 +43,15 @@ class SignInController extends GetxController {
       Map<String, dynamic> body = {"mobile": loginPhoneNumber.text, "otp": otp};
       await repository.sentOtp(body).then(
         (login) {
-          if (login == true) {
-            Get.offAndToNamed(AppRoutes.OTP_PAGE,
-                arguments: [otp, loginName, loginPhoneNumber, loginAddress]);
-            loginPhoneNumber.clear();
-            loginName.clear();
-            loginAddress.clear();
-          } else {
-            //for testing purpose
-            Get.toNamed(AppRoutes.OTP_PAGE, arguments: [
-              otp,
-              loginName.text,
-              loginPhoneNumber.text,
-              loginAddress.text
-            ]);
-            loginPhoneNumber.clear();
-            loginName.clear();
-            loginAddress.clear();
-          }
+          Get.offAndToNamed(AppRoutes.OTP_PAGE, arguments: [
+            otp,
+            loginName.text,
+            loginPhoneNumber.text,
+            loginAddress.text
+          ]);
+          loginPhoneNumber.clear();
+          loginName.clear();
+          loginAddress.clear();
         },
       );
       print(otp);

@@ -14,14 +14,40 @@ class PopularProductsSeeMore extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var arg = Get.arguments;
     GetController _getController =
         Get.put(GetController(repository: MyRepository()));
     return SafeArea(
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar:
             GlobalWidget.globalAppBar("All Products", Colors.transparent, true),
         body: Column(
           children: [
+            arg == "search"
+                ? Padding(
+                    padding: EdgeInsets.all(8.w),
+                    child: Container(
+                      width: Get.width,
+                      decoration: BoxDecoration(
+                        color: kSecondaryColor.withOpacity(0.1),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: TextField(
+                        onChanged: (value) =>
+                            _getController.searchMethod(value),
+                        decoration: InputDecoration(
+                            contentPadding: EdgeInsets.symmetric(
+                                horizontal: 20.w, vertical: 9.h),
+                            border: InputBorder.none,
+                            focusedBorder: InputBorder.none,
+                            enabledBorder: InputBorder.none,
+                            hintText: "Search product",
+                            prefixIcon: Icon(Icons.search)),
+                      ),
+                    ),
+                  )
+                : Text(""),
             SingleChildScrollView(
               scrollDirection: Axis.vertical,
               child: Row(
@@ -30,7 +56,7 @@ class PopularProductsSeeMore extends StatelessWidget {
                 children: [
                   Container(
                     width: Get.width * 0.9,
-                    height: Get.height * 0.88,
+                    height: Get.height * 0.78,
                     child: Obx(
                       () => _getController.isLoading.value == true
                           ? Center(
@@ -41,16 +67,14 @@ class PopularProductsSeeMore extends StatelessWidget {
                             )
                           : ListView.builder(
                               scrollDirection: Axis.vertical,
-                              itemCount: _getController
-                                  .getModelList.value.products!.length,
+                              itemCount: _getController.searchList!.length,
                               itemBuilder: (context, index) {
                                 return InkWell(
                                   onTap: () {
                                     Get.toNamed(
                                       AppRoutes.PRODUCT_DETAIL_PAGE,
                                       arguments: [
-                                        _getController
-                                            .getModelList.value.products![index]
+                                        _getController.searchList![index]
                                       ],
                                     );
                                   },
@@ -79,15 +103,15 @@ class PopularProductsSeeMore extends StatelessWidget {
                                             borderRadius:
                                                 BorderRadius.circular(8.0),
                                             child: Image.network(
-                                              "$BASE_URL/${_getController.getModelList.value.products?[index].picture}",
+                                              "$BASE_URL/${_getController.searchList![index].picture}",
                                               height: 80.h,
                                               width: 80.h,
                                               fit: BoxFit.fitWidth,
                                               alignment: Alignment.centerLeft,
                                             )),
                                         title: Text(
-                                          _getController.getModelList.value
-                                              .products![index].nameEn
+                                          _getController
+                                              .searchList![index].nameEn
                                               .toString(),
                                           maxLines: 1,
                                           textAlign: TextAlign.left,
@@ -102,19 +126,14 @@ class PopularProductsSeeMore extends StatelessWidget {
                                               top: 5.0.h,
                                               bottom: 5.0.h),
                                           child: Text(
-                                            _getController
-                                                        .getModelList
-                                                        .value
-                                                        .products?[index]
+                                            _getController.searchList![index]
                                                         .descriptionBn
                                                         .toString()
                                                         .isEmpty ==
                                                     true
                                                 ? "No description found"
                                                 : _getController
-                                                    .getModelList
-                                                    .value
-                                                    .products![index]
+                                                    .searchList![index]
                                                     .descriptionBn
                                                     .toString(),
                                             maxLines: 3,
@@ -125,17 +144,17 @@ class PopularProductsSeeMore extends StatelessWidget {
                                           ),
                                         ),
                                         trailing: GestureDetector(
-                                            onTap: () {
-                                              showDialog(
-                                                context: context,
-                                                builder: (BuildContext
-                                                        context) =>
-                                                    GlobalWidget.buildPopupDialog(
-                                                        context,
-                                                        "${_getController.getModelList.value.products?[index].descriptionBn.toString()}"),
-                                              );
-                                            },
-                                            child: Icon(Icons.more_vert)),
+                                          onTap: () {
+                                            showDialog(
+                                              context: context,
+                                              builder: (BuildContext context) =>
+                                                  GlobalWidget.buildPopupDialog(
+                                                      context,
+                                                      "${_getController.searchList![index].descriptionBn.toString()}"),
+                                            );
+                                          },
+                                          child: Icon(Icons.more_vert),
+                                        ),
                                       ),
                                     ),
                                   ),

@@ -35,7 +35,7 @@ class SpecialOffers extends StatelessWidget {
                     // _getController.getModelList.value.offerList!.length,
                     itemBuilder: (contex, index) => SpecialOfferCard(
                       image:
-                          "$BASE_URL/${_getController.getModelList.value.offerList![0].image!}",
+                          "$BASE_URL/${_getController.getModelList.value.offerList![0].image.toString()}",
                       category: _getController
                           .getModelList.value.offerList![0].title!,
                       numOfBrands: 18,
@@ -76,7 +76,7 @@ class SpecialOfferCard extends StatelessWidget {
 
     if (!image.contains(".jpg") || !image.contains(".jpeg")) {
       image =
-          "http://ecommerce.tritechfirm.com/app-api/images/categories/1618875207.jpg";
+          "https://ecommerce.tritechfirm.com/app-api/images/categories/1618875207.jpg";
     }
     return Padding(
       padding: EdgeInsets.only(left: 15.w, right: 15.w),
@@ -90,7 +90,7 @@ class SpecialOfferCard extends StatelessWidget {
             child: Stack(
               children: [
                 Image.network(
-                  image,
+                  image.toString(),
                   fit: BoxFit.fill,
                 ),
                 Container(

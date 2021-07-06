@@ -19,7 +19,7 @@ class AccountPage extends StatefulWidget {
 }
 
 class _AccountPageState extends State<AccountPage> {
-  CommonController commonController = Get.put(CommonController());
+  CommonController _commonController = Get.find<CommonController>();
   @override
   Widget build(BuildContext context) {
     var contentArr = [
@@ -110,9 +110,9 @@ class _AccountPageState extends State<AccountPage> {
                     ],
                   ),
                   trailing: Switch(
-                    value: commonController.isSwitched,
+                    value: _commonController.isSwitched,
                     onChanged: (value) {
-                      commonController.changeLocaleMethod(value);
+                      _commonController.changeLocaleMethod(value);
                     },
                     activeTrackColor: Colors.grey,
                     activeColor: Colors.red,
@@ -172,6 +172,7 @@ class ProfileWidget extends StatelessWidget {
     Key? key,
   }) : super(key: key);
   OtpController _otpController = Get.put(OtpController());
+  CommonController _commonController = Get.find<CommonController>();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -208,7 +209,9 @@ class ProfileWidget extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(3.0),
                 child: Text(
-                  _otpController.name.isEmpty ? "Guest" : _otpController.name,
+                  _commonController.getUserName() == ""
+                      ? "Guest"
+                      : _commonController.getUserName(),
                   style: TextStyle(
                     fontFamily: circularStdBold,
                     color: Color(0xff3f1f20),
@@ -221,9 +224,9 @@ class ProfileWidget extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(3.0),
                 child: Text(
-                  _otpController.phoneNumber.isEmpty
+                  _commonController.getUserMobile() == ""
                       ? "I dont know your number"
-                      : _otpController.phoneNumber,
+                      : _commonController.getUserMobile(),
                   style: TextStyle(
                     fontFamily: circularStdBold,
                     color: Color(0xff808080),
@@ -236,9 +239,9 @@ class ProfileWidget extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(3.0),
                 child: Text(
-                  _otpController.address.isEmpty
+                  _commonController.getUserAddress() == ""
                       ? "I dont know your Address"
-                      : _otpController.address,
+                      : _commonController.getUserAddress(),
                   maxLines: 2,
                   style: TextStyle(
                     fontFamily: circularStdBold,

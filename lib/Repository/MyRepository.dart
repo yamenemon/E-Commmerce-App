@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:ecommerce_app/ApiProvider/ApiClient.dart';
 import 'package:ecommerce_app/MVC/Controller/CommonController.dart';
 import 'package:ecommerce_app/MVC/Model/DemoModel/ProductModel.dart';
+import 'package:ecommerce_app/MVC/Model/OrderHistoryModel/OrderHistoryModel.dart';
 import 'package:ecommerce_app/MVC/Model/SaveDataVerifyOtpModel/saveDataverifyOtpModel.dart';
 import 'package:ecommerce_app/MVC/Model/SaveOrderModel/saveOrderModel.dart';
 import 'package:ecommerce_app/Util/AppUrl.dart';
@@ -135,6 +136,29 @@ class MyRepository {
       }
     } catch (e) {
       print("saveOrder ::: ${e.toString()}");
+    }
+  }
+
+  Future<OrderHistoryModel?> orderHistory(String userId) async {
+    print(userId);
+
+    Map<String, dynamic> body = {
+      "userid": userId,
+    };
+    var res = await apiClient
+        .request(AppUrl.order_historyUrl, Method.POST, body, true)
+        .catchError(commonController.handleError);
+
+    try {
+      if (res.data != null) {
+        String responseString = res.data;
+        print(responseString);
+        return orderHistoryModelFromJson(responseString);
+      } else {
+        return orderHistoryModelFromJson(res.data.toString());
+      }
+    } catch (e) {
+      print("orderHistory ::: ${e.toString()}");
     }
   }
 }

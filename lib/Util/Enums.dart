@@ -1,4 +1,4 @@
-enum MenuState { home, favourite, message, profile }
+enum MenuState { home, favourite, history, profile }
 enum PAGES {
   MY_ORDER,
   ORDER_HISTORY,

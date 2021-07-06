@@ -17,6 +17,8 @@ class GetController extends GetxController {
   final _random = new Random();
   List<Product>? data = [];
 
+  RxList<Product>? searchList = RxList<Product>();
+
   @override
   void onInit() {
     // TODO: implement onInit
@@ -31,6 +33,7 @@ class GetController extends GetxController {
       if (getdata != null) {
         getModelList.value = getdata;
         data = getdata.products;
+        searchList!.value = getdata.products!;
         updateDataInList();
       }
     } finally {
@@ -52,5 +55,17 @@ class GetController extends GetxController {
   void productStore(List<Product> product, var prid) {
     catDetailsProduct = product.where((c) => c.categoryId == prid).toList();
     print(catDetailsProduct);
+  }
+
+  //Search method
+  RxList<Product>? searchMethod(value) {
+    print("serchMethod ::: " + value);
+    searchList!.value = getModelList.value.products!
+        .where((product) =>
+            product.nameEn!.toLowerCase().contains(value.toLowerCase()))
+        .toList();
+
+    update();
+    return searchList;
   }
 }
