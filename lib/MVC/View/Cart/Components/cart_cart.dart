@@ -56,7 +56,9 @@ class CartCard extends StatelessWidget {
                   Obx(
                     () => Text.rich(
                       TextSpan(
-                        text: "\$${cart.productDemoModel.price}",
+                        text:
+                            " \$${_commonController.isSwitched == false ? _cartController.getCurrentProductDiscountPrice(cart.productDemoModel) : _commonController.convertNumber(_cartController.getCurrentProductDiscountPrice(cart.productDemoModel).toString())}",
+                        //"\$${cart.productDemoModel.price}",
                         style: GoogleFonts.poppins(
                             fontSize: 15.sp,
                             fontWeight: FontWeight.bold,

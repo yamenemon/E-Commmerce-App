@@ -5,9 +5,26 @@ import 'package:ecommerce_app/ApiProvider/App_Exception.dart';
 import 'package:ecommerce_app/Util/Language/Translation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class CommonController extends GetxController {
   bool isSwitched = false;
+  static String USER_ID = "user_id";
+  static String USER_NAME = "user_name";
+  static String USER_ADDRESS = "user_address";
+  static String USER_MOBILE = "user_mobile";
+  late SharedPreferences sharedPreferences;
+  @override
+  void onInit() {
+    // TODO: implement onInit
+    super.onInit();
+    initSharedPref();
+  }
+
+  //initialize Shared Pref Instances
+  initSharedPref() async {
+    sharedPreferences = await SharedPreferences.getInstance();
+  }
 
   String convertNumber(String eng) {
     String bengali = '';
@@ -56,7 +73,7 @@ class CommonController extends GetxController {
     LocalizationService().changeLocale(isSwitched);
   }
 
-  static void handleError(error) {
+  void handleError(error) {
     if (error is BadRequestException) {
       var message = error.message;
       showDialog(description: message);
@@ -69,7 +86,7 @@ class CommonController extends GetxController {
     }
   }
 
-  static void showDialog({
+  void showDialog({
     String title = "Error",
     String description = "Something went wrong",
   }) {
@@ -92,5 +109,61 @@ class CommonController extends GetxController {
       var androidDeviceInfo = await deviceInfo.androidInfo;
       return androidDeviceInfo.androidId; // unique ID on Android
     }
+  }
+
+  //SharedPreferences set User Id
+  storeUserId(String userId) async {
+    sharedPreferences.setString(USER_ID, userId);
+    update();
+  }
+
+  //SharedPreferences get user Id
+  String getUserId() {
+    String userId = sharedPreferences.getString(USER_ID) ?? "0";
+    update();
+    print("Shared UserId " + userId);
+    return userId;
+  }
+
+  //SharedPreferences set User Name
+  storeName(String name) async {
+    sharedPreferences.setString(USER_NAME, name);
+    update();
+  }
+
+  //SharedPreferences get user Name
+  String getUserName() {
+    String userName = sharedPreferences.getString(USER_NAME) ?? " ";
+    update();
+    print("Shared UserName " + userName);
+    return userName;
+  }
+
+  //SharedPreferences set User Address
+  storeUserAddress(String address) async {
+    sharedPreferences.setString(USER_ADDRESS, address);
+    update();
+  }
+
+  //SharedPreferences get user Address
+  String getUserAddress() {
+    String userAddress = sharedPreferences.getString(USER_ADDRESS) ?? " ";
+    update();
+    print("Shared UserAddress " + userAddress);
+    return userAddress;
+  }
+
+  //SharedPreferences set User Address
+  storeMobileNumber(String mobile) async {
+    sharedPreferences.setString(USER_MOBILE, mobile);
+    update();
+  }
+
+  //SharedPreferences get user Address
+  String getUserMobile() {
+    String userMobile = sharedPreferences.getString(USER_MOBILE) ?? " ";
+    update();
+    print("Shared UserAddress " + userMobile);
+    return userMobile;
   }
 }

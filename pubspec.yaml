@@ -45,6 +45,7 @@ dependencies:
   lottie: ^1.0.1
   flutter_sslcommerze: ^1.0.1-nullsafety.0
   device_info: ^2.0.2
+  shared_preferences: ^2.0.6
 
 dev_dependencies:
   flutter_test:
