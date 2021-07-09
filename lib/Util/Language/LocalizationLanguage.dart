@@ -70,6 +70,9 @@ class LocalizationLanguage {
   static final ENTER_ADDRESS_TEXT = 'enter_address';
   static final ENTER_ADDRESS_REQ_TEXT = 'enter_address_req';
   static final PRODUCTNAME_TEXT = 'pr_name';
+  static final ACCOUNTGUEST_TEXT = 'guest';
+  static final ACCOUNTNUMBER_TEXT = 'num';
+  static final ACCOUNTADDRESS_TEXT = 'add';
 
   static Map<String, String> bn = {
     //HomePage
@@ -166,7 +169,10 @@ class LocalizationLanguage {
 
     //Other
     'language': "ভাষা",
-    'pr_name': "বসুন্ধরা রুটি খেতে প্রস্তুত"
+    'pr_name': "বসুন্ধরা রুটি খেতে প্রস্তুত",
+    'guest': "গেস্ট",
+    "num": "আমি আপনার নাম্বার জানি না",
+    "add": "আমি আপনার এড্রেস জানি না"
   };
 
   static Map<String, String> en = {
@@ -265,6 +271,9 @@ class LocalizationLanguage {
 
     //Other
     'language': "Language",
-    'pr_name': "Bashundhara ready to eat ruti"
+    'pr_name': "Bashundhara ready to eat ruti",
+    'guest': "Guest",
+    "num": "I dont know your Number",
+    "add": "I dont know your Address"
   };
 }
