@@ -1,7 +1,7 @@
 import 'dart:io';
-
 import 'package:device_info/device_info.dart';
 import 'package:ecommerce_app/ApiProvider/App_Exception.dart';
+import 'package:ecommerce_app/Util/AppRoutes.dart';
 import 'package:ecommerce_app/Util/Language/Translation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
@@ -14,6 +14,7 @@ class CommonController extends GetxController {
   static String USER_ADDRESS = "user_address";
   static String USER_MOBILE = "user_mobile";
   late SharedPreferences sharedPreferences;
+  var storedata = false.obs;
   @override
   void onInit() {
     // TODO: implement onInit
@@ -120,6 +121,12 @@ class CommonController extends GetxController {
   //SharedPreferences get user Id
   String getUserId() {
     String userId = sharedPreferences.getString(USER_ID) ?? "0";
+    if (userId == "0") {
+      storedata.value = false;
+    } else {
+      storedata.value = true;
+    }
+
     update();
     print("Shared UserId " + userId);
     return userId;
@@ -133,7 +140,8 @@ class CommonController extends GetxController {
 
   //SharedPreferences get user Name
   String getUserName() {
-    String userName = sharedPreferences.getString(USER_NAME) ?? " ";
+    String userName = sharedPreferences.getString(USER_NAME) ?? "no";
+
     update();
     print("Shared UserName " + userName);
     return userName;
@@ -147,7 +155,7 @@ class CommonController extends GetxController {
 
   //SharedPreferences get user Address
   String getUserAddress() {
-    String userAddress = sharedPreferences.getString(USER_ADDRESS) ?? " ";
+    String userAddress = sharedPreferences.getString(USER_ADDRESS) ?? "no";
     update();
     print("Shared UserAddress " + userAddress);
     return userAddress;
@@ -161,9 +169,9 @@ class CommonController extends GetxController {
 
   //SharedPreferences get user Address
   String getUserMobile() {
-    String userMobile = sharedPreferences.getString(USER_MOBILE) ?? " ";
+    String userMobile = sharedPreferences.getString(USER_MOBILE) ?? "no";
     update();
-    print("Shared UserAddress " + userMobile);
+    print("Shared userMobile " + userMobile);
     return userMobile;
   }
 }

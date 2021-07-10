@@ -35,12 +35,12 @@ class AppRoutes {
       GetPage(name: OTP_PAGE, page: () => OtpPage()),
       GetPage(name: SIGNIN_PAGE, page: () => SignInPage()),
       GetPage(name: PAYMENT_PAGE, page: () => PaymentPage()),
-      GetPage(name: ACCOUNT_PAGE, page: () => AccountPage()),
+      GetPage(name: ACCOUNT_PAGE, page: () => AcccountPage()),
       GetPage(name: CATEGORY_DETAILS_PAGE, page: () => CategoryDetailsPage()),
       GetPage(
           name: POPULAR_SEE_MORE_PAGE, page: () => PopularProductsSeeMore()),
       GetPage(name: FAVOURITE_PAGE, page: () => FavouritePage()),
-      GetPage(name: ORDERHISTORY_PAGE, page: () => OrderHistoryPage())
+      GetPage(name: ORDERHISTORY_PAGE, page: () => OrderHistoryPage()),
     ];
   }
 }

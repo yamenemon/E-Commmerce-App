@@ -9,7 +9,7 @@ class SpecialOffers extends StatelessWidget {
   SpecialOffers({
     Key? key,
   }) : super(key: key);
-  GetController _getController = Get.find<GetController>();
+  final GetController _getController = Get.find<GetController>();
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,14 @@ class SpecialOffers extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 15.w),
           child: SectionTitle(
             title: "Special for you",
-            press: () {},
+            press: () {
+              Get.defaultDialog(
+                  title: "Special Offer",
+                  middleText: "You will find New Offer very Soon",
+                  onConfirm: () {
+                    Get.back();
+                  });
+            },
           ),
         ),
         SizedBox(height: 15.h),

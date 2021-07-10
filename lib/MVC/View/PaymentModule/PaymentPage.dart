@@ -1,7 +1,7 @@
 import 'package:ecommerce_app/MVC/Controller/CartModule/CartController.dart';
 import 'package:ecommerce_app/MVC/Controller/CommonController.dart';
 import 'package:ecommerce_app/MVC/Controller/PaymentController/paymentController.dart';
-import 'package:ecommerce_app/MVC/View/PaymentModule/Component/SummaryCard.dart';
+import 'package:ecommerce_app/MVC/View/PaymentModule/Components/SummaryCard.dart';
 import 'package:ecommerce_app/Util/AppRoutes.dart';
 import 'package:ecommerce_app/Util/Constant.dart';
 import 'package:ecommerce_app/globalWidget.dart';

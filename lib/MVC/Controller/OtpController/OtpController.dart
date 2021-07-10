@@ -21,7 +21,8 @@ class OtpController extends GetxController {
 
     if (otp == v) {
       isValid = true;
-   SaveDataVerifyOtpModel? _saveVerify = await repository.saveDataVerifyOtp(phoneNumber);
+      SaveDataVerifyOtpModel? _saveVerify =
+          await repository.saveDataVerifyOtp(phoneNumber);
       try {
         if (_saveVerify != null && _saveVerify.profile == null) {
           print("if portion");
@@ -29,13 +30,15 @@ class OtpController extends GetxController {
           _commonController.storeName(name.toString());
           _commonController.storeMobileNumber(phoneNumber.toString());
           _commonController.storeUserAddress(address.toString());
+          _commonController.update([_commonController.getUserId()]);
+
           await repository
               .saveUser(
                   _saveVerify.userid.toString(), name, phoneNumber, address)
               .then(
             (saveUser) {
               if (saveUser == true) {
-                Get.offAndToNamed(AppRoutes.PAYMENT_PAGE);
+                Get.offAllNamed(AppRoutes.PAYMENT_PAGE);
               }
             },
           );
@@ -47,7 +50,8 @@ class OtpController extends GetxController {
               .storeMobileNumber(_saveVerify.profile["mobile"].toString());
           _commonController
               .storeUserAddress(_saveVerify.profile["house"] ?? "");
-          Get.offAndToNamed(AppRoutes.PAYMENT_PAGE);
+          _commonController.update([_commonController.getUserId()]);
+          Get.offAllNamed(AppRoutes.PAYMENT_PAGE);
         }
       } catch (e) {
         print("saveverify method ::: " + e.toString());

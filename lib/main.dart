@@ -2,29 +2,32 @@ import 'package:ecommerce_app/ApiProvider/ApiClient.dart';
 import 'package:ecommerce_app/MVC/Controller/CartModule/CartController.dart';
 import 'package:ecommerce_app/MVC/Controller/CommonController.dart';
 import 'package:ecommerce_app/MVC/Controller/ConnectivityController.dart';
+import 'package:ecommerce_app/MVC/Controller/FirebaseController/FirebaseController.dart';
 import 'package:ecommerce_app/Repository/MyRepository.dart';
 import 'package:ecommerce_app/Util/AppRoutes.dart';
 import 'package:ecommerce_app/Util/Constant.dart';
 import 'package:ecommerce_app/Util/Language/Translation.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'MVC/Controller/GetController.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   initServices();
   runApp(const MyApp());
 }
 
 initServices() async {
   await Get.putAsync<ApiClient>(() => ApiClient().init());
-  Get.put<ConnectivityController>(ConnectivityController(), permanent: true);
-  Get.put<CartController>(CartController(), permanent: true);
-  Get.put<CommonController>(CommonController(), permanent: true);
-  Get.put<GetController>(GetController(repository: MyRepository()),
-      permanent: true);
+  Get.put(CommonController(), permanent: true);
+  Get.put(ConnectivityController(), permanent: true);
+  Get.put(GetController(repository: MyRepository()), permanent: true);
+  Get.put(CartController(), permanent: true);
+  Get.put(FireBaseController(), permanent: true);
   // await Get.putAsync<AppDb>(() => AppDb.init());
 }
 
