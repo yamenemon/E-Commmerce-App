@@ -10,8 +10,8 @@ import 'package:google_fonts/google_fonts.dart';
 class SummaryCard extends StatelessWidget {
   SummaryCard({Key? key, required this.cart}) : super(key: key);
   late Cart cart;
-  CommonController _commonController = Get.find<CommonController>();
-  CartController _cartController = Get.find<CartController>();
+  final CommonController _commonController = Get.find<CommonController>();
+  final CartController _cartController = Get.find<CartController>();
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +44,8 @@ class SummaryCard extends StatelessWidget {
                       Obx(
                         () => Text.rich(
                           TextSpan(
-                            text: "\$${cart.productDemoModel.price}",
+                            text:
+                                " \$${_commonController.isSwitched == false ? _cartController.getCurrentProductDiscountPrice(cart.productDemoModel) : _commonController.convertNumber(_cartController.getCurrentProductDiscountPrice(cart.productDemoModel).toString())}",
                             style: GoogleFonts.poppins(
                                 fontSize: 15.sp,
                                 fontWeight: FontWeight.bold,
@@ -59,7 +60,7 @@ class SummaryCard extends StatelessWidget {
                         ),
                       ),
                       Text(
-                          " = ${_commonController.isSwitched == false ? _cartController.getCurrentProductTotalPrice(cart.productDemoModel) : _commonController.convertNumber(_cartController.getCurrentProductTotalPrice(cart.productDemoModel).toString())}")
+                          " = ${_commonController.isSwitched == false ? _cartController.getCurrentProductTotalPrice(cart.productDemoModel).toStringAsFixed(2) : _commonController.convertNumber(_cartController.getCurrentProductTotalPrice(cart.productDemoModel).toStringAsFixed(2).toString())}")
                     ],
                   ),
                 ),

@@ -1,5 +1,4 @@
 import 'package:ecommerce_app/MVC/Controller/GetController.dart';
-import 'package:ecommerce_app/MVC/Model/DemoModel/ProductModel.dart';
 import 'package:ecommerce_app/Util/AppRoutes.dart';
 import 'package:ecommerce_app/Util/AppUrl.dart';
 import 'package:ecommerce_app/globalWidget.dart';

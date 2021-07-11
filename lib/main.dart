@@ -28,7 +28,6 @@ initServices() async {
   Get.put(GetController(repository: MyRepository()), permanent: true);
   Get.put(CartController(), permanent: true);
   Get.put(FireBaseController(), permanent: true);
-  // await Get.putAsync<AppDb>(() => AppDb.init());
 }
 
 class MyApp extends StatelessWidget {

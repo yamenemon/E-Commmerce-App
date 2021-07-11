@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/MVC/Model/NotificationModel.dart';
 import 'package:ecommerce_app/Util/LocalNotification/LocalNotificationService.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:get/get.dart';
@@ -9,6 +10,7 @@ Future<void> backgroundHandler(RemoteMessage message) async {
 }
 
 class FireBaseController extends GetxController {
+  RxList notificationlist = [].obs;
   @override
   void onInit() {
     // TODO: implement onInit
@@ -25,6 +27,7 @@ class FireBaseController extends GetxController {
     FirebaseMessaging.instance.getInitialMessage().then((message) {
       if (message != null) {
         final routeFromMessage = message.data["Screen"];
+        storeNotification(message);
         Get.offAndToNamed(routeFromMessage);
       }
     });
@@ -36,7 +39,9 @@ class FireBaseController extends GetxController {
       if (message.notification != null) {
         print(message.notification!.body);
         print(message.notification!.title);
+        storeNotification(message);
       }
+
       LocalNotificationService.display(message);
     });
   }
@@ -46,8 +51,17 @@ class FireBaseController extends GetxController {
     FirebaseMessaging.onMessageOpenedApp.listen((message) {
       if (message.data["Screen"] != null) {
         final routeFromMessage = message.data["Screen"];
+        storeNotification(message);
         Get.offAndToNamed(routeFromMessage);
       }
     });
+  }
+
+  void storeNotification(RemoteMessage message) {
+    notificationlist.add(NotificationModel(
+        title: message.notification?.title ?? "",
+        description: message.notification!.body.toString()));
+
+    update();
   }
 }

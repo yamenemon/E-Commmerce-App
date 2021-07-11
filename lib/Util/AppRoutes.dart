@@ -5,6 +5,7 @@ import 'package:ecommerce_app/MVC/View/DetailsModule/ProductDetailPage.dart';
 import 'package:ecommerce_app/MVC/View/FavouriteModule/favouritePage.dart';
 import 'package:ecommerce_app/MVC/View/HomeModule/Components/SeeMore/popular_products_see_more.dart';
 import 'package:ecommerce_app/MVC/View/HomeModule/HomePage.dart';
+import 'package:ecommerce_app/MVC/View/NotificationModule/notficationPage.dart';
 import 'package:ecommerce_app/MVC/View/OrderHistoryModule/OrderHistoryPage.dart';
 import 'package:ecommerce_app/MVC/View/OtpModule/OtpPage.dart';
 import 'package:ecommerce_app/MVC/View/PaymentModule/PaymentPage.dart';
@@ -25,6 +26,7 @@ class AppRoutes {
   static String POPULAR_SEE_MORE_PAGE = "popular_see_more_page";
   static String FAVOURITE_PAGE = "favourite_page";
   static String ORDERHISTORY_PAGE = "orderHistory_page";
+  static String NOTIFICATION_PAGE = "notification_page";
 
   static List<GetPage> AppRoutesList() {
     return [
@@ -41,6 +43,7 @@ class AppRoutes {
           name: POPULAR_SEE_MORE_PAGE, page: () => PopularProductsSeeMore()),
       GetPage(name: FAVOURITE_PAGE, page: () => FavouritePage()),
       GetPage(name: ORDERHISTORY_PAGE, page: () => OrderHistoryPage()),
+      GetPage(name: NOTIFICATION_PAGE, page: () => NotificationPage()),
     ];
   }
 }

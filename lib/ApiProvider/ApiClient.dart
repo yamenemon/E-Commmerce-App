@@ -4,11 +4,8 @@ import 'package:ecommerce_app/ApiProvider/App_Exception.dart';
 import 'package:ecommerce_app/Util/AppUrl.dart';
 import 'package:dio/dio.dart';
 import 'package:ecommerce_app/Util/Enums.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_disposable.dart';
 
-
-
-class ApiClient extends GetxService {
+class ApiClient {
   late Dio _dio;
 
   //this is for header

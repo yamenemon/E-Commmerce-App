@@ -33,6 +33,35 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:340990045933:android:05e179c2ca0a9421dde6e4",
+        "android_client_info": {
+          "package_name": "com.tritech.ecommerceapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "340990045933-0ddtu7m46frlvaa3dqmi3tssjcbvrbsh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqpgDtbj0Xn1eu6JxpZf6cPyN1em5DlvA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "340990045933-0ddtu7m46frlvaa3dqmi3tssjcbvrbsh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"

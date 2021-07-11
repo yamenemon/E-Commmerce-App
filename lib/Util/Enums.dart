@@ -7,3 +7,9 @@ enum PAGES {
 }
 
 enum Method { POST, GET, PUT, DELETE, PATCH }
+
+enum CART_STATUS {
+  INCREMENT,
+  REMOVE,
+  DECREMENT,
+}

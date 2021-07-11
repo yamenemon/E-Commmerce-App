@@ -16,7 +16,7 @@ class OtpPage extends StatefulWidget {
 }
 
 class _OtpPageState extends State<OtpPage> {
-  OtpController _otpController = Get.put(OtpController());
+  final OtpController _otpController = Get.put(OtpController());
 
   @override
   void initState() {

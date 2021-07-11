@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:ecommerce_app/ApiProvider/ApiClient.dart';
+import 'package:ecommerce_app/ApiProvider/App_Exception.dart';
 import 'package:ecommerce_app/MVC/Controller/CommonController.dart';
 import 'package:ecommerce_app/MVC/Model/DemoModel/ProductModel.dart';
 import 'package:ecommerce_app/MVC/Model/OrderHistoryModel/OrderHistoryModel.dart';
@@ -11,27 +12,30 @@ import 'package:get/get.dart';
 
 class MyRepository {
   final ApiClient apiClient = Get.find<ApiClient>();
-  final CommonController commonController = Get.find<CommonController>();
+  final CommonController _commonController = Get.find<CommonController>();
 
   Future<ProductModel?> productRepo() async {
     var res = await apiClient
         .request(AppUrl.productUrl, Method.GET, null, true)
-        .catchError(commonController.handleError);
+        .catchError(_commonController.handleError);
     try {
       if (res.data != null) {
         String responseString = res.toString();
         print(responseString);
         return productModelFromJson(responseString);
       }
+    } on SocketException {
+      throw FetchDataException(
+          "from repo internet", AppUrl.productUrl.toString());
     } catch (e) {
-      print("productRepo ::: ${e.toString()}");
+      print("ProductRepo :::${e.toString()}");
     }
   }
 
   Future<bool?> sentOtp(Map<String, dynamic> body) async {
     var res = await apiClient
         .request(AppUrl.sent_otpUrl, Method.POST, body, true)
-        .catchError(commonController.handleError);
+        .catchError(_commonController.handleError);
     try {
       if (res.data != null) {
         String responseString = res.data;
@@ -52,7 +56,7 @@ class MyRepository {
 
     Map<String, dynamic> body = {
       "mobile": mobile,
-      "token": commonController.getDeviceId(),
+      "token": _commonController.getDeviceId(),
       "os": Platform.isAndroid
           ? 3
           : Platform.isIOS
@@ -61,7 +65,7 @@ class MyRepository {
     };
     var res = await apiClient
         .request(AppUrl.save_data_verifyUrl, Method.POST, body, true)
-        .catchError(commonController.handleError);
+        .catchError(_commonController.handleError);
 
     try {
       if (res.data != null) {
@@ -91,7 +95,7 @@ class MyRepository {
     };
     var res = await apiClient
         .request(AppUrl.save_userUrl, Method.POST, body, true)
-        .catchError(commonController.handleError);
+        .catchError(_commonController.handleError);
     try {
       if (res.data != null) {
         String responseString = res.data;
@@ -125,7 +129,7 @@ class MyRepository {
     print(body);
     var res = await apiClient
         .request(AppUrl.save_orderUrl, Method.POST, body, false)
-        .catchError(commonController.handleError);
+        .catchError(_commonController.handleError);
     try {
       if (res.data != null) {
         String responseString = res.data;
@@ -147,7 +151,7 @@ class MyRepository {
     };
     var res = await apiClient
         .request(AppUrl.order_historyUrl, Method.POST, body, true)
-        .catchError(commonController.handleError);
+        .catchError(_commonController.handleError);
 
     try {
       if (res.data != null) {
@@ -159,6 +163,24 @@ class MyRepository {
       }
     } catch (e) {
       print("orderHistory ::: ${e.toString()}");
+    }
+  }
+
+  Future<bool?> cancelOrderRepo(Map<String, dynamic> body) async {
+    print("body of cancel order ::: " + body.toString());
+    var res = await apiClient
+        .request(AppUrl.order_cancelUrl, Method.POST, body, true)
+        .catchError(_commonController.handleError);
+    try {
+      if (res.data != null) {
+        String responseString = res.data;
+        print(responseString);
+        return true;
+      } else {
+        return false;
+      }
+    } catch (e) {
+      print("cancelOrderRepo ::: ${e.toString()}");
     }
   }
 }

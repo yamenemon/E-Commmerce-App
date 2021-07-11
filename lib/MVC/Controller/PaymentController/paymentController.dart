@@ -54,10 +54,11 @@ class PaymentController extends GetxController {
           multi_card_name: null,
           currency: SSLCurrencyType.BDT,
           product_category: "Food",
-          sdkType: SSLCSdkType.LIVE,
-          store_id: "demotest",
+          sdkType: SSLCSdkType.TESTBOX,
+          store_id: "testbox",
           store_passwd: "qwerty",
-          total_amount: 10,
+          total_amount:
+              _cartController.cartPageTotalPrice.value.ceil().toDouble(),
           tran_id: "1231321321321312"),
     );
     await sslcommerz.payNow();

@@ -1,7 +1,8 @@
+import 'dart:convert';
 import 'dart:io';
 import 'package:device_info/device_info.dart';
 import 'package:ecommerce_app/ApiProvider/App_Exception.dart';
-import 'package:ecommerce_app/Util/AppRoutes.dart';
+import 'package:ecommerce_app/MVC/Model/NotificationModel.dart';
 import 'package:ecommerce_app/Util/Language/Translation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
@@ -13,8 +14,11 @@ class CommonController extends GetxController {
   static String USER_NAME = "user_name";
   static String USER_ADDRESS = "user_address";
   static String USER_MOBILE = "user_mobile";
+  static String NOTIFICATION_LIST = "notification_list";
   late SharedPreferences sharedPreferences;
   var storedata = false.obs;
+  List<NotificationModel> notificationlists = [];
+
   @override
   void onInit() {
     // TODO: implement onInit
@@ -174,4 +178,27 @@ class CommonController extends GetxController {
     print("Shared userMobile " + userMobile);
     return userMobile;
   }
+
+//   //store NotificationList in sharedPrefernces
+//   storeNotificationData(List<String> encodedList) {
+//     sharedPreferences.setStringList(NOTIFICATION_LIST, encodedList);
+//     update();
+//   }
+
+// //SharedPreferences get  NotificationList
+//   List<NotificationModel> getNotificationData() {
+//     List<String>? listString =
+//         sharedPreferences.getStringList(NOTIFICATION_LIST);
+//     json.decode(listString.toString());
+//     print(listString!.toList().toString());
+//    // notificationlists = NotificationModel.decode(listString);
+//     print(notificationlists.toList().toString());
+//     update();
+//     return notificationlists;
+//   }
+
+//   void notificationDelete(int index) {
+//     notificationlists.removeAt(index);
+//     update();
+//   }
 }
