@@ -1,7 +1,8 @@
 import 'dart:math';
+import 'package:ecommerce_app/MVC/Controller/CommonController.dart';
+import 'package:ecommerce_app/MVC/Controller/ConnectivityController.dart';
 import 'package:ecommerce_app/MVC/Model/DemoModel/ProductModel.dart';
 import 'package:ecommerce_app/Repository/MyRepository.dart';
-import 'package:ecommerce_app/Util/LocalNotification/LocalNotificationService.dart';
 import 'package:get/get.dart';
 
 class GetController extends GetxController {
@@ -29,6 +30,7 @@ class GetController extends GetxController {
 
   fetchGetData() async {
     try {
+      print("Enter fetchdata");
       isLoading(true);
       var getdata = await repository.productRepo();
       if (getdata != null) {

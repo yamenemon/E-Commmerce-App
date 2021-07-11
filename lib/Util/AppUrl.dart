@@ -7,4 +7,5 @@ class AppUrl {
   static String save_data_verifyUrl = "$BASE_URL/otp_pass.php";
   static String save_orderUrl = "$BASE_URL/save_order.php";
   static String order_historyUrl = "$BASE_URL/orders.php";
+  static String order_cancelUrl = "$BASE_URL/cancel_order.php";
 }

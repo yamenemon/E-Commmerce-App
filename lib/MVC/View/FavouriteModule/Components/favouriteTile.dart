@@ -12,7 +12,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class FavouriteTile extends StatelessWidget {
-  Product product;
+  final Product product;
   FavouriteTile({required this.product});
   final CartController _cartController = Get.find<CartController>();
 

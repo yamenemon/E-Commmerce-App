@@ -92,7 +92,7 @@ class _PaymentPageState extends State<PaymentPage> {
                   children: [
                     Text("Total   "),
                     Text(
-                        " = ${_cartController.cartPageTotalPrice.toInt().toString().length > 6 ? "${_cartController.cartPageTotalPrice.toString().substring(0, 6)}.." : "${_commonController.isSwitched == false ? _cartController.cartPageTotalPrice.toStringAsFixed(2) : _commonController.convertNumber(_cartController.cartPageTotalPrice.toStringAsFixed(2).toString())}"}")
+                        " = ${_cartController.cartPageTotalPrice.toInt().toString().length > 6 ? "${_cartController.cartPageTotalPrice.toString().substring(0, 6)}.." : "${_commonController.isSwitched == false ? _cartController.cartPageTotalPrice.value.ceil().toDouble() : _commonController.convertNumber(_cartController.cartPageTotalPrice.value.ceil().toDouble().toString())}"}")
                   ],
                 ),
               ),

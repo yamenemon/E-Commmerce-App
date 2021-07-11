@@ -29,4 +29,31 @@ class OrderHistoryController extends GetxController {
       isLoading(false);
     }
   }
+
+  orderCancel(String orderId) async {
+    Map<String, dynamic> body = {
+      "userid": _commonController.getUserId(),
+      "orderid": orderId
+    };
+    await repository.cancelOrderRepo(body).then(
+      (cancelStatus) {
+        if (cancelStatus == true) {
+          fetchOrderData();
+          Get.defaultDialog(
+              title: "Order Cancel",
+              middleText: "Your Order is Cancel Sucessfully",
+              onConfirm: () {
+                Get.back();
+              });
+        } else {
+          Get.defaultDialog(
+              title: "Error",
+              middleText: "Something went wrong,Please Try again later",
+              onConfirm: () {
+                Get.back();
+              });
+        }
+      },
+    );
+  }
 }

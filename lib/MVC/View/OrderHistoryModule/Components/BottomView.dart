@@ -1,8 +1,10 @@
+import 'package:ecommerce_app/MVC/Model/OrderHistoryModel/OrderHistoryModel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BottomView extends StatelessWidget {
-  const BottomView({Key? key}) : super(key: key);
+  final Order order;
+  BottomView({Key? key, required this.order}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,12 +24,12 @@ class BottomView extends StatelessWidget {
           height: 5.h,
         ),
         Text(
-          "07-06-2021",
+          "${order.orderDate.toString()}",
           style: TextStyle(
             fontFamily: 'CircularStd',
-            color: Color(0xff000000),
-            fontSize: 14.sp,
-            fontWeight: FontWeight.w500,
+            color: Color(0xffdd9522),
+            fontSize: 16.sp,
+            fontWeight: FontWeight.w700,
             fontStyle: FontStyle.normal,
           ),
         ),

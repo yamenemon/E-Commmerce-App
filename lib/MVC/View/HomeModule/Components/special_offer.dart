@@ -36,19 +36,21 @@ class SpecialOffers extends StatelessWidget {
             height: 120.h,
             child: _getController.isLoading.value == true
                 ? Text("")
-                : ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 2,
-                    // _getController.getModelList.value.offerList!.length,
-                    itemBuilder: (contex, index) => SpecialOfferCard(
-                      image:
-                          "$BASE_URL/${_getController.getModelList.value.offerList![0].image.toString()}",
-                      category: _getController
-                          .getModelList.value.offerList![0].title!,
-                      numOfBrands: 18,
-                      press: () {},
-                    ),
-                  ),
+                : _getController.getModelList.value.offerList == null
+                    ? Center(child: Text("Internet or Server problem"))
+                    : ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: 2,
+                        // _getController.getModelList.value.offerList!.length,
+                        itemBuilder: (contex, index) => SpecialOfferCard(
+                          image:
+                              "$BASE_URL/${_getController.getModelList.value.offerList![0].image.toString()}",
+                          category: _getController
+                              .getModelList.value.offerList![0].title!,
+                          numOfBrands: 18,
+                          press: () {},
+                        ),
+                      ),
           ),
         ),
 

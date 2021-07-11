@@ -42,7 +42,9 @@ class HomeHeader extends StatelessWidget {
           IconBtnWithCounter(
             svgSrc: "images/Bell.svg",
             quantity: 0,
-            press: () {},
+            press: () {
+              Get.toNamed(AppRoutes.NOTIFICATION_PAGE);
+            },
           ),
         ],
       ),

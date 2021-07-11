@@ -3,6 +3,7 @@ import 'package:ecommerce_app/MVC/Controller/CommonController.dart';
 import 'package:ecommerce_app/MVC/Model/CartModule/cartModel.dart';
 import 'package:ecommerce_app/Util/AppUrl.dart';
 import 'package:ecommerce_app/Util/Constant.dart';
+import 'package:ecommerce_app/Util/Enums.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';

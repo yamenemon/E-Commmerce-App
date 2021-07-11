@@ -36,7 +36,9 @@ class OrderItem extends StatelessWidget {
           Divider(
             thickness: 1.w,
           ),
-          // BottomView(),
+          BottomView(
+            order: order,
+          ),
         ],
       ),
     );

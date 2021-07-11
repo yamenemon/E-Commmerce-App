@@ -1,12 +1,7 @@
 import 'package:ecommerce_app/MVC/Model/CartModule/cartModel.dart';
 import 'package:ecommerce_app/MVC/Model/DemoModel/ProductModel.dart';
+import 'package:ecommerce_app/Util/Enums.dart';
 import 'package:get/get.dart';
-
-enum CART_STATUS {
-  INCREMENT,
-  REMOVE,
-  DECREMENT,
-}
 
 class CartController extends GetxController with StateMixin {
   final carts = <Cart>[].obs;
@@ -102,7 +97,9 @@ class CartController extends GetxController with StateMixin {
     if (cartIndex != -1) {
       if (product.price != null)
         return carts[cartIndex].quantity *
-            double.parse(product.price!.toString());
+            double.parse(product.isDiscount == 0
+                ? product.price!.toString()
+                : getCurrentProductDiscountPrice(product).toString());
     }
 
     return 0.0;
