@@ -5,6 +5,7 @@ import 'package:ecommerce_app/MVC/View/DetailsModule/ProductDetailPage.dart';
 import 'package:ecommerce_app/MVC/View/FavouriteModule/favouritePage.dart';
 import 'package:ecommerce_app/MVC/View/HomeModule/Components/SeeMore/popular_products_see_more.dart';
 import 'package:ecommerce_app/MVC/View/HomeModule/HomePage.dart';
+import 'package:ecommerce_app/MVC/View/OrderHistoryModule/OrderHistoryPage.dart';
 import 'package:ecommerce_app/MVC/View/OtpModule/OtpPage.dart';
 import 'package:ecommerce_app/MVC/View/PaymentModule/PaymentPage.dart';
 import 'package:ecommerce_app/MVC/View/SignInModule/SignInPage.dart';
@@ -23,6 +24,7 @@ class AppRoutes {
   static String CATEGORY_DETAILS_PAGE = "category_details_page";
   static String POPULAR_SEE_MORE_PAGE = "popular_see_more_page";
   static String FAVOURITE_PAGE = "favourite_page";
+  static String ORDERHISTORY_PAGE = "orderHistory_page";
 
   static List<GetPage> AppRoutesList() {
     return [
@@ -33,11 +35,12 @@ class AppRoutes {
       GetPage(name: OTP_PAGE, page: () => OtpPage()),
       GetPage(name: SIGNIN_PAGE, page: () => SignInPage()),
       GetPage(name: PAYMENT_PAGE, page: () => PaymentPage()),
-      GetPage(name: ACCOUNT_PAGE, page: () => AccountPage()),
+      GetPage(name: ACCOUNT_PAGE, page: () => AcccountPage()),
       GetPage(name: CATEGORY_DETAILS_PAGE, page: () => CategoryDetailsPage()),
       GetPage(
           name: POPULAR_SEE_MORE_PAGE, page: () => PopularProductsSeeMore()),
-      GetPage(name: FAVOURITE_PAGE, page: () => FavouritePage())
+      GetPage(name: FAVOURITE_PAGE, page: () => FavouritePage()),
+      GetPage(name: ORDERHISTORY_PAGE, page: () => OrderHistoryPage()),
     ];
   }
 }

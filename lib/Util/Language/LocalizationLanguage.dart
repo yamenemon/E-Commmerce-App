@@ -70,6 +70,9 @@ class LocalizationLanguage {
   static final ENTER_ADDRESS_TEXT = 'enter_address';
   static final ENTER_ADDRESS_REQ_TEXT = 'enter_address_req';
   static final PRODUCTNAME_TEXT = 'pr_name';
+  static final ACCOUNTGUEST_TEXT = 'guest';
+  static final ACCOUNTNUMBER_TEXT = 'num';
+  static final ACCOUNTADDRESS_TEXT = 'add';
 
   static Map<String, String> bn = {
     //HomePage
@@ -113,7 +116,7 @@ class LocalizationLanguage {
     //OtpPage
     'otp': "ওটিপি প্রবেশ করান",
     'otp_ban': "নিবন্ধকরণ সম্পূর্ণ করার জন্য ফোন নম্বর যাচাই করুন",
-    'sent_num': "আমরা আপনাকে +880 1716609650 এ একটি ওটিপি প্রেরণ করেছি",
+    'sent_num': "আমরা আপনাকে ওটিপি প্রেরণ করেছি",
     'resent_otp': 'ওটিপি পুনরায় পাঠান',
     'verify_now': "এখন সনাক্ত করুন",
 
@@ -166,7 +169,10 @@ class LocalizationLanguage {
 
     //Other
     'language': "ভাষা",
-    'pr_name': "বসুন্ধরা রুটি খেতে প্রস্তুত"
+    'pr_name': "বসুন্ধরা রুটি খেতে প্রস্তুত",
+    'guest': "গেস্ট",
+    "num": "আমি আপনার নাম্বার জানি না",
+    "add": "আমি আপনার এড্রেস জানি না"
   };
 
   static Map<String, String> en = {
@@ -212,7 +218,7 @@ class LocalizationLanguage {
     //OtpPage
     'otp': "Enter OTP",
     'otp_ban': "Verify phone number for complete the registration",
-    'sent_num': "We have sent you an OTP to +880 1716609650",
+    'sent_num': "We have sent you an OTP to",
     'resent_otp': 'Resend OTP',
     'verify_now': "Verify now",
 
@@ -265,6 +271,9 @@ class LocalizationLanguage {
 
     //Other
     'language': "Language",
-    'pr_name': "Bashundhara ready to eat ruti"
+    'pr_name': "Bashundhara ready to eat ruti",
+    'guest': "Guest",
+    "num": "I dont know your Number",
+    "add": "I dont know your Address"
   };
 }

@@ -83,7 +83,7 @@ class CategoryCard extends StatelessWidget {
       print(icon);
     } else {
       icon =
-          "http://ecommerce.tritechfirm.com/app-api/images/categories/1618600452.jpg";
+          "https://ecommerce.tritechfirm.com/app-api/images/categories/1618600452.jpg";
     }
     print(icon);
     print(_validURL);

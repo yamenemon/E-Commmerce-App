@@ -44,7 +44,7 @@ class CustomBottomNavBar extends StatelessWidget {
             children: [
               buildIconButton(MenuState.home),
               buildIconButton(MenuState.favourite),
-              buildIconButton(MenuState.message),
+              buildIconButton(MenuState.history),
               buildIconButton(MenuState.profile),
             ],
           ),
@@ -71,7 +71,7 @@ class CustomBottomNavBar extends StatelessWidget {
             selectedMenu == tabState ? kPrimaryColor : inActiveIconColor;
         tabName = "Favourite";
         break;
-      case MenuState.message:
+      case MenuState.history:
         imageName = "images/Bill Icon.svg";
         textColor =
             selectedMenu == tabState ? kPrimaryColor : inActiveIconColor;
@@ -117,8 +117,8 @@ class CustomBottomNavBar extends StatelessWidget {
           case MenuState.favourite:
             Get.toNamed(AppRoutes.FAVOURITE_PAGE);
             break;
-          case MenuState.message:
-            // Get.toNamed(AppRoutes.HOMEPAGE);
+          case MenuState.history:
+            Get.toNamed(AppRoutes.ORDERHISTORY_PAGE);
             break;
           case MenuState.profile:
             Get.toNamed(AppRoutes.ACCOUNT_PAGE);

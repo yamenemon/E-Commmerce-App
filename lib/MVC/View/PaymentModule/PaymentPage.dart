@@ -1,15 +1,11 @@
 import 'package:ecommerce_app/MVC/Controller/CartModule/CartController.dart';
 import 'package:ecommerce_app/MVC/Controller/CommonController.dart';
 import 'package:ecommerce_app/MVC/Controller/PaymentController/paymentController.dart';
-import 'package:ecommerce_app/MVC/View/PaymentModule/Component/SummaryCard.dart';
+import 'package:ecommerce_app/MVC/View/PaymentModule/Components/SummaryCard.dart';
 import 'package:ecommerce_app/Util/AppRoutes.dart';
 import 'package:ecommerce_app/Util/Constant.dart';
 import 'package:ecommerce_app/globalWidget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_sslcommerze/model/SSLCommerzInitialization.dart';
-import 'package:flutter_sslcommerze/sslcommerz.dart';
-import 'package:flutter_sslcommerze/model/SSLCSdkType.dart';
-import 'package:flutter_sslcommerze/model/SSLCurrencyType.dart';
 import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -24,17 +20,22 @@ class _PaymentPageState extends State<PaymentPage> {
   CartController _cartController = Get.find<CartController>();
   CommonController _commonController = Get.find<CommonController>();
   PaymentController _paymentController = Get.put(PaymentController());
-  dynamic pro;
-  var userid;
   TextEditingController address = TextEditingController();
+  String userAddress = "";
+  String name = "";
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    pro = Get.arguments[0];
-    userid = Get.arguments[1];
-    address.text = pro["house"];
+    loadShared();
+  }
+
+  //Load Shared Preferences
+  loadShared() async {
+    userAddress = _commonController.getUserAddress();
+    name = _commonController.getUserName();
+    address.text = userAddress;
   }
 
   @override
@@ -89,13 +90,27 @@ class _PaymentPageState extends State<PaymentPage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Total Price  "),
+                    Text("Total   "),
                     Text(
                         " = ${_cartController.cartPageTotalPrice.toInt().toString().length > 6 ? "${_cartController.cartPageTotalPrice.toString().substring(0, 6)}.." : "${_commonController.isSwitched == false ? _cartController.cartPageTotalPrice.toStringAsFixed(2) : _commonController.convertNumber(_cartController.cartPageTotalPrice.toStringAsFixed(2).toString())}"}")
                   ],
                 ),
               ),
             ),
+            // Padding(
+            //   padding: EdgeInsets.symmetric(horizontal: 8.sp),
+            //   child: Container(
+            //     width: Get.width * 0.8,
+            //     child: Row(
+            //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //       children: [
+            //         Text("Delivery Charge  "),
+            //         Text(
+            //             " = ${_cartController.cartPageTotalPrice.toInt().toString().length > 6 ? "${_cartController.cartPageTotalPrice.toString().substring(0, 6)}.." : "${_commonController.isSwitched == false ? _cartController.cartPageTotalPrice.toStringAsFixed(2) : _commonController.convertNumber(_cartController.cartPageTotalPrice.toStringAsFixed(2).toString())}"}")
+            //       ],
+            //     ),
+            //   ),
+            // ),
             SizedBox(
               height: Get.height * 0.1,
             ),
@@ -122,15 +137,13 @@ class _PaymentPageState extends State<PaymentPage> {
                     child: ElevatedButton(
                       style: GlobalWidget.buttonStyle(),
                       child: Text("Pay now"),
-                      onPressed: () {
-                        if (address.text == pro["house"]) {
-                          print("sslcommerze");
-                          //sslCommerzGeneralCall();
+                      onPressed: () async {
+                        if (address.text == userAddress) {
+                          await _paymentController.sslCommerzGeneralCall();
+                          // await _paymentController.sslCommerzGeneralCall();
                         } else {
-                          _paymentController.callSaveUser(userid.toString(),
-                              pro["name"], pro["mobile"], address.text);
-                          //sslCommerzGeneralCall();
                           print("change address also call");
+                          await _paymentController.callSaveUser(address.text);
                         }
                       },
                     ),
@@ -158,22 +171,5 @@ class _PaymentPageState extends State<PaymentPage> {
         ),
       ),
     );
-  }
-
-  Future<void> sslCommerzGeneralCall() async {
-    Sslcommerz sslcommerz = Sslcommerz(
-      initializer: SSLCommerzInitialization(
-          //Use the ipn if you have valid one, or it will fail the transaction.
-          ipn_url: "www.ipnurl.com",
-          multi_card_name: "no",
-          currency: SSLCurrencyType.BDT,
-          product_category: "Food",
-          sdkType: SSLCSdkType.LIVE,
-          store_id: "demotest",
-          store_passwd: "qwerty",
-          total_amount: 10,
-          tran_id: "1231321321321312"),
-    );
-    sslcommerz.payNow();
   }
 }

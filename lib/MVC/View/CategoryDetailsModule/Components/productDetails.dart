@@ -60,7 +60,7 @@ class ProductsDetails extends StatelessWidget {
                         leading: ClipRRect(
                             borderRadius: BorderRadius.circular(8.0),
                             child: Image.network(
-                              "$BASE_URL/${_getController.catDetailsProduct![index].picture}",
+                              "$BASE_URL/${_getController.catDetailsProduct![index].picture.toString()}",
                               height: 80.h,
                               width: 80.h,
                               fit: BoxFit.fitWidth,

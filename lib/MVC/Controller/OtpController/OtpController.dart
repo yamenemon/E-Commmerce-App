@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/MVC/Controller/CommonController.dart';
 import 'package:ecommerce_app/MVC/Model/SaveDataVerifyOtpModel/saveDataverifyOtpModel.dart';
 import 'package:ecommerce_app/Repository/MyRepository.dart';
 import 'package:ecommerce_app/Util/AppRoutes.dart';
@@ -5,7 +6,7 @@ import 'package:get/get.dart';
 
 class OtpController extends GetxController {
   MyRepository repository = MyRepository();
-  String userId = "5";
+  String userId = "";
   String otp = "";
   String name = "";
   String phoneNumber = "";
@@ -13,6 +14,7 @@ class OtpController extends GetxController {
   late void Function(String) onChanged;
   late bool isValid;
   RxBool btColor = false.obs;
+  CommonController _commonController = Get.find<CommonController>();
 
   void onChangedOtp(String v) async {
     v.length == 6 ? btColor.value = true : btColor.value = false;
@@ -24,26 +26,45 @@ class OtpController extends GetxController {
       try {
         if (_saveVerify != null && _saveVerify.profile == null) {
           print("if portion");
+          _commonController.storeUserId(_saveVerify.userid.toString());
+          _commonController.storeName(name.toString());
+          _commonController.storeMobileNumber(phoneNumber.toString());
+          _commonController.storeUserAddress(address.toString());
+          _commonController.update([_commonController.getUserId()]);
+
           await repository
               .saveUser(
                   _saveVerify.userid.toString(), name, phoneNumber, address)
               .then(
             (saveUser) {
               if (saveUser == true) {
-                Get.offAndToNamed(AppRoutes.PAYMENT_PAGE);
+                Get.offAllNamed(AppRoutes.PAYMENT_PAGE);
               }
             },
           );
         } else {
           print("else portion");
-          Get.offAndToNamed(AppRoutes.PAYMENT_PAGE,
-              arguments: [_saveVerify!.profile, _saveVerify.userid]);
+          _commonController.storeUserId(_saveVerify?.userid.toString() ?? "0");
+          _commonController.storeName(_saveVerify!.profile["name"] ?? "");
+          _commonController
+              .storeMobileNumber(_saveVerify.profile["mobile"].toString());
+          _commonController
+              .storeUserAddress(_saveVerify.profile["house"] ?? "");
+          _commonController.update([_commonController.getUserId()]);
+          Get.offAllNamed(AppRoutes.PAYMENT_PAGE);
         }
       } catch (e) {
         print("saveverify method ::: " + e.toString());
       }
-    } else {
+    } else if (v.length == 6) {
       isValid = false;
+      Get.defaultDialog(
+        title: "Error",
+        middleText: "Your Otp is not Matched",
+        onConfirm: () {
+          Get.back();
+        },
+      );
     }
     update();
   }

@@ -45,6 +45,10 @@ dependencies:
   lottie: ^1.0.1
   flutter_sslcommerze: ^1.0.1-nullsafety.0
   device_info: ^2.0.2
+  shared_preferences: ^2.0.6
+  firebase_messaging: ^9.1.3 #DONT CHANGE IT BECAUSE WITHOUT THAT IT SHOWS ERROR IN IOS
+  flutter_local_notifications: ^6.0.0
+  firebase_core: ^1.0.3
 
 dev_dependencies:
   flutter_test:
