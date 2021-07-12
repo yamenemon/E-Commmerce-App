@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
         translations: LocalizationService(),
         fallbackLocale: LocalizationService.fallbackLocale,
         debugShowCheckedModeBanner: false,
-        initialRoute: AppRoutes.HOMEPAGE,
+        initialRoute: AppRoutes.SPLASHPAGE,
         getPages: AppRoutes.AppRoutesList(),
         title: 'E-Commerce-App',
         locale: Get.deviceLocale,

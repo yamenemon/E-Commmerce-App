@@ -2,7 +2,6 @@ import 'package:ecommerce_app/MVC/Controller/CartModule/CartController.dart';
 import 'package:ecommerce_app/MVC/Controller/CommonController.dart';
 import 'package:ecommerce_app/MVC/View/AccoutModule/Components/ProfileWidget.dart';
 import 'package:ecommerce_app/Util/AppRoutes.dart';
-import 'package:ecommerce_app/Util/Constant.dart';
 import 'package:ecommerce_app/Util/Language/LocalizationLanguage.dart';
 import 'package:ecommerce_app/globalWidget.dart';
 import 'package:flutter/material.dart';
@@ -13,25 +12,25 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class AcccountPage extends StatelessWidget {
   AcccountPage({Key? key}) : super(key: key);
 
-  var contentArr = [
-    LocalizationLanguage.MY_ORDER_TEXT.tr,
-    LocalizationLanguage.ORDER_HISTORY_TEXT.tr,
-    LocalizationLanguage.EDIT_PROFILE_TEXT.tr,
-    LocalizationLanguage.MYADDRESS_TEXT.tr
-  ];
-  var contentImageArr = [
-    "profile_order_history",
-    "profile_order_history",
-    "profile_order_history",
-    "profile_order_history"
-  ];
+  // var contentArr = [
+  //   LocalizationLanguage.MY_ORDER_TEXT.tr,
+  //   LocalizationLanguage.ORDER_HISTORY_TEXT.tr,
+  //   LocalizationLanguage.EDIT_PROFILE_TEXT.tr,
+  //   LocalizationLanguage.MYADDRESS_TEXT.tr
+  // ];
+  // var contentImageArr = [
+  //   "profile_order_history",
+  //   "profile_order_history",
+  //   "profile_order_history",
+  //   "profile_order_history"
+  // ];
   @override
   Widget build(BuildContext context) {
-    final CommonController _commonController = Get.find<CommonController>();
+    final CommonController _commonController = Get.put(CommonController());
     final CartController _cartController = Get.find<CartController>();
     return Scaffold(
       appBar: GlobalWidget.globalAppBar(
-        LocalizationLanguage.MYACCOUNT_TEXT.tr,
+        LocalizationLanguage.MYACCOUNT_TEXT,
         Colors.transparent,
         true,
       ),
@@ -54,7 +53,7 @@ class AcccountPage extends StatelessWidget {
                   selectedTileColor: Colors.cyan,
                   onTap: () {
                     print("Log In pressed");
-                    _commonController.storedata == false
+                    _commonController.getUserSession() == false
                         ? Get.toNamed(AppRoutes.SIGNIN_PAGE)
                         : Get.defaultDialog(
                             title: "LogOut",
@@ -62,10 +61,10 @@ class AcccountPage extends StatelessWidget {
                                 "Are you sure you want to Delete your Account",
                             onConfirm: () {
                               _commonController.sharedPreferences.clear();
-                              _commonController
-                                  .update([_commonController.getUserId()]);
+                              _commonController.storeSession(false);
+                              _commonController.update();
                               _cartController.carts.clear();
-                              Get.back(closeOverlays: false);
+                              Get.offAllNamed(AppRoutes.HOMEPAGE);
                             },
                             onCancel: () {
                               Navigator.of(context);
@@ -78,11 +77,9 @@ class AcccountPage extends StatelessWidget {
                       SizedBox(
                         width: 10.w,
                       ),
-                      Obx(
-                        () => Text(_commonController.storedata == false
-                            ? LocalizationLanguage.LOGIN_TEXT.tr
-                            : "LogOut"),
-                      )
+                      Text(_commonController.getUserSession() == false
+                          ? LocalizationLanguage.LOGIN_TEXT.tr
+                          : "LogOut"),
                     ],
                   ),
                   trailing: SvgPicture.asset('images/arrow_right.svg'),
@@ -91,36 +88,36 @@ class AcccountPage extends StatelessWidget {
             ),
 
             //language Change
-            Padding(
-              padding: EdgeInsets.only(left: 20.w, right: 20.w, top: 20.h),
-              child: Container(
-                decoration: GlobalWidget.defaultContainerDecoration(),
-                child: ListTile(
-                  tileColor: Colors.amber,
-                  selectedTileColor: Colors.cyan,
-                  title: Row(
-                    children: [
-                      Icon(
-                        Icons.language_rounded,
-                        size: 34.r,
-                      ),
-                      SizedBox(
-                        width: 10.w,
-                      ),
-                      Text(LocalizationLanguage.LANGUGAGE_TEXT.tr)
-                    ],
-                  ),
-                  trailing: Switch(
-                    value: _commonController.isSwitched,
-                    onChanged: (value) {
-                      _commonController.changeLocaleMethod(value);
-                    },
-                    activeTrackColor: Colors.grey,
-                    activeColor: kPrimaryColor,
-                  ),
-                ),
-              ),
-            ),
+            // Padding(
+            //   padding: EdgeInsets.only(left: 20.w, right: 20.w, top: 20.h),
+            //   child: Container(
+            //     decoration: GlobalWidget.defaultContainerDecoration(),
+            //     child: ListTile(
+            //       tileColor: Colors.amber,
+            //       selectedTileColor: Colors.cyan,
+            //       title: Row(
+            //         children: [
+            //           Icon(
+            //             Icons.language_rounded,
+            //             size: 34.r,
+            //           ),
+            //           SizedBox(
+            //             width: 10.w,
+            //           ),
+            //           Text(LocalizationLanguage.LANGUGAGE_TEXT.tr)
+            //         ],
+            //       ),
+            //       trailing: Switch(
+            //         value: _commonController.isSwitched,
+            //         onChanged: (value) {
+            //           _commonController.changeLocaleMethod(value);
+            //         },
+            //         activeTrackColor: Colors.grey,
+            //         activeColor: kPrimaryColor,
+            //       ),
+            //     ),
+            //   ),
+            // ),
           ],
         ),
       ),

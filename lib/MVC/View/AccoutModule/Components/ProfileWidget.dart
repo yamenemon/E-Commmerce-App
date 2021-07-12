@@ -38,13 +38,15 @@ class ProfileWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Obx(
-                () => Padding(
-                  padding: const EdgeInsets.all(3.0),
+              Padding(
+                padding: const EdgeInsets.all(3.0),
+                child: Container(
+                  width: Get.width * 0.67.w,
                   child: Text(
-                    _commonController.storedata == false
+                    _commonController.getUserSession() == false
                         ? LocalizationLanguage.ACCOUNTGUEST_TEXT.tr
                         : _commonController.getUserName(),
+                    overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       fontFamily: circularStdBold,
                       color: Color(0xff3f1f20),
@@ -55,31 +57,31 @@ class ProfileWidget extends StatelessWidget {
                   ),
                 ),
               ),
-              Obx(
-                () => Padding(
-                  padding: const EdgeInsets.all(3.0),
-                  child: Text(
-                    _commonController.storedata == false
-                        ? LocalizationLanguage.ACCOUNTNUMBER_TEXT.tr
-                        : _commonController.getUserMobile(),
-                    style: TextStyle(
-                      fontFamily: circularStdBold,
-                      color: Color(0xff808080),
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w400,
-                      fontStyle: FontStyle.normal,
-                    ),
+              Padding(
+                padding: const EdgeInsets.all(3.0),
+                child: Text(
+                  (_commonController.getUserSession() == false)
+                      ? LocalizationLanguage.ACCOUNTNUMBER_TEXT.tr
+                      : _commonController.getUserMobile(),
+                  style: TextStyle(
+                    fontFamily: circularStdBold,
+                    color: Color(0xff808080),
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w400,
+                    fontStyle: FontStyle.normal,
                   ),
                 ),
               ),
-              Obx(
-                () => Padding(
-                  padding: const EdgeInsets.all(3.0),
+              Padding(
+                padding: const EdgeInsets.all(3.0),
+                child: Container(
+                  width: Get.width * 0.67.w,
                   child: Text(
-                    _commonController.storedata == false
+                    _commonController.getUserSession() == false
                         ? LocalizationLanguage.ACCOUNTADDRESS_TEXT.tr
                         : _commonController.getUserAddress(),
                     maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       fontFamily: circularStdBold,
                       color: Color(0xff808080),

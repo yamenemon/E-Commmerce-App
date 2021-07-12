@@ -11,7 +11,7 @@ class OnBoardingController extends GetxController {
   forward() {
     if (isLastPage) {
       //go to HomePage
-      Get.offNamed(AppRoutes.HOMEPAGE);
+      Get.offAllNamed(AppRoutes.HOMEPAGE);
     } else {
       pageController.nextPage(
           duration: 200.milliseconds, curve: Curves.bounceOut);

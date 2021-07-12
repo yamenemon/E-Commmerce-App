@@ -43,6 +43,7 @@ class HomeHeader extends StatelessWidget {
             svgSrc: "images/Bell.svg",
             quantity: 0,
             press: () {
+              print(_commonController.getUserSession());
               Get.toNamed(AppRoutes.NOTIFICATION_PAGE);
             },
           ),

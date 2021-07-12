@@ -8,7 +8,8 @@ class LocalizationService extends Translations {
   static const locale = Locale('en', 'US');
 
   // fallbackLocale saves the day when the locale gets in trouble
-  static const fallbackLocale = Locale('bn', 'BD');
+  // static const fallbackLocale = Locale('bn', 'BD');
+  static const fallbackLocale = Locale('en', 'US');
 
   // Supported languages
   // Needs to be same order with locales

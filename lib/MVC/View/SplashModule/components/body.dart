@@ -12,7 +12,8 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
-  OnBoardingController _onBoardingController = Get.put(OnBoardingController());
+  final OnBoardingController _onBoardingController =
+      Get.put(OnBoardingController());
 
   @override
   Widget build(BuildContext context) {

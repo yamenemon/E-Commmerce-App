@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/MVC/Controller/CartModule/CartController.dart';
 import 'package:ecommerce_app/MVC/Controller/CommonController.dart';
 import 'package:ecommerce_app/MVC/Model/SaveDataVerifyOtpModel/saveDataverifyOtpModel.dart';
 import 'package:ecommerce_app/Repository/MyRepository.dart';
@@ -14,7 +15,8 @@ class OtpController extends GetxController {
   late void Function(String) onChanged;
   late bool isValid;
   RxBool btColor = false.obs;
-  CommonController _commonController = Get.find<CommonController>();
+  final CommonController _commonController = Get.find<CommonController>();
+  final CartController _cartController = Get.find<CartController>();
 
   void onChangedOtp(String v) async {
     v.length == 6 ? btColor.value = true : btColor.value = false;
@@ -30,7 +32,7 @@ class OtpController extends GetxController {
           _commonController.storeName(name.toString());
           _commonController.storeMobileNumber(phoneNumber.toString());
           _commonController.storeUserAddress(address.toString());
-          _commonController.update([_commonController.getUserId()]);
+          _commonController.storeSession(true);
 
           await repository
               .saveUser(
@@ -38,7 +40,9 @@ class OtpController extends GetxController {
               .then(
             (saveUser) {
               if (saveUser == true) {
-                Get.offAllNamed(AppRoutes.PAYMENT_PAGE);
+                _cartController.carts.isEmpty
+                    ? Get.offAllNamed(AppRoutes.HOMEPAGE)
+                    : Get.offAllNamed(AppRoutes.PAYMENT_PAGE);
               }
             },
           );
@@ -50,8 +54,10 @@ class OtpController extends GetxController {
               .storeMobileNumber(_saveVerify.profile["mobile"].toString());
           _commonController
               .storeUserAddress(_saveVerify.profile["house"] ?? "");
-          _commonController.update([_commonController.getUserId()]);
-          Get.offAllNamed(AppRoutes.PAYMENT_PAGE);
+          _commonController.storeSession(true);
+          _cartController.carts.isEmpty
+              ? Get.offAllNamed(AppRoutes.HOMEPAGE)
+              : Get.offAllNamed(AppRoutes.PAYMENT_PAGE);
         }
       } catch (e) {
         print("saveverify method ::: " + e.toString());

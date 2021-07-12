@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:io';
 import 'package:device_info/device_info.dart';
 import 'package:ecommerce_app/ApiProvider/App_Exception.dart';
@@ -14,9 +13,9 @@ class CommonController extends GetxController {
   static String USER_NAME = "user_name";
   static String USER_ADDRESS = "user_address";
   static String USER_MOBILE = "user_mobile";
+  static String USER_SESSION = "user_session";
   static String NOTIFICATION_LIST = "notification_list";
   late SharedPreferences sharedPreferences;
-  var storedata = false.obs;
   List<NotificationModel> notificationlists = [];
 
   @override
@@ -125,12 +124,6 @@ class CommonController extends GetxController {
   //SharedPreferences get user Id
   String getUserId() {
     String userId = sharedPreferences.getString(USER_ID) ?? "0";
-    if (userId == "0") {
-      storedata.value = false;
-    } else {
-      storedata.value = true;
-    }
-
     update();
     print("Shared UserId " + userId);
     return userId;
@@ -177,6 +170,20 @@ class CommonController extends GetxController {
     update();
     print("Shared userMobile " + userMobile);
     return userMobile;
+  }
+
+  //SharedPreferences set User Session
+  storeSession(bool session) async {
+    sharedPreferences.setBool(USER_SESSION, session);
+    update();
+  }
+
+  //SharedPreferences get user Session
+  bool getUserSession() {
+    bool userSession = sharedPreferences.getBool(USER_SESSION) ?? false;
+    update();
+    print("Shared userSession " + userSession.toString());
+    return userSession;
   }
 
 //   //store NotificationList in sharedPrefernces

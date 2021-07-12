@@ -61,7 +61,26 @@ class PaymentController extends GetxController {
               _cartController.cartPageTotalPrice.value.ceil().toDouble(),
           tran_id: "1231321321321312"),
     );
-    await sslcommerz.payNow();
+    var result = await sslcommerz.payNow();
+    if (result is PlatformException) {
+      print("the response is: " +
+          result.message.toString() +
+          " code: " +
+          result.code);
+    } else {
+      SSLCTransactionInfoModel model = result;
+      if (double.parse(model.amount.toString()) >=
+          _cartController.cartPageTotalPrice.value.ceil().toDouble()) {
+        print("Successfully Completed : " + model.amount.toString());
+        saveOrderMethod();
+      } else {
+        Get.defaultDialog(
+            title: "Order Error",
+            middleText:
+                "Your Order is Not Successfull, Please Check Your Transaction Related Issue",
+            onConfirm: () => Get.back());
+      }
+    }
   }
 
   // Future<void> sslCommerzCustomizedCall() async {
@@ -206,6 +225,7 @@ class PaymentController extends GetxController {
           _cartController.carts.clear();
           Get.defaultDialog(
               title: "Order",
+              barrierDismissible: false,
               titleStyle: GoogleFonts.poppins(
                   fontSize: 16.sp,
                   fontWeight: FontWeight.bold,
