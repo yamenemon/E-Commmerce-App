@@ -1,5 +1,5 @@
 import 'package:ecommerce_app/MVC/View/AccoutModule/AccountPage.dart';
-import 'package:ecommerce_app/MVC/View/Cart/CartPage.dart';
+import 'package:ecommerce_app/MVC/View/CartModule/CartPage.dart';
 import 'package:ecommerce_app/MVC/View/CategoryDetailsModule/CategoryDetailsPage.dart';
 import 'package:ecommerce_app/MVC/View/DetailsModule/ProductDetailPage.dart';
 import 'package:ecommerce_app/MVC/View/FavouriteModule/favouritePage.dart';

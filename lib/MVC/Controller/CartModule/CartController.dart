@@ -1,5 +1,5 @@
 import 'package:ecommerce_app/MVC/Model/CartModule/cartModel.dart';
-import 'package:ecommerce_app/MVC/Model/DemoModel/ProductModel.dart';
+import 'package:ecommerce_app/MVC/Model/ProductModule/ProductModel.dart';
 import 'package:ecommerce_app/Util/Enums.dart';
 import 'package:get/get.dart';
 
@@ -10,11 +10,14 @@ class CartController extends GetxController with StateMixin {
   var currentProductQty = 0.obs;
   RxDouble productDetailTotalPrice = 0.0.obs;
   RxDouble cartPageTotalPrice = 0.0.obs;
+  RxDouble cartPageTotalWithDiscountPrice = 0.0.obs;
   RxDouble cartPageTotalDiscount = 0.0.obs;
+  RxDouble productPrice = 0.0.obs;
   bool isFavorited = false;
   //For cart badge
   RxInt totalProductQtyBadge = 0.obs;
   var discount = 0.0;
+
   @override
   onInit() {
     super.onInit();
@@ -117,6 +120,16 @@ class CartController extends GetxController with StateMixin {
     return 0.0;
   }
 
+  double totalDiscount(Product product) {
+    if (product.isDiscount == 0) {
+      return 0.0;
+    } else {
+      double tempdisCount = 0;
+      tempdisCount = (product.price! - discount);
+      return tempdisCount;
+    }
+  }
+
   updateProductDetailsTotalPrice(Product product) {
     if (product.price != null)
       productDetailTotalPrice.value =
@@ -126,6 +139,8 @@ class CartController extends GetxController with StateMixin {
   void updateCartListValues() {
     cartPageTotalPrice.value = 0.0;
     totalProductQtyBadge.value = 0;
+    cartPageTotalDiscount.value = 0;
+    productPrice.value = 0.0;
 
     carts.forEach((element) {
       if (element.productDemoModel.price != null &&
@@ -139,8 +154,24 @@ class CartController extends GetxController with StateMixin {
                 double.parse(element.quantity.toString());
       }
 
+      //productPrice without discount
+      productPrice.value +=
+          (element.productDemoModel.price! * element.quantity);
+
+      //Total Discount  price are stored here
+      cartPageTotalDiscount.value +=
+          totalDiscount(element.productDemoModel) * element.quantity;
+
       totalProductQtyBadge.value += element.quantity;
     });
+  }
+
+  //Subtotal Price with DeliveryCharge
+  double totalPriceWithDelivery(double deliveryCharge) {
+    cartPageTotalWithDiscountPrice.value = 0.0;
+    cartPageTotalWithDiscountPrice.value =
+        cartPageTotalPrice.value + deliveryCharge;
+    return cartPageTotalWithDiscountPrice.value;
   }
 
   //temporary favourite

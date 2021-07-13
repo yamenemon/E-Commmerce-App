@@ -1,6 +1,7 @@
 import 'package:ecommerce_app/MVC/Controller/CartModule/CartController.dart';
 import 'package:ecommerce_app/MVC/Controller/CommonController.dart';
-import 'package:ecommerce_app/MVC/Model/SaveOrderModel/saveOrderModel.dart';
+import 'package:ecommerce_app/MVC/Controller/ProductModule/GetController.dart';
+import 'package:ecommerce_app/MVC/Model/SaveOrderModule/saveOrderModel.dart';
 import 'package:ecommerce_app/Repository/MyRepository.dart';
 import 'package:ecommerce_app/Util/AppRoutes.dart';
 import 'package:flutter/material.dart';
@@ -25,6 +26,7 @@ class PaymentController extends GetxController {
   List<OrderDetail> orderDetail = [];
   final CartController _cartController = Get.find<CartController>();
   final CommonController _commonController = Get.find<CommonController>();
+  final GetController _getController = Get.find<GetController>();
 
   callSaveUser(String address) async {
     await repository
@@ -57,8 +59,9 @@ class PaymentController extends GetxController {
           sdkType: SSLCSdkType.TESTBOX,
           store_id: "testbox",
           store_passwd: "qwerty",
-          total_amount:
-              _cartController.cartPageTotalPrice.value.ceil().toDouble(),
+          total_amount: _cartController.cartPageTotalWithDiscountPrice.value
+              .ceil()
+              .toDouble(),
           tran_id: "1231321321321312"),
     );
     var result = await sslcommerz.payNow();
@@ -213,12 +216,16 @@ class PaymentController extends GetxController {
     });
     await repository
         .saveOrder(
-            _commonController.getUserId(),
-            _commonController.getUserName(),
-            _commonController.getUserMobile(),
-            _commonController.getUserAddress(),
-            _cartController.cartPageTotalPrice.toStringAsFixed(2),
-            orderDetail)
+      _commonController.getUserId(),
+      _commonController.getUserName(),
+      _commonController.getUserMobile(),
+      _commonController.getUserAddress(),
+      orderDetail,
+      _cartController.productPrice.value,
+      _getController.getModelList.value.deliveryCharge?.toDouble() ?? 0.0,
+      _cartController.cartPageTotalDiscount.value.ceil().toDouble(),
+      _cartController.cartPageTotalWithDiscountPrice.value.ceil().toDouble(),
+    )
         .then(
       (saveOrder) {
         if (saveOrder == true) {

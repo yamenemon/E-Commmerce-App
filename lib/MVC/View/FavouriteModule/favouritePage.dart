@@ -1,6 +1,6 @@
 import 'package:ecommerce_app/MVC/Controller/CartModule/CartController.dart';
 import 'package:ecommerce_app/MVC/View/FavouriteModule/Components/favouriteTile.dart';
-import 'package:ecommerce_app/globalWidget.dart';
+import 'package:ecommerce_app/GlobalWidget/globalWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';

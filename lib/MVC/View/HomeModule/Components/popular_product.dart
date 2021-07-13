@@ -1,6 +1,6 @@
 import 'package:ecommerce_app/MVC/Controller/CartModule/CartController.dart';
 import 'package:ecommerce_app/MVC/Controller/CommonController.dart';
-import 'package:ecommerce_app/MVC/Controller/GetController.dart';
+import 'package:ecommerce_app/MVC/Controller/ProductModule/GetController.dart';
 import 'package:ecommerce_app/Util/AppRoutes.dart';
 import 'package:ecommerce_app/Util/AppUrl.dart';
 import 'package:ecommerce_app/Util/Constant.dart';

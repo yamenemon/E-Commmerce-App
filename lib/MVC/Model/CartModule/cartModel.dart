@@ -1,4 +1,4 @@
-import 'package:ecommerce_app/MVC/Model/DemoModel/ProductModel.dart';
+import 'package:ecommerce_app/MVC/Model/ProductModule/ProductModel.dart';
 
 class Cart {
   Product productDemoModel;

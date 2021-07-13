@@ -1,5 +1,5 @@
 import 'package:ecommerce_app/MVC/Controller/ConnectivityController.dart';
-import 'package:ecommerce_app/MVC/Controller/GetController.dart';
+import 'package:ecommerce_app/MVC/Controller/ProductModule/GetController.dart';
 import 'package:ecommerce_app/MVC/View/HomeModule/Components/special_offer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

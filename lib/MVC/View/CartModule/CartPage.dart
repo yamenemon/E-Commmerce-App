@@ -1,8 +1,8 @@
 // ignore: file_names
 import 'package:ecommerce_app/MVC/Controller/CartModule/CartController.dart';
-import 'package:ecommerce_app/MVC/View/Cart/Components/body.dart';
-import 'package:ecommerce_app/MVC/View/Cart/Components/checkout_cart.dart';
-import 'package:ecommerce_app/globalWidget.dart';
+import 'package:ecommerce_app/MVC/View/CartModule/Components/body.dart';
+import 'package:ecommerce_app/MVC/View/CartModule/Components/checkout_cart.dart';
+import 'package:ecommerce_app/GlobalWidget/globalWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

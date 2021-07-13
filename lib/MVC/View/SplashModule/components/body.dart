@@ -1,7 +1,7 @@
 import 'package:ecommerce_app/MVC/Controller/OnBoardingModule/OnboardingController.dart';
 import 'package:ecommerce_app/MVC/View/SplashModule/components/splashContent.dart';
 import 'package:ecommerce_app/Util/Constant.dart';
-import 'package:ecommerce_app/globalWidget.dart';
+import 'package:ecommerce_app/GlobalWidget/globalWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';

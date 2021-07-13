@@ -1,4 +1,4 @@
-import 'package:ecommerce_app/MVC/Model/OrderHistoryModel/OrderHistoryModel.dart';
+import 'package:ecommerce_app/MVC/Model/OrderHistoryModule/OrderHistoryModel.dart';
 import 'package:ecommerce_app/MVC/View/OrderHistoryModule/Components/BottomView.dart';
 import 'package:ecommerce_app/MVC/View/OrderHistoryModule/Components/MiddleView.dart';
 import 'package:ecommerce_app/MVC/View/OrderHistoryModule/Components/TopView.dart';

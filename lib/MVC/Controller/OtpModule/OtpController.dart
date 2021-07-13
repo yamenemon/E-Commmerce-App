@@ -1,6 +1,6 @@
 import 'package:ecommerce_app/MVC/Controller/CartModule/CartController.dart';
 import 'package:ecommerce_app/MVC/Controller/CommonController.dart';
-import 'package:ecommerce_app/MVC/Model/SaveDataVerifyOtpModel/saveDataverifyOtpModel.dart';
+import 'package:ecommerce_app/MVC/Model/SaveDataVerifyOtpModule/saveDataverifyOtpModel.dart';
 import 'package:ecommerce_app/Repository/MyRepository.dart';
 import 'package:ecommerce_app/Util/AppRoutes.dart';
 import 'package:get/get.dart';

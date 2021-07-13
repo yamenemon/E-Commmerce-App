@@ -2,7 +2,7 @@ import 'package:ecommerce_app/ApiProvider/ApiClient.dart';
 import 'package:ecommerce_app/MVC/Controller/CartModule/CartController.dart';
 import 'package:ecommerce_app/MVC/Controller/CommonController.dart';
 import 'package:ecommerce_app/MVC/Controller/ConnectivityController.dart';
-import 'package:ecommerce_app/MVC/Controller/FirebaseController/FirebaseController.dart';
+import 'package:ecommerce_app/MVC/Controller/FirebaseModule/FirebaseController.dart';
 import 'package:ecommerce_app/Repository/MyRepository.dart';
 import 'package:ecommerce_app/Util/AppRoutes.dart';
 import 'package:ecommerce_app/Util/Constant.dart';
@@ -12,7 +12,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'MVC/Controller/GetController.dart';
+import 'MVC/Controller/ProductModule/GetController.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

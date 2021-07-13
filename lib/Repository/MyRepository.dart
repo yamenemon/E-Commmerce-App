@@ -2,10 +2,10 @@ import 'dart:io';
 import 'package:ecommerce_app/ApiProvider/ApiClient.dart';
 import 'package:ecommerce_app/ApiProvider/App_Exception.dart';
 import 'package:ecommerce_app/MVC/Controller/CommonController.dart';
-import 'package:ecommerce_app/MVC/Model/DemoModel/ProductModel.dart';
-import 'package:ecommerce_app/MVC/Model/OrderHistoryModel/OrderHistoryModel.dart';
-import 'package:ecommerce_app/MVC/Model/SaveDataVerifyOtpModel/saveDataverifyOtpModel.dart';
-import 'package:ecommerce_app/MVC/Model/SaveOrderModel/saveOrderModel.dart';
+import 'package:ecommerce_app/MVC/Model/OrderHistoryModule/OrderHistoryModel.dart';
+import 'package:ecommerce_app/MVC/Model/ProductModule/ProductModel.dart';
+import 'package:ecommerce_app/MVC/Model/SaveDataVerifyOtpModule/saveDataverifyOtpModel.dart';
+import 'package:ecommerce_app/MVC/Model/SaveOrderModule/saveOrderModel.dart';
 import 'package:ecommerce_app/Util/AppUrl.dart';
 import 'package:ecommerce_app/Util/Enums.dart';
 import 'package:get/get.dart';
@@ -109,21 +109,32 @@ class MyRepository {
     }
   }
 
-  Future<bool?> saveOrder(String user_id, String name, String mobile,
-      String address, String totalPrice, List<OrderDetail> orderDetail) async {
+  Future<bool?> saveOrder(
+      String user_id,
+      String name,
+      String mobile,
+      String address,
+      List<OrderDetail> orderDetail,
+      double productPrice,
+      double deliveryCharge,
+      double totalDiscount,
+      double totalPrice) async {
     SaveOrderModel data = SaveOrderModel(
-        userId: int.parse(user_id),
-        productPrice: 230.00,
-        mobile: mobile,
-        house: address,
-        name: name,
-        os: Platform.isAndroid
-            ? 3.toString()
-            : Platform.isIOS
-                ? 2.toString()
-                : 1.toString(),
-        totalPrice: double.parse(totalPrice),
-        orderDetails: orderDetail.toList());
+      userId: int.parse(user_id),
+      mobile: mobile,
+      house: address,
+      name: name,
+      orderDetails: orderDetail.toList(),
+      productPrice: productPrice,
+      totalPrice: totalPrice,
+      deliveryCharge: deliveryCharge.toInt(),
+      discount: totalDiscount.toInt(),
+      os: Platform.isAndroid
+          ? 3.toString()
+          : Platform.isIOS
+              ? 2.toString()
+              : 1.toString(),
+    );
 
     Map<String, dynamic> body = data.toJson();
     print(body);

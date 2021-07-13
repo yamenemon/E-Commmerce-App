@@ -1,10 +1,10 @@
 import 'package:ecommerce_app/MVC/Controller/CartModule/CartController.dart';
 import 'package:ecommerce_app/MVC/Controller/CommonController.dart';
-import 'package:ecommerce_app/MVC/Model/DemoModel/ProductModel.dart';
+import 'package:ecommerce_app/MVC/Model/ProductModule/ProductModel.dart';
 import 'package:ecommerce_app/MVC/View/DetailsModule/Components/body.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ecommerce_app/Util/AppRoutes.dart';
-import 'package:ecommerce_app/globalWidget.dart';
+import 'package:ecommerce_app/GlobalWidget/globalWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

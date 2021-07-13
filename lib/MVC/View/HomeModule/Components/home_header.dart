@@ -3,7 +3,7 @@ import 'package:ecommerce_app/MVC/Controller/CommonController.dart';
 import 'package:ecommerce_app/MVC/View/HomeModule/Components/icon_btn_counter.dart';
 import 'package:ecommerce_app/MVC/View/HomeModule/Components/searchField.dart';
 import 'package:ecommerce_app/Util/AppRoutes.dart';
-import 'package:ecommerce_app/globalWidget.dart';
+import 'package:ecommerce_app/GlobalWidget/globalWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';

@@ -1,7 +1,5 @@
 import 'dart:math';
-import 'package:ecommerce_app/MVC/Controller/CommonController.dart';
-import 'package:ecommerce_app/MVC/Controller/ConnectivityController.dart';
-import 'package:ecommerce_app/MVC/Model/DemoModel/ProductModel.dart';
+import 'package:ecommerce_app/MVC/Model/ProductModule/ProductModel.dart';
 import 'package:ecommerce_app/Repository/MyRepository.dart';
 import 'package:get/get.dart';
 

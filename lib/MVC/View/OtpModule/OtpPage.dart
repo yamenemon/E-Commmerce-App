@@ -1,4 +1,4 @@
-import 'package:ecommerce_app/MVC/Controller/OtpController/OtpController.dart';
+import 'package:ecommerce_app/MVC/Controller/OtpModule/OtpController.dart';
 import 'package:ecommerce_app/Util/AppRoutes.dart';
 import 'package:ecommerce_app/Util/Constant.dart';
 import 'package:ecommerce_app/Util/Language/LocalizationLanguage.dart';
@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../globalWidget.dart';
+import '../../../GlobalWidget/globalWidget.dart';
 
 class OtpPage extends StatefulWidget {
   OtpPage({Key? key}) : super(key: key);

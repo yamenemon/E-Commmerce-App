@@ -1,5 +1,5 @@
 import 'package:ecommerce_app/MVC/Controller/CommonController.dart';
-import 'package:ecommerce_app/MVC/Model/OrderHistoryModel/OrderHistoryModel.dart';
+import 'package:ecommerce_app/MVC/Model/OrderHistoryModule/OrderHistoryModel.dart';
 import 'package:ecommerce_app/Repository/MyRepository.dart';
 import 'package:get/get.dart';
 

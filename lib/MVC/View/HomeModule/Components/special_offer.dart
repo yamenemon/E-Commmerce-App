@@ -1,4 +1,4 @@
-import 'package:ecommerce_app/MVC/Controller/GetController.dart';
+import 'package:ecommerce_app/MVC/Controller/ProductModule/GetController.dart';
 import 'package:ecommerce_app/Util/AppUrl.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

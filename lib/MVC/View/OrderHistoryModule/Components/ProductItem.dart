@@ -1,6 +1,6 @@
-import 'package:ecommerce_app/MVC/Model/OrderHistoryModel/OrderHistoryModel.dart';
+import 'package:ecommerce_app/MVC/Model/OrderHistoryModule/OrderHistoryModel.dart';
 import 'package:ecommerce_app/Util/AppUrl.dart';
-import 'package:ecommerce_app/globalWidget.dart';
+import 'package:ecommerce_app/GlobalWidget/globalWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -51,6 +51,12 @@ class ProductItem extends StatelessWidget {
                               letterSpacing: 1.2.sp,
                             ),
                           ),
+                          //  _getController.listToShow[index]
+                          //                               .isDiscount ==
+                          //                           0
+                          //                       ? Text("")
+                          //                       : Text(
+                          //                           " \$${_commonController.isSwitched == false ? _cartController.getCurrentProductDiscountPrice(_getController.listToShow[index]) : _commonController.convertNumber(_cartController.getCurrentProductDiscountPrice(_getController.listToShow[index]).toString())}",
                           TextSpan(
                             text: "${productList.price.toString()}",
                             style: TextStyle(

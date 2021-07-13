@@ -1,4 +1,4 @@
-import 'package:ecommerce_app/MVC/Controller/GetController.dart';
+import 'package:ecommerce_app/MVC/Controller/ProductModule/GetController.dart';
 import 'package:ecommerce_app/MVC/View/HomeModule/Components/category_card.dart';
 import 'package:ecommerce_app/Util/AppRoutes.dart';
 import 'package:ecommerce_app/Util/AppUrl.dart';

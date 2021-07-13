@@ -21,11 +21,12 @@ class _SplashPageState extends State<SplashPage> {
     // TODO: implement initState
     super.initState();
     Timer.periodic(Duration(seconds: 2), (timer) {
-      if (_onBoardingController.onBoardingPages.length - 2 ==
+      if (_onBoardingController.onBoardingPages.length - 1 ==
           _onBoardingController.onPageIndex.value) {
         timer.cancel();
+      } else {
+        _onBoardingController.forward();
       }
-      _onBoardingController.forward();
     });
   }
 

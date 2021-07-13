@@ -1,4 +1,4 @@
-import 'package:ecommerce_app/MVC/Model/OnboardingModel/onBoardingModel.dart';
+import 'package:ecommerce_app/MVC/Model/OnboardingModule/onBoardingModel.dart';
 import 'package:ecommerce_app/Util/AppRoutes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';

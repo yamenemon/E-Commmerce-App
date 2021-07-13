@@ -1,7 +1,7 @@
-import 'package:ecommerce_app/MVC/Controller/GetController.dart';
+import 'package:ecommerce_app/MVC/Controller/ProductModule/GetController.dart';
 import 'package:ecommerce_app/Util/AppRoutes.dart';
 import 'package:ecommerce_app/Util/AppUrl.dart';
-import 'package:ecommerce_app/globalWidget.dart';
+import 'package:ecommerce_app/GlobalWidget/globalWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';

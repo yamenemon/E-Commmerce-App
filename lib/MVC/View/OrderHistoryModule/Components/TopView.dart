@@ -1,5 +1,5 @@
-import 'package:ecommerce_app/MVC/Controller/OrderHistoryController/orderHistoryController.dart';
-import 'package:ecommerce_app/MVC/Model/OrderHistoryModel/OrderHistoryModel.dart';
+import 'package:ecommerce_app/MVC/Controller/OrderHistoryModule/orderHistoryController.dart';
+import 'package:ecommerce_app/MVC/Model/OrderHistoryModule/OrderHistoryModel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';

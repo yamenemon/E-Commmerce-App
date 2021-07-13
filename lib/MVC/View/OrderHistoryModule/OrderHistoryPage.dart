@@ -1,6 +1,6 @@
-import 'package:ecommerce_app/MVC/Controller/OrderHistoryController/orderHistoryController.dart';
+import 'package:ecommerce_app/MVC/Controller/OrderHistoryModule/orderHistoryController.dart';
 import 'package:ecommerce_app/MVC/View/OrderHistoryModule/Components/OrderItem.dart';
-import 'package:ecommerce_app/globalWidget.dart';
+import 'package:ecommerce_app/GlobalWidget/globalWidget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

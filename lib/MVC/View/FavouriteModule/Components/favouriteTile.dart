@@ -1,5 +1,5 @@
 import 'package:ecommerce_app/MVC/Controller/CartModule/CartController.dart';
-import 'package:ecommerce_app/MVC/Model/DemoModel/ProductModel.dart';
+import 'package:ecommerce_app/MVC/Model/ProductModule/ProductModel.dart';
 import 'package:ecommerce_app/Util/AppRoutes.dart';
 import 'package:ecommerce_app/Util/AppUrl.dart';
 import 'package:flutter/material.dart';

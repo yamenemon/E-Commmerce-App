@@ -1,5 +1,5 @@
 import 'package:ecommerce_app/MVC/View/CategoryDetailsModule/Components/Body.dart';
-import 'package:ecommerce_app/globalWidget.dart';
+import 'package:ecommerce_app/GlobalWidget/globalWidget.dart';
 import 'package:flutter/material.dart';
 
 class CategoryDetailsPage extends StatefulWidget {

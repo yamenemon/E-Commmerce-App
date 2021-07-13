@@ -18,57 +18,66 @@ class SummaryCard extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 8.w),
       child: Card(
-        child: Row(
+          child: Padding(
+        padding: EdgeInsets.symmetric(vertical: 10.h),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(width: 20.w),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // ignore: sized_box_for_whitespace
-                Container(
-                  width: Get.width * 0.5,
-                  child: Text(
-                    cart.productDemoModel.nameEn.toString(),
-                    style: GoogleFonts.poppins(
-                        fontSize: 15.sp, fontWeight: FontWeight.w600),
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 3,
-                  ),
+            // ignore: sized_box_for_whitespace
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              child: Container(
+                child: Text(
+                  cart.productDemoModel.nameEn.toString(),
+                  style: GoogleFonts.poppins(
+                      fontSize: 15.sp, fontWeight: FontWeight.w600),
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 3,
                 ),
-                const SizedBox(height: 10),
-                Container(
-                  width: Get.width * 0.8,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Obx(
-                        () => Text.rich(
-                          TextSpan(
-                            text:
-                                " \$${_commonController.isSwitched == false ? _cartController.getCurrentProductDiscountPrice(cart.productDemoModel) : _commonController.convertNumber(_cartController.getCurrentProductDiscountPrice(cart.productDemoModel).toString())}",
-                            style: GoogleFonts.poppins(
-                                fontSize: 15.sp,
-                                fontWeight: FontWeight.bold,
-                                color: kPrimaryColor),
-                            children: [
-                              TextSpan(
-                                  text:
-                                      " x ${_commonController.isSwitched == false ? _cartController.getCurrentProductQty(cart.productDemoModel) : _commonController.convertNumber(_cartController.getCurrentProductQty(cart.productDemoModel).toString())}",
-                                  style: Theme.of(context).textTheme.bodyText2),
-                            ],
-                          ),
+              ),
+            ),
+            // SizedBox(height: 10.h),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Expanded(
+                    flex: 3,
+                    child: Container(
+                      child: Text.rich(
+                        TextSpan(
+                          text:
+                              "\$${_commonController.isSwitched == false ? _cartController.getCurrentProductDiscountPrice(cart.productDemoModel) : _commonController.convertNumber(_cartController.getCurrentProductDiscountPrice(cart.productDemoModel).toString())}",
+                          style: GoogleFonts.poppins(
+                              fontSize: 15.sp,
+                              fontWeight: FontWeight.bold,
+                              color: kPrimaryColor),
+                          children: [
+                            TextSpan(
+                                text:
+                                    " x ${_commonController.isSwitched == false ? _cartController.getCurrentProductQty(cart.productDemoModel) : _commonController.convertNumber(_cartController.getCurrentProductQty(cart.productDemoModel).toString())}",
+                                style: Theme.of(context).textTheme.bodyText2),
+                          ],
                         ),
                       ),
-                      Text(
-                          " = ${_commonController.isSwitched == false ? _cartController.getCurrentProductTotalPrice(cart.productDemoModel).toStringAsFixed(2) : _commonController.convertNumber(_cartController.getCurrentProductTotalPrice(cart.productDemoModel).toStringAsFixed(2).toString())}")
-                    ],
+                    ),
                   ),
-                ),
-              ],
-            )
+                  Expanded(
+                    flex: 1,
+                    child: Container(
+                      child: Text(
+                        " = ${_commonController.isSwitched == false ? _cartController.getCurrentProductTotalPrice(cart.productDemoModel).toStringAsFixed(2) : _commonController.convertNumber(_cartController.getCurrentProductTotalPrice(cart.productDemoModel).toStringAsFixed(2).toString())}",
+                        style: Theme.of(context).textTheme.bodyText1,
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
           ],
         ),
-      ),
+      )),
     );
   }
 }

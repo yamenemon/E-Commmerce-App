@@ -1,9 +1,9 @@
 import 'package:ecommerce_app/MVC/Controller/CommonController.dart';
 import 'package:ecommerce_app/MVC/Controller/ConnectivityController.dart';
-import 'package:ecommerce_app/MVC/Controller/SignInController/SignInController.dart';
+import 'package:ecommerce_app/MVC/Controller/SignInModule/SignInController.dart';
 import 'package:ecommerce_app/Util/Constant.dart';
 import 'package:ecommerce_app/Util/Language/LocalizationLanguage.dart';
-import 'package:ecommerce_app/globalWidget.dart';
+import 'package:ecommerce_app/GlobalWidget/globalWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';

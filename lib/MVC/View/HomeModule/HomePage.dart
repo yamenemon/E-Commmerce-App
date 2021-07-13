@@ -2,6 +2,7 @@ import 'package:ecommerce_app/MVC/Controller/CommonController.dart';
 import 'package:ecommerce_app/MVC/Controller/ConnectivityController.dart';
 import 'package:ecommerce_app/MVC/View/HomeModule/Components/body.dart';
 import 'package:ecommerce_app/MVC/View/HomeModule/Components/custom_bottom_nav_bar.dart';
+import 'package:ecommerce_app/Util/Constant.dart';
 import 'package:ecommerce_app/Util/Enums.dart';
 import 'package:ecommerce_app/Util/NoInternet/NoInternet.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,6 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Obx(() {
-      // _commonController.update([_commonController.getUserId()]);
       return Scaffold(
         body: _connectivityController.isOnline == true ? Body() : NoInternet(),
         bottomNavigationBar:
