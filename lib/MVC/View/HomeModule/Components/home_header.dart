@@ -26,6 +26,8 @@ class HomeHeader extends StatelessWidget {
             onTap: () {
               if (_cartController.carts.isEmpty) {
                 //Get.toNamed(AppRoutes.EMPTY_CART_PAGE);
+                Get.snackbar("Add to cart",
+                    "No product added.Please add some product first");
               } else {
                 Get.toNamed(AppRoutes.CART_PAGE);
               }
