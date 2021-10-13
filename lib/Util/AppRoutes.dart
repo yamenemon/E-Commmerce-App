@@ -14,19 +14,19 @@ import 'package:ecommerce_app/MVC/View/SplashModule/SplashPage.dart';
 import 'package:get/get.dart';
 
 class AppRoutes {
-  static String HOMEPAGE = "HomePage";
-  static String SPLASHPAGE = "SpalshPage";
-  static String PRODUCT_DETAIL_PAGE = "product_details_page";
-  static String CART_PAGE = "cart_page";
-  static String OTP_PAGE = "otp_PAGE";
-  static String SIGNIN_PAGE = "SignIn_page";
-  static String PAYMENT_PAGE = "Payment";
-  static String ACCOUNT_PAGE = "My_Account_page";
-  static String CATEGORY_DETAILS_PAGE = "category_details_page";
-  static String POPULAR_SEE_MORE_PAGE = "popular_see_more_page";
-  static String FAVOURITE_PAGE = "favourite_page";
-  static String ORDERHISTORY_PAGE = "orderHistory_page";
-  static String NOTIFICATION_PAGE = "notification_page";
+  static String HOMEPAGE = "/HomePage";
+  static String SPLASHPAGE = "/SpalshPage";
+  static String PRODUCT_DETAIL_PAGE = "/product_details_page";
+  static String CART_PAGE = "/cart_page";
+  static String OTP_PAGE = "/otp_PAGE";
+  static String SIGNIN_PAGE = "/SignIn_page";
+  static String PAYMENT_PAGE = "/Payment";
+  static String ACCOUNT_PAGE = "/My_Account_page";
+  static String CATEGORY_DETAILS_PAGE = "/category_details_page";
+  static String POPULAR_SEE_MORE_PAGE = "/popular_see_more_page";
+  static String FAVOURITE_PAGE = "/favourite_page";
+  static String ORDERHISTORY_PAGE = "/orderHistory_page";
+  static String NOTIFICATION_PAGE = "/notification_page";
 
   static List<GetPage> AppRoutesList() {
     return [
