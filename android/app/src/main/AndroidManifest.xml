@@ -4,7 +4,7 @@ xmlns:tools="http://schemas.android.com/tools"
      <uses-permission android:name="android.permission.INTERNET" />
    <application
     tools:replace="android:label"
-        android:label="ecommerce_app"
+        android:label="Ehita"
          android:usesCleartextTraffic="true"
         android:icon="@mipmap/ic_launcher">
         <activity
